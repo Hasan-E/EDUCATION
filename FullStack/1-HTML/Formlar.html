@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FORMLAR</title>
+    <style>
+      #seker {
+        border: 5px solid red;
+        width: 250px;
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4WS3JqNM6qJak-zhK0u7wMaL-tatTr-DMNg&s");
+        background-size: cover;
+        background-position: center;
+        color: yellow;
+        text-shadow: 5px 5px 5px black;
+      }
+    </style>
   </head>
   <body>
     <h1>HTML FORMLARI</h1>
@@ -12,12 +23,12 @@
       <!-- label ve text input kullanımı -->
 
       <label for="fname">USER NAME</label><br />
-      <input type="text" id="fname" name="isim" placeholder="adınız" />
+      <input type="text" id="fname" name="isim" placeholder="Adınız" />
       <br /><br />
       <label for="sname">SURNAME</label><br />
-      <input type="text" id="sname" name="soyisim" placeholder="soyadınız" />
+      <input type="text" id="sname" name="soyisim" placeholder="Soyadınız" />
 
-      <br /><br /><br />
+      <br /><br />
       <!-- PASSWORD -->
       <div>
         <label for="sifre">PASSWORD</label><br />
@@ -26,8 +37,10 @@
           name="parola"
           id="sifre"
           placeholder="sifre"
-          value="123"
+          value="1234"
           required
+          maxlength="6"
+          minlength="6"
         />
       </div>
       <br /><br />
@@ -61,10 +74,10 @@
           value="Panda"
           checked
         />
-        <label for="panda">PANDA</label><br />
+        <label for="panda">PANDA</label>
 
         <input type="checkbox" name="animal2" id="balık" value="balık" />
-        <label for="balık">BALIK</label><br />
+        <label for="balık">BALIK</label>
         <input type="checkbox" name="animal3" id="kedi" value="kedi" checked />
         <label for="kedi">KEDİ</label>
       </div>
@@ -89,7 +102,7 @@
 
       <div>
         <label for="arama">search</label><br />
-        <input type="search" name="arandı" id="arama" />
+        <input type="search" name="arandı" id="arama" placeholder="ara" />
       </div>
       <br /><br />
 
@@ -164,7 +177,7 @@
       <div>
         <label for="şeker">Hangi tatlıyı seversiniz?</label>
         <br />
-        <select name="secilen-tatlı" id="şeker" size="15" multiple>
+        <select name="secilen-tatlı" id="seker" size="15" multiple>
           <optgroup label="SÜTLÜ TATLILAR">
             <option value="sütlaç">Sütlaç</option>
             <option value="Keşkül">Keşkül</option>
@@ -200,7 +213,7 @@
       <!-- datalist -->
 
       <div>
-        <label for="browser">hangi browser kullanmak istersin</label>
+        <label for="">hangi browser kullanmak istersin</label>
         <br />
         <input
           type="text"
@@ -210,11 +223,11 @@
         />
 
         <datalist id="browsers">
-          <option value="">opera</option>
-          <option value="">firefox</option>
-          <option value="">chrome</option>
-          <option value="">safari</option>
-          <option value="">brave</option>
+          <option value="opera"></option>
+          <option value="firefox"></option>
+          <option value="chrome"></option>
+          <option value="safari"></option>
+          <option value="brave"></option>
         </datalist>
       </div>
 
