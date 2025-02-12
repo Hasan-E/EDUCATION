@@ -5,21 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DİV-SPAN</title>
     <style>
-      .başlık3 {
+      #başlık3 {
         border: 5px solid red;
+      }
+
+      #div2 {
+        border: 3px solid red;
+        background-color: orange;
+        width: 300px;
+        margin: auto;
+        border-radius: 20px;
+        background-image: url("https://picsum.photos/id/482/604/400");
+        color: yellow;
+        background-size: cover;
+        background-position: center;
+        padding: 10px;
+        text-shadow: 5px 5px 10px red;
+      }
+
+      #span1 {
+        background-color: orange;
       }
     </style>
   </head>
   <body>
-    <h1>Div ve SPAN</h1>
+    <h1>Div ve Span</h1>
     <hr />
 
     <h1>Lorem ipsum dolor sit.</h1>
 
     <p>
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
-      laborum dolorum veritatis quae, provident sapiente consequatur ab maxime
-      autem iusto in porro ipsum, totam, sit ad eius facere distinctio amet!
+      laborum dolorum veritatis quae,
+      <span id="span1">provident sapiente consequatur ab</span> maxime autem
+      iusto in porro ipsum, totam, sit ad eius facere distinctio amet!
     </p>
     <div id="div2">
       <h1>Lorem ipsum dolor sit.</h1>
@@ -29,14 +48,14 @@
         laborum dolorum veritatis quae, provident sapiente consequatur ab maxime
         autem iusto in porro ipsum, totam, sit ad eius facere distinctio amet!
       </p>
-
-      <h1 id="başlık3">Lorem ipsum dolor sit.</h1>
-
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
-        laborum dolorum veritatis quae, provident sapiente consequatur ab maxime
-        autem iusto in porro ipsum, totam, sit ad eius facere distinctio amet!
-      </p>
     </div>
+
+    <h1 id="başlık3">Lorem ipsum dolor sit.</h1>
+
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
+      laborum dolorum veritatis quae, provident sapiente consequatur ab maxime
+      autem iusto in porro ipsum, totam, sit ad eius facere distinctio amet!
+    </p>
   </body>
 </html>
