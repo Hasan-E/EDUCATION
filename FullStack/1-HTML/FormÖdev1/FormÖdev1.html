@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REGISTRATION</title>
+    <link rel="stylesheet" href="FormÖdev1.css" />
+  </head>
+  <body>
+    <h3>Registration Form</h3>
+
+    <form action="Ödev1Result.html" method="get">
+      <div id="fname-div">
+        <label for="fname" class="sbt-label">First Name :</label>
+        <input
+          type="text"
+          name="isim"
+          id="fname"
+          placeholder="isim giriniz"
+          class="input-area"
+        />
+      </div>
+      <div id="lname-div">
+        <label for="lname" class="sbt-label">Last Name :</label>
+        <input
+          type="text"
+          name="SoyIsim"
+          id="lname"
+          placeholder="soyisim giriniz"
+          class="input-area"
+        />
+      </div>
+      <div id="email-div">
+        <label for="email" class="sbt-label">E-mail :</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="example@email.com"
+          class="input-area"
+        />
+      </div>
+      <div id="password-div">
+        <label for="password" class="sbt-label">Password :</label>
+        <input
+          type="password"
+          name="sifre"
+          id="password"
+          minlength="6"
+          maxlength="6"
+          placeholder="6 haneli şifre giriniz"
+          class="input-area"
+        />
+      </div>
+      <div id="birth-date-div">
+        <label for="birthday" class="sbt-label">Date of Birth :</label>
+        <input
+          type="date"
+          name="dogum-tarihi"
+          id="birthday"
+          class="input-area"
+        />
+      </div>
+      <div id="gender-div">
+        <label for="cinsiyet" class="sbt-label">Gender :</label><br />
+        <input type="radio" name="erkek" id="gender1" />
+        <label for="gender1">Male</label>
+        <input type="radio" name="kadın" id="gender2" />
+        <label for="gender2">Female</label>
+      </div>
+
+      <div id="Mobile-div">
+        <label for="mobile" class="sbt-label">Mobile :</label>
+        <input
+          type="tel"
+          name="telefon"
+          id="mobile"
+          placeholder="xxx-xxx-xx-xx"
+          minlength="13"
+          maxlength="13"
+          class="input-area"
+        />
+      </div>
+
+      <div id="button-div">
+        <input type="submit" value="SUBMIT" class="buttons" />
+        <input type="reset" value="CLEAR" class="buttons" />
+      </div>
+    </form>
+  </body>
+</html>
