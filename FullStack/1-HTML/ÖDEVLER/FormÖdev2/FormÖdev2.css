@@ -1,0 +1,33 @@
+h1 {
+  text-align: center;
+}
+
+.div-kisisel {
+  display: flex;
+}
+
+.kisisel_label {
+  width: 20%;
+  display: inline-block;
+}
+/* #diger_bildiler_div {
+  display: flex;
+} */
+
+/* .diger_bilgiler_label {
+  width: 20%;
+  display: inline-block;
+} */
+.container {
+  display: flex;
+  align-items: center; /* Dikey hizalama */
+}
+
+.diger_bilgiler_label {
+  width: 20%; /* Label'in genişliği */
+  text-align: left; /* Sola hizalama */
+}
+
+.inputs {
+  width: 70%; /* Inputların kalan alanı kaplaması */
+}

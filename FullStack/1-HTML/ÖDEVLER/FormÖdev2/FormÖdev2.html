@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC TASARIM SÖZLEŞMESİ</title>
+    <link rel="stylesheet" href="FormÖdev2.css" />
+  </head>
+
+  <!-- ***********************************BODY************************************************* -->
+
+  <body>
+    <h1>ABC Tasarım Programı Kurulum ve Satış Sözleşmesi</h1>
+    <!-- *********************************FORM********************************************************* -->
+
+    <form action="Ödev2Result.html" method="get">
+      <!-- ********************************sözleşme onay*********************************************** -->
+
+      <div>
+        <fieldset>
+          <legend>Sözleşme Onay</legend>
+          <input type="checkbox" name="Onay" id="Onay" value="Onay" />
+          <label for="Onay"
+            >Aşağıdaki bilgilerin doğruluğunu kabul ediyorum ve sözleşmesini
+            onaylıyorum.</label
+          ><br />
+          <input type="submit" value="Formu Kaydet" />
+          <input type="reset" value="Formu Temizle" />
+        </fieldset>
+      </div>
+
+      <!-- ******************************************KİŞİSEL BİLGİLER*********************** -->
+      <div id="div-kisisel">
+        <fieldset>
+          <legend>Kişisel Bilgiler</legend>
+          <label class="kisisel_label" for="sec-id">Form Güvenlik ID</label>
+          <input
+            type="text"
+            name="Güvenlik kodu"
+            id="sec-id"
+            placeholder="XM4P"
+            maxlength="0"
+          />
+          <br />
+          <label class="kisisel_label" for="isim">Ad</label>
+          <input type="text" name="ad" id="isim" />
+          <br />
+          <label class="kisisel_label" for="soyisim">Soyad</label>
+          <input type="text" name="soyad" id="soyisim" />
+          <br />
+          <label class="kisisel_label" for="yaş">Yaş</label>
+          <input type="number" name="yaş" id="yaş" maxlength="3" />
+          <br />
+          <label class="kisisel_label" for="mail">Mail Adresi</label>
+          <input type="mail" name="mailadresi" id="mail" />
+          <br />
+          <label class="kisisel_label" for="foto">Fotoğraf Ekle</label>
+          <input type="file" name="dosya" id="foto" value="Foto Seç" /><br />
+        </fieldset>
+      </div>
+
+      <!-- *************************************Diğer bilgiler*********************************** -->
+      <div class="diger_bildiler_div">
+        <fieldset>
+          <legend>Diğer Bilgiler</legend>
+          <span> Buradaki Alanlar Mesleki Deneyimi Kapsar</span><br />
+          <label class="diger_bilgiler_label" for="giris"
+            >Sektöre Giriş Tarihi</label
+          >
+          <input
+            type="date"
+            name="giris_tarihi"
+            id="giris"
+            max="2025-02-15"
+            min="1990-01-01"
+          /><br />
+          <!-- <label id="deneyim" class="diger_bilgiler_label" for="deneyim">Sektör Deneyimi</label></span>
+          <span>
+            <input type="radio" name="1-5" id="1-5yil" />
+            <label for="1-5yil">1-5 yıl</label>
+            <br />
+            <input type="radio" name="6-10" id="6-10yil" />
+            <label for="6-10yil">6-10 yıl</label>
+            <br />
+            <input type="radio" name="11-15" id="11-15yil" />
+            <label for="11-15yil">11-15 yıl</label>
+            <br />
+            <input type="radio" name="15_uzeri" id="15_uzeri" />
+            <label for="15_uzeri">15-üzeri</label>
+        </span>
+          -->
+
+          <div class="container">
+            <label id="deneyim" class="diger_bilgiler_label" for="deneyim"
+              >Sektör Deneyimi</label
+            >
+            <div class="inputs">
+              <input type="radio" name="deneyim" id="1-5yil" />
+              <label for="1-5yil">1-5 yıl</label>
+              <br />
+              <input type="radio" name="deneyim" id="6-10yil" />
+              <label for="6-10yil">6-10 yıl</label>
+              <br />
+              <input type="radio" name="deneyim" id="11-15yil" />
+              <label for="11-15yil">11-15 yıl</label>
+              <br />
+              <input type="radio" name="deneyim" id="15_uzeri" />
+              <label for="15_uzeri">15-üzeri</label>
+            </div>
+          </div>
+
+          <br />
+          <label class="diger_bilgiler_label" for="dil"
+            >Programlama Dilleri</label
+          >
+          <select name="programlama_dilleri" id="dil" size="5" multiple>
+            <option value="C#">C#</option>
+            <option value="PHP">PHP</option>
+            <option value="JAVA">JAVA</option>
+            <option value="JAVA">JAVA</option>
+            <option value="JAVASCRİPT">JAVASCRİPT</option>
+            <option value="c++">C++</option>
+            <option value="AA">AA</option>
+          </select>
+        </fieldset>
+      </div>
+      <div>
+        <fieldset>
+          <legend>Sözleşme Kopyası</legend>
+          <textarea name="sözleşme" id="sözleşme" cols="35" rows="5">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque fuga laborum perspiciatis. Fuga minus quos iste, officiis excepturi in ut itaque beatae possimus at facilis inventore accusamus dolore suscipit quis totam animi, illo deserunt ipsam enim quas? Iste maxime tenetur mollitia expedita saepe quia et ad suscipit cum, aliquid, tempore vel quos doloribus adipisci placeat blanditiis corporis? Fuga dolores molestiae earum animi quas, ullam, rem aperiam voluptate enim rerum autem ad obcaecati delectus expedita sit fugit nostrum minima nesciunt quidem sint ipsa tempora, voluptatum aut eum! Quisquam, nemo minima et odio, consequuntur neque asperiores harum qui blanditiis voluptatibus quae ab id, commodi ipsam odit libero exercitationem explicabo quibusdam repudiandae temporibus eum voluptatem! Minima cum esse, neque ex culpa accusamus magnam, quibusdam assumenda nemo dolorum rem atque iure doloremque quo saepe. Sequi commodi ex eos, laboriosam ratione officia saepe sit reiciendis est asperiores vitae quisquam deleniti eveniet id dicta repellat voluptatem nobis facere exercitationem doloribus aliquam earum deserunt rem obcaecati. Ipsum inventore animi quisquam sit doloribus similique quae nulla temporibus, fugiat facere, id assumenda! Deserunt, totam sed corporis temporibus asperiores, ut vel laborum perspiciatis corrupti numquam rem placeat cum fugiat magni. Unde, commodi eum? Laudantium pariatur, quisquam quaerat quo nemo recusandae commodi nobis asperiores nostrum repudiandae eveniet neque distinctio soluta delectus dolor consequuntur sit explicabo tempora? Eaque repellat recusandae quisquam eum incidunt iure suscipit, quia sunt, iste iusto fuga corrupti tempore explicabo corporis. Ea placeat cupiditate nobis quam. Amet iusto repellat placeat. Dolorem vero labore impedit, laboriosam quisquam quam quasi quidem?</textarea
+          >
+        </fieldset>
+      </div>
+      <div>
+        <fieldset>
+          <legend>Mail Listesi</legend>
+          <!-- <label for="secim"></label> -->
+          <label for="evet"
+            >Mail Listesine Katılmak <strong>İstiyorum</strong></label
+          >
+          <input type="radio" name="secim" id="evet" value="katılıyor" /><br />
+          <label for="hayır"
+            >Mail Listesine Katılmak
+            <strong><ins>İstemiyorum</ins></strong></label
+          >
+          <input type="radio" name="secim" id="hayır" value="katılmıyor" />
+        </fieldset>
+      </div>
+    </form>
+  </body>
+</html>
