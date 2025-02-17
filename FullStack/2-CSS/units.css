@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background-color: orange;
+  border: 10px solid red; */
+  /* height: 100vh; */
+}
+h1 {
+  background-color: blue;
+  height: 50%;
+}
+
+.abs {
+  background-color: chocolate;
+  width: 5cm;
+}
+
+.div2 {
+  background-color: blueviolet;
+  width: 50%;
+  /* height: 350px; */
+  /* height: 20vh; */
+}
+
+.div3 {
+  background-color: orange;
+  width: 50%;
+  /* height: 20%; */
+  /* height: 70%; */
+}
+
+.div4 {
+  background-color: teal;
+  width: 60vw;
+  /* height: 20%; */
+  /* height: 5vh; */
+}
+
+.div5 {
+  font-size: 25px;
+}
+
+.div6 {
+}
+
+.div7 {
+}
