@@ -1,0 +1,43 @@
+h1 {
+  color: red;
+}
+
+span {
+  text-align: center;
+  background-color: orange;
+}
+.container {
+  background-color: aliceblue;
+}
+
+.par1 {
+  color: blue;
+  text-align: center;
+  column-count: 3;
+  column-rule: 2px solid blue;
+}
+.par2 {
+  text-align: right;
+  direction: rtl;
+  text-shadow: 2px 2px 2px red;
+  line-height: 1.5;
+}
+.par3 {
+  text-align: justify;
+  /* text-decoration: line-through; */
+  letter-spacing: 2px;
+  line-height: 2;
+  text-shadow: 5px 10px 2px fuchsia;
+  text-transform: capitalize;
+}
+.par4 {
+  text-indent: 20px;
+  /* text-decoration: overline; */
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+.par5 {
+  text-indent: 50px;
+  /* text-decoration: underline red wavy; */
+  font-size: 20px;
+}
