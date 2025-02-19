@@ -1,0 +1,72 @@
+nav.link a {
+  text-decoration: none;
+}
+nav.link a:link {
+  color: teal;
+  text-decoration: none;
+}
+nav.link a:visited {
+  color: magenta;
+}
+nav.link a:active {
+  color: green;
+}
+nav.link a:hover {
+  text-decoration: none;
+}
+
+.cw {
+  margin-top: 20px;
+}
+
+nav.cw a {
+  text-decoration: none;
+  border: 2px solid gray;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: orange;
+  color: gray;
+}
+/* *************pseudo class***************** */
+nav.cw a:hover {
+  background-color: gray;
+  color: orange;
+}
+
+nav.cw a:active {
+  background-color: maroon;
+  color: yellow;
+}
+
+/* pseudo elements */
+
+.par1::first-line {
+  color: yellow;
+  background-color: blue;
+}
+
+.par1::first-letter {
+  font-size: 2rem;
+  color: orange;
+  background-color: crimson;
+}
+
+ul.before_after {
+  list-style-type: none;
+}
+
+ul.before_after li {
+  background-color: lightsalmon;
+  margin: 5px;
+  width: 40%;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+ul.before_after li::after {
+  content: "🦼";
+}
+
+ul.before_after li::before {
+  content: "🏁";
+}

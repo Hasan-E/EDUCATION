@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&display=swap");
+ul.languages {
+  list-style-type: none;
+  list-style-type: decimal;
+  list-style-type: georgian;
+  list-style-type: lower-greek;
+  list-style-type: lower-roman;
+  list-style-type: square;
+
+  list-style-position: inside;
+  padding: 10px;
+
+  /* list-style-image: url("./img/circle-check-solid.svg"); */
+  list-style-type: none;
+}
+
+ul.languages li {
+  background-color: lightgreen;
+  margin: 5px;
+  width: 250px;
+  border-radius: 20px;
+  padding-left: 20px;
+  border: 2px solid orange;
+  border-left: 8px solid gray;
+  font-family: "Quattrocento", serif;
+}
+
+ul.languages li:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+h2 {
+  color: purple;
+  font-size: 2rem;
+}
+
+/* PSEUDO CLASSES */
+
+ul.pseudo li:first-child {
+  background-color: red;
+  font-family: "Bitter", serif;
+  font-weight: 900;
+}
+
+ul.pseudo li:last-child {
+  background-color: blue;
+  font-family: "Caveat", serif;
+  color: yellow;
+}
+
+ul.pseudo li:nth-child(3) {
+  background-color: orange;
+  font-size: 30px;
+  font-family: "Caveat", serif;
+  font-weight: 700;
+}
+
+ul.pseudo li:nth-child(5) {
+  background-color: peru;
+  font-size: 2rem;
+}
+
+.pseudo2 p:nth-child(odd) {
+  background-color: orangered;
+  width: 60%;
+  margin: auto;
+}
+.pseudo2 p:nth-child(even) {
+  background-color: gray;
+  width: 60%;
+  margin: auto;
+}
+
+div.pseudo2 p:hover {
+  background-color: blue;
+  color: yellow;
+}
+div.pseudo2 p:active {
+  background-color: red;
+  color: yellow;
+}
+
+input {
+  background-color: gray;
+  border: none;
+  color: wheat;
+}
+
+input:focus {
+  background-color: orange;
+  color: green;
+  border: none;
+  outline: none;
+}
+
+.out {
+  border: 10px solid black;
+  width: 100px;
+  height: 30px;
+  /* outline: 10px solid red;
+    outline-offset: 50px; */
+  margin: 30px auto;
+
+  border-top-right-radius: 10px;
+}
