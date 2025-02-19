@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLOK_INLINE</title>
+    <link rel="stylesheet" href="blok-inline.css" />
+
+    <style>
+      a,
+      span,
+      em {
+        background-color: rebeccapurple;
+        width: 250px;
+        height: 250px;
+        border: solid 2px black;
+        margin: 35px;
+        color: yellow;
+      }
+      /* inline elementlere genişlik yükseklik ve yukarı ve aşağı margin padding verilmez */
+      p {
+        background-color: orange;
+        width: 150px;
+        padding: 35px;
+      }
+      b {
+        width: 100px;
+        background-color: teal;
+        display: inline-block;
+        margin: 5px;
+        padding: 5px;
+      }
+
+      .abc {
+        background-color: peru;
+        width: 50px;
+        text-align: center;
+        margin: auto;
+      }
+
+      .baslik {
+        background-color: magenta;
+        display: inline-block;
+        width: 75px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="">Clarusway</a>
+    <span>span</span>
+    <em>italik</em>
+
+    <p>paragraf</p>
+    <p>paragraf2</p>
+    <p>paragraf3</p>
+
+    <div>
+      <b>inline-block</b>
+      <b>inline-block</b>
+    </div>
+
+    <strong>test</strong>
+    <strong>test</strong>
+    <div>
+      <strong>test1111</strong>
+    </div>
+    <strong>test</strong>
+
+    <div style="border: 3px solid red; text-align: center">
+      <span>test</span>
+      <span>test</span>
+      <span>test</span>
+    </div>
+
+    <div class="abc">
+      <strong>abc </strong>
+    </div>
+    
+  <div class="baslik">
+    <h3>lorem2</h3>
+    <h3>lorem2</h3>
+    <h3>lorem2</h3>
+  </div>
+ 
+        
+    </div>
+  </body>
+</html>
