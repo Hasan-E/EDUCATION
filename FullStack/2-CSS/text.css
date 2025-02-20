@@ -1,9 +1,12 @@
 h1 {
   color: red;
+  text-align: center;
 }
 
 span {
+  /* inline elementte text align özelliği çalışmaz */
   text-align: center;
+
   background-color: orange;
 }
 .container {
@@ -25,9 +28,10 @@ span {
 .par3 {
   text-align: justify;
   /* text-decoration: line-through; */
+  text-indent: 10px;
   letter-spacing: 2px;
-  line-height: 2;
-  text-shadow: 5px 10px 2px fuchsia;
+  line-height: 1.5;
+  text-shadow: 5px 10px 3px rgb(3, 0, 3);
   text-transform: capitalize;
 }
 .par4 {
@@ -38,6 +42,7 @@ span {
 }
 .par5 {
   text-indent: 50px;
-  /* text-decoration: underline red wavy; */
+  /* text-decoration: overline underline red wavy; */
   font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

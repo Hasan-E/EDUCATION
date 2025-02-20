@@ -1,14 +1,20 @@
 #par1 {
   font-family: "Courier New", Courier, monospace;
+  font-size: 1.5rem;
 }
 
 #par2 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Phudu", serif;
+  font-size: 24px;
+  font-size: 1.5rem;
+  font-style: italic;
 }
 #par3 {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Grechen Fuemen", serif;
+  font-variant: small-caps;
+  font-weight: 900;
+  font-weight: bolder;
 }
 #par4 {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Delius", serif;
 }
