@@ -1,0 +1,40 @@
+.box {
+  border: 5px solid green;
+  margin-bottom: 4rem;
+  width: 20rem;
+  height: 4rem;
+}
+
+.box1 {
+  /*! default daki değeridir  */
+  overflow: visible;
+}
+
+.box2 {
+  /* taşanları gizle */
+  overflow: hidden;
+}
+
+.box2:hover {
+  overflow: visible;
+}
+
+.box3 {
+  /* y ekseninde scroll çıkar */
+  overflow-y: scroll;
+  background-color: yellow;
+}
+
+.box4 {
+  /* otomatik olarak ihtiyaç neredeyse orada scroll çıkarır */
+  overflow: auto;
+}
+
+.box5 {
+  overflow: auto;
+  height: 14rem;
+}
+
+.box5::-webkit-scrollbar {
+  display: none;
+}
