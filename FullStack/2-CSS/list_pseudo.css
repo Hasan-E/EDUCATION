@@ -25,6 +25,10 @@ ul.languages li {
   font-family: "Quattrocento", serif;
 }
 
+ul.languages li::before {
+  content: "🦆 ";
+}
+
 ul.languages li:hover {
   opacity: 0.5;
   cursor: pointer;
