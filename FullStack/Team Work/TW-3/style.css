@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Judson:ital,wght@0,400;0,700;1,400&display=swap");
+
+/*
+
+font-family: "Judson", serif;
+font-family: "Bellota", system-ui;
+font-family: "Josefin Slab", serif; 
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Judson", serif;
+}
+
+.container {
+  width: 80%;
+  background-color: #eeecec;
+  margin: 50px auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 3rem black;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+.input-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo {
+  margin: 10px;
+  padding: 5px;
+  height: 50px;
+  border-radius: 15px;
+  box-shadow: -1px 1px 5px black;
+}
+.select {
+  width: 200px;
+  height: 40px;
+  font-family: "Bellota", system-ui;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d9d9d9;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 5px;
+  border-color: rgb(0, 0, 0, 0.1);
+  padding: 5px;
+}
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.support {
+}
+
+.icons {
+}
