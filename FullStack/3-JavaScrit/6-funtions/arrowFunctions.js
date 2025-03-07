@@ -88,4 +88,4 @@ const asal = (num) => {
   }
 };
 
-asal(10);
+asal(30);
