@@ -51,3 +51,55 @@
 // } else {
 //   console.log("lütfen 0, negatif veya pozitif bir sayı giriniz5 ");
 // }
+
+//! Girilen bir sayının tek mi çift mi olduğunu döndüren bir fonksiyon yazın.
+
+// const tekCift = () => {
+//   sayi = +prompt("Lütfen bir sayı giriniz");
+//   if (sayi % 2 == 0) {
+//     console.log(`Girilen sayı ${sayi} ve bu bir çift sayıdır`);
+//   } else {
+//     console.log(`Girilen sayı ${sayi} ve bu bir tek sayıdır`);
+//   }
+//   return sayi;
+// };
+
+// tekCift();
+
+//! Bir kullanıcının yaşını alarak reşit olup olmadığını kontrol eden bir kod yazın
+
+// let yas = +prompt("Lütfen yaşınızı giriniz");
+// if (yas >= 18) {
+//   console.log("Reşitsiniz");
+// } else if (yas == 17) {
+//   console.log("Daha 17 - 17 -17");
+// } else {
+//   console.log("Reşit değilsiniz");
+// }
+
+//! 1'den 100'e kadar olan sayılar içinde 3'e bölünebilenleri ekrana yazdırın
+
+// for (i = 1; i < 101; i++) {
+//   if (i % 3 == 0) {
+//     console.log(i);
+//   }
+// }
+
+//! Fibonacci dizisini belirli bir terime kadar hesaplayan bir kod blogu yazın.
+// const limit = +prompt("Hangi limite kadar fibonacci yazdırmayı istersiniz?");
+// const fibonacci = (limit) => {
+//   let sayi1 = 0;
+//   let sayi2 = 1;
+//   let sayi3 = 0;
+//   console.log(sayi1);
+//   console.log(sayi2);
+//   while (sayi3 <= 1000) {
+//     sayi3 = sayi1 + sayi2;
+//     if (sayi3 <= limit) {
+//       console.log(sayi3);
+//     }
+//     sayi1 = sayi2;
+//     sayi2 = sayi3;
+//   }
+// };
+// fibonacci(limit);
