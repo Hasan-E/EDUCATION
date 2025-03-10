@@ -1,0 +1,66 @@
+@import "./theme.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 10px;
+}
+
+nav {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav img {
+  width: 200px;
+}
+
+button {
+  padding: 1rem 1.2rem;
+  border: 2px solid red;
+  border-radius: 5px;
+  font-family: var(--ff-yeon);
+  box-shadow: var(--shadow-light);
+  margin: 1rem 0.5rem;
+  white-space: nowrap;
+}
+
+.btn-light {
+  background-color: var(--white);
+}
+
+.btn-dark {
+  background-color: var(--red-dark);
+  color: var(--white);
+}
+
+@media screen and (max-width: 700px) {
+  nav {
+    flex-direction: column;
+  }
+
+  nav img {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .section-btn button {
+    width: 100%;
+  }
+
+  nav img {
+    width: 100%;
+  }
+
+  .btn-light {
+    background-color: var(--orange-light);
+  }
+}

@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Doto:wght@100..900&display=swap");
+
+@import "./theme.css";
+
+:root {
+  --turuncu: #b04a0e;
+  --font1: "Big Shoulders Stencil", sans-serif;
+  --font2: "Doto", sans-serif;
+  --renk1: rgb(150, 150, 13);
+  --renk2: rgb(16, 41, 202);
+
+  --color1: #3e5902;
+  --color2: #f2a20c;
+  --color3: #d9b5a0;
+  --color4: #592519;
+  --color5: #8c0303;
+}
+
+h1 {
+  background-color: var(--turuncu);
+  font-family: var(--font1);
+}
+
+p {
+  background-color: var(--turuncu);
+  font-family: var(--font2);
+  color: yellow;
+}
+
+.container {
+  border: 1px solid red;
+  width: 500px;
+  height: 300px;
+  background-color: var(--red-light);
+  font-family: var(--ff-pt);
+  box-shadow: var(--shadow-dark);
+}
+
+.light {
+  width: 150px;
+  height: 150px;
+  background-color: var(--color2);
+}
+
+.dark {
+  width: 150px;
+  height: 150px;
+  background-color: var(--color1);
+  font-family: var(--ff-sevillana);
+}
