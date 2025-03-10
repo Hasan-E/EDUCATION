@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 100px 300px 100px;
+  grid-template-rows: 100px 200px 100px;
+}
+
+.content {
+  border: 1px solid black;
+  background-color: skyblue;
+}
+
+.content1 {
+  background-image: url(./Harvey.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.content2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: crimson;
+}
+
+.content5 {
+  background-image: url("https://picsum.photos/id/689/655/400?blur=5");
+  background-size: cover;
+}
