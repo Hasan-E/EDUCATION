@@ -103,3 +103,44 @@
 //   }
 // };
 // fibonacci(limit);
+
+//! Bir stringin içindeki her harfin kaç defa geçtiğini sayan bir döngü oluşturun.
+
+// const kelime = prompt("bir ifade giriniz");
+// const sayac = {};
+// let i = 0;
+// console.log("Girilen kelime :" + kelime);
+
+// while (i <= kelime.length) {
+//   let harf = kelime.charAt(i);
+//   if (sayac[harf]) {
+//     sayac[harf]++;
+//   } else {
+//     sayac[harf] = 1;
+//   }
+//   i++;
+// }
+
+// console.log(sayac);
+
+//! Girilen bir sayının asal olup olmadığını belirleyen bir kod bloğu yazın.
+
+// let sayi = +prompt("Lütfen bir sayı giriniz");
+// let test = true;
+
+// if (sayi < 2) {
+//   console.log("Girilen sayı asal değildir");
+// } else {
+//   for (let i = 2; i < sayi; i++) {
+//     if (sayi % i === 0) {
+//       test = false;
+//       break;
+//     }
+//   }
+// }
+
+// if (test) {
+//   console.log("Girilen sayı asaldır");
+// } else {
+//   console.log("Girilen sayı asal değildir");
+// }
