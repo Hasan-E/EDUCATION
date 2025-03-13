@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 30vh 40vh 20vh;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.back1 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/1/4/2;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back2 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/2/4/3;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back3 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/3/4/4;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back4 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/4/4/5;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back5 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/5/4/6;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back6 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/6/4/7;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back7 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/7/4/8;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back8 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/8/4/9;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back9 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/9/4/10;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back10 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/10/4/11;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back11 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/11/4/12;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+.back12 {
+  background-color: rgba(128, 128, 128, 0.25);
+  grid-area: 1/12/4/13;
+  /* border: 2px solid red; */
+  height: 100vh;
+  margin: 1px;
+}
+
+.header {
+  background-color: rgba(227, 173, 35, 0.75);
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: 1/1/2/13;
+  margin: 5px 10px 7px 10px;
+}
+
+.menu {
+  background-color: rgba(172, 255, 47, 0.75);
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: 2/1/3/4;
+  margin: 0 0 7px 10px;
+}
+
+.main {
+  background-color: rgba(128, 0, 128, 0.75);
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: 2/4/3/13;
+  margin: 0 10px 7px 0;
+}
+
+.footer {
+  background-color: rgba(255, 192, 203, 0.75);
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: 3/1/4/13;
+  margin: 0 10px 5px 10px;
+}

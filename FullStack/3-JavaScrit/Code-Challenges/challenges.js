@@ -201,18 +201,28 @@
 
 //! Girilen Sayının Kaç Basamaklı Olduğunu Bulma: Kullanıcıdan alınan sayının kaç basamaklı olduğunu bulan bir fonksiyon yazın (örn. 234  3 basamak).
 
-let sayi = prompt("Lütfen bir sayı giriniz");
+// let sayi = prompt("Lütfen bir sayı giriniz");
 
-const basamaksay = () => {
-  if (sayi < 0) {
-    sayi = sayi * -1;
-  }
-  let basamak = 0;
-  while (sayi >= 1) {
-    sayi = sayi / 10;
-    basamak++;
-  }
-  return basamak;
-};
+// const basamaksay = () => {
+//   if (sayi < 0) {
+//     sayi = sayi * -1;
+//   }
+//   let basamak = 0;
+//   while (sayi >= 1) {
+//     sayi = sayi / 10;
+//     basamak++;
+//   }
+//   return basamak;
+// };
 
-console.log(`${sayi} sayısı ${basamaksay(sayi)} basamaklı bir sayıdır`);
+// console.log(`${sayi} sayısı ${basamaksay(sayi)} basamaklı bir sayıdır`);
+
+
+//! Bir dizide tekrar eden elemanları bulan ve bunları bir kez yazdıran bir kod yazın
+
+const dizi = [1,2,3,3,5,5,2,4,7,9,'ahmet','mehmet','ali' , 'zeynep', 'kavun', 'karpuz','karpuz'];
+
+for (let i = 0; i < array.length; i++) {
+  const element = array[i];
+  
+}
