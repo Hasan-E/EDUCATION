@@ -122,16 +122,20 @@
 
 //! Fibonacci Serisi Bulma: Kullanıcının girdiği sayıya kadar olan Fibonacci serisini hesaplayan bir fonksiyon yazın.
 
-const fibonacci = () => {
-  let fiboSeri = [0, 1, 1];
-  let adet = +prompt("kaç adet fibonacci sayısı istediğinizi yazınız");
+// const fibonacci = () => {
+//   let fiboSeri = [0, 1, 1];
+//   let adet = +prompt("kaç adet fibonacci sayısı istediğinizi yazınız");
 
-  while (fiboSeri.length < adet) {
-    let num1 = fiboSeri[fiboSeri.length - 1];
-    let num2 = fiboSeri[fiboSeri.length - 2];
-    fiboSeri.push(num1 + num2);
-  }
-  return fiboSeri;
-};
+//   while (fiboSeri.length < adet) {
+//     let num1 = fiboSeri[fiboSeri.length - 1];
+//     let num2 = fiboSeri[fiboSeri.length - 2];
+//     fiboSeri.push(num1 + num2);
+//   }
+//   return fiboSeri;
+// };
 
-console.log(fibonacci());
+// console.log(fibonacci());
+
+//! Asal Sayı Kontrolü: Kullanıcıdan alınan sayının asal olup olmadığını kontrol eden bir fonksiyon yazın.
+
+const asalMi = () => {};

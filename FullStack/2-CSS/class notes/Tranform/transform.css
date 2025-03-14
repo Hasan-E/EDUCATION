@@ -1,0 +1,93 @@
+.text {
+  text-align: center;
+  font-size: 2rem;
+  width: 50vw;
+  margin: 1.5rem auto;
+  text-transform: uppercase;
+}
+
+.text1 {
+  background-color: darkcyan;
+  transform: rotateX(180deg);
+}
+.text2 {
+  background-color: fuchsia;
+  transform: rotateY(180deg);
+}
+.text3 {
+  background-color: orange;
+  /* transform: rotate(45deg); */
+}
+.text3:active {
+  background-color: red;
+  transform: rotate(45deg);
+  /* transform-origin: 25%; */
+}
+
+/* ------------------------------------------------------- */
+/*                  TRANSFORM SCALE                        */
+/* ------------------------------------------------------- */
+/* ! boyutlandırma için kullanılır */
+.text4 {
+  background-color: aqua;
+  transform: scaleX(1.5);
+}
+.text5 {
+  background-color: olive;
+  /* transform: scaleY(1.5); */
+}
+.text5:active {
+  background-color: olive;
+  transform: scaleY(2.5);
+}
+.text6 {
+  background-color: crimson;
+  /* transform: scale(1.7); */
+}
+.text6:hover {
+  background-color: crimson;
+  transform: scale(1.7);
+}
+
+img {
+  transform: skewX(30deg);
+  transform: skewY(30deg);
+  transform: skew(30deg, 45deg);
+}
+
+.box {
+  background-color: teal;
+  width: 100px;
+  height: 100px;
+  margin: 2px;
+}
+
+.x {
+  transition: all 1s cubic-bezier(0.26, -0.55, 0.48, 1.79);
+  transition-delay: 1s;
+}
+
+.x:active {
+  transform: translateX(350px);
+  background-color: fuchsia;
+  width: 150px;
+}
+.y {
+  transition: all ease-in-out 2s;
+}
+
+.y:active {
+  transform: translateY(50px);
+  background-color: fuchsia;
+}
+
+.xy {
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+
+.xy:active {
+  background-color: orange;
+  transform: translate(200px, -100px);
+}
