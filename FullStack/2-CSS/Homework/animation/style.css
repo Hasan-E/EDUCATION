@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(./assets/bg.jpg);
+  background-size: cover;
+  display: grid;
+  grid-template-rows: 25% 60% 15%;
+  grid-template-columns: 35% 30% 35%;
+  position: relative;
+  overflow: hidden;
+}
+
+.girl {
+  width: 100000%;
+  z-index: 1;
+  grid-area: 2/1/3/4;
+  border: 2px solid red;
+}
+.girl img {
+  position: absolute;
+  bottom: 200px;
+  right: 0;
+}
+.form {
+  z-index: 2;
+  grid-area: 2/2/3/3;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(128, 128, 128, 0.542);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.trees {
+  z-index: 3;
+  grid-area: 1/1/4/4;
+  padding-bottom: 10px;
+}
+
+.trees img {
+  width: 100%;
+  height: 100%;
+}
+
+.leaf {
+  z-index: 4;
+  grid-area: 1/1/4/4;
+}

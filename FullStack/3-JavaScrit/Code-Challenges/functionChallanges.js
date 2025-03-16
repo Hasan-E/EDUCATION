@@ -138,4 +138,121 @@
 
 //! Asal Sayı Kontrolü: Kullanıcıdan alınan sayının asal olup olmadığını kontrol eden bir fonksiyon yazın.
 
-const asalMi = () => {};
+// const asalMi = () => {
+//   let sayi = +prompt("Lütfen sayı girin");
+//   let asal = true;
+//   for (let i = 2; i < sayi; i++) {
+//     if (sayi % i === 0) {
+//       asal = false;
+//       break;
+//     }
+//   }
+//   if (asal) {
+//     console.log("Girilen sayı asal sayıdır");
+//   } else {
+//     console.log("Girilen sayı asal değildir");
+//   }
+// };
+
+// asalMi();
+
+//! Sayıların Tersini Bulma: Bir sayının tersini (123 -> 321 gibi) bulan bir fonksiyon yazın.
+
+// const tersSayi = () => {
+//   let sayi = prompt("Bir sayı giriniz");
+//   console.log(sayi.split("").reverse().join(""));
+// };
+
+// tersSayi();
+
+//! Mükemmel Sayı Kontrolü: Bir sayının kendisinden başka tüm bölenlerinin toplamı kendisine eşitse mükemmel sayıdır (örn. 6 = 1 + 2 + 3). Bu tanıma uyan sayıları bulan bir fonksiyon yazın.
+
+// const mukemmelSayi = (kadar) => {
+//   let mukSayilar = [];
+
+//   for (let i = 6; i < kadar; i++) {
+//     let mukSayi = 0;
+//     for (let k = 0; k < i; k++) {
+//       if (i % k === 0) {
+//         mukSayi += k;
+//       }
+//     }
+//     if (mukSayi == i) {
+//       mukSayilar.push(i);
+//     }
+//   }
+//   return mukSayilar;
+// };
+
+// console.log(mukemmelSayi(1500));
+
+//! Armstrong Sayısı Kontrolü: Girilen bir sayının basamaklarının küplerinin toplamı kendisine eşitse Armstrong sayısıdır (ör. 153 = 1³ + 5³ + 3³). Bu tür sayıları bulan bir fonksiyon yazın.
+
+// const Armstrong = () => {
+//   let sayi = prompt("Lütfen bir sayı giriniz");
+//   let rakamlar = sayi.toString().split("").map(Number);
+//   let rakamKupToplam = 0;
+//   for (let i = 0; i < rakamlar.length; i++) {
+//     rakamKupToplam += rakamlar[i] ** rakamlar.length;
+//   }
+//   if (rakamKupToplam == sayi) {
+//     console.log("This is an Amstrong");
+//   } else {
+//     console.log("This is not an Amstrong");
+//   }
+// };
+
+// Armstrong();
+
+//! İki Sayının EBOB'unu Bulma: Kullanıcıdan iki sayı alarak, bu iki sayının en büyük ortak bölenini (EBOB) bulan bir fonksiyon yazın
+
+// const EBOB = () => {
+//   let sayi1 = +prompt("Lütfen ilk sayıyı giriniz");
+//   let sayi2 = +prompt("Lütfen ikinci sayıyı giriniz");
+//   let sayi1bolenler = [];
+//   let sayi2bolenler = [];
+//   let ortakBolenler = [];
+//   for (i = 0; i < sayi1; i++) {
+//     if (sayi1 % i === 0) {
+//       sayi1bolenler.push(i);
+//     }
+//   }
+//   for (i = 0; i < sayi2; i++) {
+//     if (sayi2 % i === 0) {
+//       sayi2bolenler.push(i);
+//     }
+//   }
+//   for (i = 0; i < sayi1bolenler.length; i++) {
+//     if (sayi2bolenler.includes(sayi1bolenler[i])) {
+//       ortakBolenler.push(sayi1bolenler[i]);
+//     }
+//   }
+
+//   console.log(ortakBolenler[ortakBolenler.length - 1]);
+// };
+
+// EBOB();
+
+//! Farklı bir yötem olarak öklid algoritması ile EBOB HESAPLAMA ve EBOB u kullanarak EKOK hesaplama
+
+// const EbobOklid = (sayi1, sayi2) => {
+//   // let sayi1 = +prompt("Lütfen ilk sayıyı giriniz");
+//   // let sayi2 = +prompt("Lütfen ikinci sayıyı giriniz");
+//   while (sayi2 !== 0) {
+//     let ebob = sayi2;
+//     sayi2 = sayi1 % sayi2;
+//     sayi1 = ebob;
+//   }
+//   return sayi1;
+// };
+// // console.log(`Bu iki sayının EBOB u = ${EbobOklid()}`);
+
+// const ebobdanEkok = () => {
+//   let sayi1 = +prompt("Lütfen ilk sayıyı giriniz");
+//   let sayi2 = +prompt("Lütfen ikinci sayıyı giriniz");
+//   ebob = EbobOklid(sayi1, sayi2);
+//   ekok = (sayi1 * sayi2) / ebob;
+//   return ekok;
+// };
+
+// console.log(`Bu iki sayının EKOK u = ${ebobdanEkok()}`);
