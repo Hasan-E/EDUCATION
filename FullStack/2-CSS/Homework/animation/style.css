@@ -20,12 +20,13 @@
   width: 100000%;
   z-index: 1;
   grid-area: 2/1/3/4;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 .girl img {
   position: absolute;
   bottom: 200px;
   right: 0;
+  animation: girl 9s linear infinite;
 }
 .form {
   z-index: 2;
@@ -43,6 +44,10 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 60%;
+  gap: 2.3rem;
 }
 .trees {
   z-index: 3;
@@ -58,4 +63,83 @@ form {
 .leaf {
   z-index: 4;
   grid-area: 1/1/4/4;
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20rem;
+  height: 100vh;
+}
+
+.leaf img {
+  animation: leafs 5s infinite ease-in-out;
+  /* border: 2px solid red; */
+}
+
+form h3 {
+  color: rgb(165, 42, 42);
+  width: 100%;
+  height: 20%;
+  /* border: 2px solid red; */
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 0.2rem;
+  margin-top: 10px;
+}
+
+form input {
+  width: 70%;
+  height: 50px;
+  border-radius: 3px;
+  text-align: left;
+  color: rgb(165, 42, 42);
+  /* border: 2px solid red; */
+  padding: 2px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.forget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  padding: 5px;
+  color: rgb(165, 42, 42);
+  /* border: 2px solid red; */
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.forget a {
+  text-decoration: none;
+  color: rgb(165, 42, 42);
+}
+
+.button {
+  background-color: rgb(165, 42, 42);
+  color: white;
+  text-align: center;
+  font-weight: 500;
+}
+
+@keyframes girl {
+  0% {
+    transform: translateX(500px);
+  }
+  100% {
+    transform: translate(-450%);
+  }
+}
+
+@keyframes leafs {
+  0% {
+    transform: translateY(-1300%);
+  }
+
+  100% {
+    transform: translateY(2500%);
+    /* transform: rotate(15deg); */
+  }
 }
