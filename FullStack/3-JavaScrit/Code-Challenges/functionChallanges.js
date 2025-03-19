@@ -256,3 +256,17 @@
 // };
 
 // console.log(`Bu iki sayının EKOK u = ${ebobdanEkok()}`);
+
+// !Bir Sayının Basamaklarının Toplamını Bulma: Kullanıcının girdiği sayının basamaklarının toplamını hesaplayan bir fonksiyon yazın
+
+// const basamakTopla = () => {
+//   let sayi = prompt("Lütfen bir sayı giriniz");
+//   let basamaklar = sayi.split("");
+//   let toplam = 0;
+//   basamaklar.forEach((basamak) => {
+//     toplam += Number(basamak);
+//   });
+//   return toplam;
+// };
+
+// console.log(`Girilen sayının basamakları toplamı ${basamakTopla()} dır`);
