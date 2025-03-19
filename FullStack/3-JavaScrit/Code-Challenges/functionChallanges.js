@@ -270,3 +270,10 @@
 // };
 
 // console.log(`Girilen sayının basamakları toplamı ${basamakTopla()} dır`);
+
+//! Dört Basamaklı Palindrom Sayıları Bulma: 1000 ile 9999 arasındaki palindrom (tersi kendisine eşit) sayıları ekrana yazdıran bir fonksiyon yazın.
+
+const polindrom = () => {
+  for (i = 1000; i <= 9999; i++) {}
+};
+polindrom();
