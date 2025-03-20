@@ -273,7 +273,122 @@
 
 //! Dört Basamaklı Palindrom Sayıları Bulma: 1000 ile 9999 arasındaki palindrom (tersi kendisine eşit) sayıları ekrana yazdıran bir fonksiyon yazın.
 
-const polindrom = () => {
-  for (i = 1000; i <= 9999; i++) {}
-};
-polindrom();
+// const polindrom = () => {
+//   let pol = 0;
+//   for (i = 1000; i <= 9999; i++) {
+//     pol = Number(i.toString().split("").reverse().join(""));
+//     if (pol === i) {
+//       console.log(i);
+//     }
+//   }
+// };
+// polindrom();
+
+// console.clear();
+
+//! Bir Sayıyı Basamaklarına Ayırma: Verilen bir sayıyı basamaklarına ayırarak her basamağı tek tek gösteren bir fonksiyon yazın
+
+// const basamaklar = () => {
+//   let sayi = prompt("Lütfen sayıyı giriniz");
+//   return sayi.split("");
+// };
+
+// console.log(basamaklar());
+// console.clear();
+
+//! Pascal Üçgeni Yazdırma: Girilen satır sayısı kadar Pascal Üçgeni'ni yazdıran bir fonksiyon oluşturun.
+
+// const pascal = () => {
+//   let satirsayisi = +prompt("Lütfen pascal üçgeninin satır sayısını giriniz");
+//   let pascalUcgen = [[1]];
+//   for (i = 1; i < satirsayisi; i++) {
+//     let satir = [1];
+//     for (k = 1; k < i; k++) {
+//       satir.push(pascalUcgen[i - 1][k - 1] + pascalUcgen[i - 1][k]);
+//     }
+//     satir.push(1);
+//     pascalUcgen.push(satir);
+//   }
+
+//   for (let i = 0; i < pascalUcgen.length; i++) {
+//     let bosluk = " ".repeat(satirsayisi - i);
+//     console.log(bosluk + pascalUcgen[i].join(" "));
+//   }
+// };
+
+// pascal();
+
+//! Bir Sayının Tam Bölenlerini Bulma: Kullanıcının girdiği sayının tüm tam bölenlerini bulan bir fonksiyon yazın.
+
+// const bolenler = () => {
+//   let sayi = +prompt("Lütfen bir sayı giriniz");
+//   let bolenler = [];
+//   for (i = 0; i <= sayi; i++) {
+//     if (sayi % i === 0) {
+//       bolenler.push(i);
+//     }
+//   }
+//   return bolenler;
+// };
+
+// console.log(bolenler());
+
+//! Üçgen mi, Çember mi Daha Büyük Alan? Kullanıcıdan bir üçgenin kenar uzunluklarını ve bir çemberin yarıçapını alarak, hangi şeklin daha büyük alana sahip olduğunu bulan bir fonksiyon yazın.
+
+// const tORc = () => {
+//   let kenar1 = +prompt("Üçgenin 1.kenarını giriniz");
+//   let kenar2 = +prompt("Üçgenin 2.kenarını giriniz");
+//   let kenar3 = +prompt("Üçgenin 3.kenarını giriniz");
+
+//   if (
+//     kenar1 + kenar2 <= kenar3 ||
+//     kenar2 + kenar3 <= kenar1 ||
+//     kenar1 + kenar3 <= kenar2
+//   ) {
+//     console.log("bu kenarlar ile bir üçgen oluşturulamaz");
+//   }
+//   let cevreUcgen = (kenar1 + kenar2 + kenar3) / 2;
+//   let yariCap = +prompt("Çemberin yarıçapını giriniz");
+//   let alanUcgen = Math.trunc(
+//     Math.sqrt(
+//       cevreUcgen *
+//         (cevreUcgen - kenar1) *
+//         (cevreUcgen - kenar2) *
+//         (cevreUcgen - kenar3)
+//     )
+//   );
+//   let alanCember = Math.trunc(Math.PI * yariCap * yariCap);
+
+//   alanUcgen > alanCember
+//     ? console.log(
+//         `Üçgenin alanı ${alanUcgen} çemberin alanından ${alanCember} den büyüktür`
+//       )
+//     : console.log(
+//         `Çemberin alanı ${alanCember} üçgenin alanından ${alanUcgen} den büyüktür`
+//       );
+// };
+
+// tORc();
+
+// !Bir Sayıyı Üç Basamaklı Yapma: Verilen sayının üç basamaklı bir sayı olacak şekilde önüne sıfır ekleyen bir fonksiyon yazın (örn. 7 -> 007)
+
+// const ucBasamak = () => {
+//   let sayi = prompt("Bir veya iki basamaklı bir sayı giriniz:");
+//   let yeniSayi;
+
+//   if (sayi.length >= 3) {
+//     console.log("Sayı zaten 3 basamaktan fazla!");
+//   } else {
+//     let num = sayi.split("");
+//     if (sayi.length == 2) {
+//       num.unshift("0");
+//     } else if (sayi.length == 1) {
+//       num.unshift("0", "0");
+//     }
+//     yeniSayi = num.join("");
+//   }
+
+//   return yeniSayi;
+// };
+
+// console.log(ucBasamak());
