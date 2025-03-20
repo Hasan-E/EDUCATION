@@ -3,20 +3,20 @@
 // ?==============================================
 
 //Array Property
-//* -------------------------------------------------------------------------- */
-//*!                                   length                                   */
+/* -------------------------------------------------------------------------- */
+/*                                   length                                   */
 /* -------------------------------------------------------------------------- */
 // Bir arrayın kaç elemandan oluştuğunu verir
 
-const number = [3, 5, 2, "4", "bes", "dort", 3, 6, "bes", 5, 56];
+const number = [3, 5, 2, "4", "bes", "dort", 3, 6, "bes", 5, 56, 1453];
 
-console.log(`number arayi ${number.length} eleman sayısına sahiptir`);
+console.log(`Number arrayi ${number.length} eleman sayısına sahiptir`);
 
-//* -------------------------------------------------------------------------- */
-//*!                                INCLUDES                                   */
-//* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+//!                                  INCLUDES()                                */
+/* -------------------------------------------------------------------------- */
 
-//* Bir elemanın dizide bulunup bulunmadığınını true veya false olarak döndürür.
+//* Bir elemanın dizide bulunup bulunmadığını true veya false olarak döndürür.
 
 console.log(number.includes(5)); // number dizisi 5 sayısını içeriyor mu? true
 console.log(number.includes(9)); // number dizisi 9 sayısını içeriyor mu? false
@@ -42,22 +42,22 @@ if (number.indexOf("bes") < 0) {
   console.log(number.lastIndexOf(5));
 }
 
-//* -------------------------------------------------------------------------- */
-//*!                                JOIN                                       */
-//* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+//!                          join                                             */
+/* -------------------------------------------------------------------------- */
 //* Dizideki tüm elemanları belirtilen bir ayraç ile birleştirerek bir string döndürür.
 
 const statement = ["oku", "da", "adam", "ol"];
-
 console.log(statement.join("💋"));
 
-const newStr = statement.join("👱‍♂️");
+console.log(statement);
+
+const newStr = statement.join("👴🏻");
 console.log(newStr);
 
-//* -------------------------------------------------------------------------- */
-//*!                               SLICE                                      */
-//* -------------------------------------------------------------------------- */
-
+/* -------------------------------------------------------------------------- */
+//!                        slice()                                           */
+/* -------------------------------------------------------------------------- */
 // slice(start,end)
 // end verilmezse onuna kadar olanı alır
 console.log(statement.slice(1, 3));
