@@ -392,3 +392,58 @@
 // };
 
 // console.log(ucBasamak());
+
+// ! Rakamları Arasında Belirli Bir Sayı Farkı Olan Sayılar: Kullanıcıdan iki sayı aralığı alarak, rakamları arasındaki fark belirli bir değere eşit olan sayıları bulup listeleyen bir fonksiyon yazın.
+
+// const fark = () => {
+//   let sayi1 = prompt("İki basamaklı birinci sayıyı giriniz");
+//   let sayi2 = prompt("İki basamaklı ikinci sayıyı giriniz");
+
+//   const fark1 = sayi1.split("");
+//   const fark2 = sayi2.split("");
+
+//   Math.abs(fark1[1] - fark1[0]) == Math.abs(fark2[1] - fark2[0])
+//     ? console.log("rakamlar arası fark eşittir")
+//     : console.log("rakamlar arası fark eşit değildir");
+// };
+
+// fark();
+
+// ! Sayının Faktöriyelini Hesaplama: Kullanıcıdan alınan sayının faktöriyelini hesaplayan bir fonksiyon yazın.
+
+// const faktoriyel = () => {
+//   let sayi = +prompt("Lütfen faktoriyel alınacak sayıyı giriniz");
+//   let result = 1;
+//   for (i = 1; i <= sayi; i++) {
+//     result = result * i;
+//   }
+//   return result;
+// };
+
+// console.log(faktoriyel());
+
+//! Üslü Sayı Hesaplama: Kullanıcıdan taban ve üs değeri alarak, bu iki sayıyı kullanarak üslü sayı işlemi gerçekleştiren bir fonksiyon yazın.
+
+// const usluSayi = () => {
+//   let sayi = +prompt("Sayıyı giriniz");
+//   let us = +prompt("Üssünü giriniz");
+//   let result = sayi ** us;
+//   return result;
+// };
+// console.log(usluSayi());
+
+// ! Bir Sayıyı Binary (İkili) Sisteme Çevirme: Kullanıcının girdiği bir sayıyı ikili (binary) sisteme çeviren bir fonksiyon yazın.
+
+// const binary = () => {
+//   let sayi = prompt("lütfen sayı giriniz");
+//   let result = [];
+//   while (sayi != 0) {
+//     result.push(sayi % 2);
+//     sayi = Math.floor(sayi / 2);
+//   }
+//   return result.reverse().join("");
+// };
+
+// console.log(binary());
+
+//! Pi'nin İlk N Basamağını Yazdırma: Girilen sayı kadar Pi'nin ilk basamağını ekrana yazdıran bir fonksiyon yazın (Pi = 3.14159... olarak kabul edin)
