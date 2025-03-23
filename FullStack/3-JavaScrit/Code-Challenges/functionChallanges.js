@@ -446,4 +446,32 @@
 
 // console.log(binary());
 
-//! Pi'nin İlk N Basamağını Yazdırma: Girilen sayı kadar Pi'nin ilk basamağını ekrana yazdıran bir fonksiyon yazın (Pi = 3.14159... olarak kabul edin)
+//!? Pi'nin İlk N Basamağını Yazdırma: Girilen sayı kadar Pi'nin ilk basamağını ekrana yazdıran bir fonksiyon yazın (Pi = 3.14159... olarak kabul edin)
+
+// const piBasamak = () => {
+//   const pi = [
+//     1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3,
+//     8, 3, 2, 7, 9, 5, 0, 2, 8, 8, 4, 1, 9, 7, 1, 6, 9, 3, 9, 9, 3, 7, 5, 1, 0,
+//     5, 8, 2, 0, 9, 7, 4, 9, 4, 4, 5, 9, 2, 3, 0, 7, 8, 1, 6, 4, 0, 6, 2, 8, 6,
+//     2, 0, 8, 9, 9, 8, 6, 2, 8, 0, 3, 4, 8, 2, 5, 3, 4, 2, 1, 1, 7, 0, 6, 7, 9,
+//   ];
+//   let basamak = +prompt(
+//     "PI sayısının virgülden sonra kaç basamak istediğinizi giriniz (max 100)"
+//   );
+//   console.log(
+//     `PI sayısının ${basamak} basamagı = 3.${pi.slice(0, basamak).join("")}`
+//   );
+// };
+// piBasamak();
+
+//!? Sayının Sayı Basamağı Olup Olmadığını Bulma: Kullanıcıdan bir sayı alarak, bu sayının içinde belirli bir basamak olup olmadığını kontrol eden bir fonksiyon yazın (örn. 752 içinde "5" rakamı var mı?).
+
+const varMi = () => {
+  let sayi = prompt("Lütfen içeriği kontrol edilecek sayıyı giriniz");
+  let rakam = prompt("Lütfen aranacak rakamı giriniz");
+  let bulunan = sayi.split("").filter((rak) => rak == rakam);
+  bulunan.length < 1
+    ? console.log(`${sayi} hiç ${rakam} içermiyor`)
+    : console.log(`${sayi} ${bulunan.length} adet ${rakam} içeriyor`);
+};
+varMi();
