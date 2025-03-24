@@ -226,3 +226,46 @@ console.log(degerler);
 //* ------------------------------------------------------ */
 
 console.clear();
+
+//? JSON ile farklı veri türleri barındırılabilir
+//? Dillerden bağımsızdır.
+//? nesnelerin (objelerin) temsil edilmesi için anahtar-değer çiftlerini kullanır. Bu, verilerin daha iyi organize edilmesini ve ilişkilendirilmesini sağlar.
+//? JSON, veri  işleme açısından hızlıdır. Bu nedenle web uygulamalarında ve servislerde yaygın olarak kullanılır.
+
+const employees = [
+  {
+    name1: "Abdulkadir",
+    lastName: "baki",
+    dateOfBirth: 1980,
+    salary: 18000,
+    job: "developer",
+  },
+  {
+    name2: "elif",
+    lastName: "akalın",
+    dateOfBirth: 1990,
+    salary: 20000,
+    job: "developer",
+  },
+  {
+    name3: "esra",
+    lastName: "bilgin",
+    dateOfBirth: 1985,
+    salary: 21000,
+    job: "devops",
+  },
+];
+
+employees.map((employee) => console.log(employee));
+employees.map((employee) => console.log(employee.salary));
+employees.map((employee) => console.log(employee.lastName));
+
+employees.push({
+  name2: "harvey",
+  lastName: "watson",
+  dateOfBirth: 1999,
+  salary: 150000,
+  job: "mobile developer",
+});
+
+console.log(employees);
