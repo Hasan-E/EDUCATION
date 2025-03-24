@@ -251,3 +251,75 @@ console.log(result);
 //!Reduce tekrar
 
 // every, some findlast find reduce kalan metodlar...
+
+// const dizi = [1,3,5]
+
+// dizi.reduce((acc,val)=>{
+//     console.log("sayaç")
+//     // console.log("akümülatör:",acc)
+//     // console.log("val:",val)
+//     return acc * val
+// })
+
+const sayilarım = [451, 654, 125, 245, 6, 8];
+const carpim = sayilarım.reduce((carpimSonuc, item) => carpimSonuc * item);
+console.log(carpim);
+
+//? String ile kullanımı
+const kelimeler = ["merhaba", "dünya", "ben", "JavaScript", "öğreniyorum"];
+const cumle = kelimeler.reduce((acc, currValue) => {
+  return acc + " " + currValue;
+});
+console.log(cumle);
+
+//* =======================================
+//*               OTHERS
+//* =======================================
+
+//* every()
+//*-------------------------------------------------------
+//? Tum diziyi itere eder ve aldigi callback fonksiyonuna gore
+//? test gerceklestirir.Tum elemanlar icin test basarili ise
+//? true aksi takdirde false deger dondurur.
+//! and e benzer
+
+const ages = [45, 15, 12, 56, 14, 64, 80];
+const check = ages.every((age) => age > 10);
+console.log(check);
+
+const ages1 = [45, 15, 12, 56, 14, 64, 80];
+const check1 = ages1.every((age) => age < 70);
+console.log(check1);
+
+//* some()
+//*-----------------------------------------------------------
+//? Aldigi callback fonksiyonuna gore test gerceklestirir.
+//? En az bir eleman icin bile test basarili ise true aksi
+//? takdirde false deger dondurur.
+// or gibi düşünülebilir
+
+const OverCheck = ages1.some((age) => age < 13);
+console.log(OverCheck);
+
+// FIND(), FINDLAST()
+
+//? Aldigi callback fonksiyonuna gore test gerceklestirir.
+//? Kosulu saglayan ilk dizi elemaninin dondurur.
+//? Eger hic bir eleman kosulu saglamazsa undefined dondurur.
+
+//? yaşı 30dan büyük olan ilk ve son elemanı göster
+
+const yaslar = [23, 35, 12, 14, 13, 45, 27, 23];
+
+const bigger = yaslar.find((yas) => yas > 30);
+console.log("yaşı 30'dan büyük olan ilk elemanın yaşı:", bigger);
+
+const biggerLast = yaslar.findLast((item) => item > 30);
+console.log("yaşı 30'dan büyük olan son elemanın yaşı:", biggerLast);
+
+//Flat yapısı
+
+const arr1 = [1, 2, 3, [4, 5, 6], [7, 8, 9]];
+// flat yapısı nested arrayi tek boyutlu arraye dönüştürür.
+const flatArr = arr1.flat();
+console.log(flatArr);

@@ -180,3 +180,10 @@ console.log(
     result4.length + 1
   }`
 );
+
+//! Bir diziyi alt dizilere bölerek (örneğin her 3 elemanda bir) alt dizilerden oluşan bir dizi döndüren bir fonksiyon yazın. Örnek:     [1, 2, 3, 4, 5, 6] → [[1, 2, 3], [4, 5, 6]]
+const array5 = [1, 2, 3, 4, 5, 1, 4, 2, 3, 5, 8, 2, 3, 1, 1, 4, 2, 7, 8, 4, 5];
+const result5 = array5.reduce((altDizi, x, i) =>
+  i % 3 === 0 ? [...altDizi, array5.slice(i, i + 3)] : []
+);
+console.log(result5);
