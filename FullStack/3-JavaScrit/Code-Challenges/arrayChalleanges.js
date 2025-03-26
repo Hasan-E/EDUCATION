@@ -183,7 +183,47 @@ console.log(
 
 //! Bir diziyi alt dizilere bölerek (örneğin her 3 elemanda bir) alt dizilerden oluşan bir dizi döndüren bir fonksiyon yazın. Örnek:     [1, 2, 3, 4, 5, 6] → [[1, 2, 3], [4, 5, 6]]
 const array5 = [1, 2, 3, 4, 5, 1, 4, 2, 3, 5, 8, 2, 3, 1, 1, 4, 2, 7, 8, 4, 5];
-const result5 = array5.reduce((altDizi, x, i) =>
-  i % 3 === 0 ? [...altDizi, array5.slice(i, i + 3)] : []
-);
+
+const result5 = array5.reduce((supArray, item, index) => {
+  if (index % 3 === 0) {
+    supArray.push(array5.slice(index, index + 3));
+  }
+  return supArray;
+}, []);
+
 console.log(result5);
+
+//! Bir dizideki tüm elemanların birbirine olan farklarını hesaplayıp yeni bir dizi döndüren bir fonksiyon yazın.Örnek: [10, 7, 4] → [3, 3]
+
+const array6 = [1, 2, 3, 4, 5, 14, 25, 36, 47, 58, 123, 156, 189, 4512, 7845];
+const result6 = array6.reduce((differances, num, index) => {
+  if (index < array6.length && index > 0) {
+    differances.push(Math.abs(num - array6[index - 1]));
+  }
+  return differances;
+}, []);
+console.log(result6);
+
+//! Bir dizide, her bir elemanı kendisinin karesiyle ve indeksinin çarpımıyla değiştiren bir algoritma yazın.
+const array7 = [1, 2, 3, 4, 5, 1, 4, 2, 3, 5, 8, 2, 3, 1, 1, 4, 2, 7, 8, 4, 5];
+const result7 = array7.map((num, index) => (num = num * num * index));
+console.log(result7);
+
+//! Bir dizideki sayıları büyükten küçüğe sıralayın, ancak dizinin orijinal sırasını bozmadan sadece yeni diziyi döndürün.
+const array8 = [1, 2, 3, 4, 5, 14, 25, 36, 47, 58, 123, 156, 189, 4512, 7845];
+const result8 = array8.sort((a, b) => b - a);
+console.log(result8);
+
+//! Bir diziyi, her elemanın toplam uzunluğunu hesaplayarak sıralayan bir algoritma yazın.
+// !Örnek:    ['a', 'bb', 'ccc'] → ['ccc', 'bb', 'a']
+const array9 = ["Beyaz", "Kırmızı", "Mavi", "Mor", "Sarı", "Siyah", "Yeşil"];
+const result9 = array9.sort((a, b) => b.length - a.length); //! oğuzhan hocamdan bakarak :D
+console.log(result9);
+
+//! Bir dizideki ilk 5 elemanı toplayan, geri kalanını sıfır olarak değiştiren bir fonksiyon yazın.                   Örnek: [1, 2, 3, 4, 5, 6, 7] → [15, 0, 0, 0, 0, 0, 0]
+const array10 = [1, 2, 3, 4, 5, 14, 25, 36, 47, 58, 123, 156, 189, 4512, 7845];
+const result10 = array10.map((num, index) => {
+  if (index < 5) {
+    array10.reduce((topla, num) => (topla += num));
+  }
+});
