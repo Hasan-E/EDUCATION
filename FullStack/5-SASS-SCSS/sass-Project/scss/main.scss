@@ -1,0 +1,36 @@
+//base
+@use "./base/reset";
+//abstract
+@use "./abstracts/mixins";
+@use "./abstracts/variables";
+//component
+@use "./components/footer";
+@use "./components/nav";
+//pages
+@use "./pages/about";
+@use "./pages/contact";
+@use "./pages/home";
+@use "./pages/projects";
+
+@use "./components/responsive";
+
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css";
+
+body {
+  font-family: variables.$font-family;
+  background-color: variables.$primary-color;
+  height: 100vh;
+  line-height: 1;
+  color: variables.$text-color;
+}
+
+a {
+  color: variables.$text-color;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
