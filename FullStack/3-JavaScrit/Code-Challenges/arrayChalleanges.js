@@ -222,8 +222,29 @@ console.log(result9);
 
 //! Bir dizideki ilk 5 elemanı toplayan, geri kalanını sıfır olarak değiştiren bir fonksiyon yazın.                   Örnek: [1, 2, 3, 4, 5, 6, 7] → [15, 0, 0, 0, 0, 0, 0]
 const array10 = [1, 2, 3, 4, 5, 14, 25, 36, 47, 58, 123, 156, 189, 4512, 7845];
-const result10 = array10.map((num, index) => {
-  if (index < 5) {
-    array10.reduce((topla, num) => (topla += num));
-  }
-});
+const ilkBesToplam = array10.slice(0, 5).reduce((topla, num) => (topla += num));
+const result10 = array10.map((num, index) => (index == 0 ? ilkBesToplam : 0));
+console.log(result10);
+
+//! Bir dizide, elemanları belirli bir eşikten (örneğin 10) büyük ve küçük olmak üzere ikiye ayıran bir algoritma yazın.
+const array11 = [1, 2, 3, 4, 5, 14, 25, 36, 47, 58, 123, 156, 189, 4512, 7845];
+const upperFifty = [];
+const lowerFifty = [];
+array11.map((num) => (num >= 50 ? upperFifty.push(num) : lowerFifty.push(num)));
+console.log(
+  `upper fifty numbers: ${upperFifty}\nlower fifty numbers: ${lowerFifty}`
+);
+
+//! Bir dizideki elemanların indeksleriyle birlikte toplanmasını sağlayan bir algoritma yazın.Örnek:   [5, 10, 15] → [5, 11, 17]
+const array12 = ["Beyaz", "Kırmızı", "Mavi", "Mor", "Sarı", "Siyah", "Yeşil"];
+const result12 = array12.map((num, index) => `${index}: ${num}`);
+console.log(result12);
+
+//! Bir dizide, her bir elemanın karesinin toplamını döndüren bir fonksiyon yazın, ancak negatif sayıları hesaba katmayın.
+const array13 = [
+  2, 1, 3, 4, -3, 5, 6, 10, -2, 7, 8, -5, 9, -1, 5, -7, 3, 9, -8,
+];
+const result13 = array13
+  .filter((num) => num > 0)
+  .reduce((sumOfSq, num) => (sumOfSq = sumOfSq + num * num));
+console.log(result13);
