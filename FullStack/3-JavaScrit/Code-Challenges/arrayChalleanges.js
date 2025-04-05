@@ -246,5 +246,21 @@ const array13 = [
 ];
 const result13 = array13
   .filter((num) => num > 0)
-  .reduce((sumOfSq, num) => (sumOfSq = sumOfSq + num * num));
+  .reduce((sumOfSq, num) => (sumOfSq = sumOfSq + num * num), 0);
 console.log(result13);
+
+//! Bir dizide, elemanların tekrar sayısını dikkate alarak yeni bir dizi döndüren bir algoritma yazın.
+//! Örnek:   [2, 2, 3, 3, 3] → [4, 9]
+const array14 = [2, 1, 3, 4, 5, 6, 9, 2, 7, 8, 5, 9, 1, 5, 7, 3, 9, 8];
+let i = 1;
+const result14 = [];
+array14.sort().forEach((num, index, arr) => {
+  if (num === arr[index + 1]) {
+    i++;
+  } else {
+    result14.push(num * i);
+    i = 1;
+    return num;
+  }
+});
+console.log(result14);
