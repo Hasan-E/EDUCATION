@@ -10,6 +10,7 @@ const body = document.querySelector("body");
 const myInput = document.getElementById("input");
 const ul = document.querySelector("ul");
 const addBtn = document.getElementById("btn");
+const form = document.querySelector("form");
 
 // Event Tanımlama
 
@@ -36,16 +37,37 @@ body.onload = function () {
 // })
 
 addBtn.addEventListener("click", (e) => {
-  // console.log(e.target)
   // console.log(e.target.value)
+
   // console.log(myInput.value)
+  myInput.focus();
 
   if (!myInput.value) {
-    alert("lütfen boş bırakmayınız");
-  } else {
-    const li = document.createElement("li");
-    li.textContent = myInput.value;
-    ul.appendChild(li);
-    myInput.value = "";
+    alert("burayı boş bırakamazsın");
+    return;
+  }
+
+  const li = document.createElement("li");
+  li.textContent = myInput.value;
+  ul.appendChild(li);
+  myInput.value = "";
+});
+
+//? Form içerisindeki submit butonuna her basildiğinda bu onSubmit event 'i tetiklenir.
+//? submit eventi otomatik olarak enter tuşunun kullanımı sağlar.
+
+// form.onsubmit = function (e) {
+//     e.preventDefault()
+// }
+
+// myInput.onkeydown = function(e){
+//     if (e.key === "Enter") {
+//         addBtn.click()
+//     }
+// }
+
+myInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    addBtn.click();
   }
 });
