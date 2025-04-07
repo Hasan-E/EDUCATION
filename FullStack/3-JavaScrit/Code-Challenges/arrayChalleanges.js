@@ -264,3 +264,40 @@ array14.sort().forEach((num, index, arr) => {
   }
 });
 console.log(result14);
+
+//! Bir dizide, indekslere göre elemanları tek ve çift indeksler olarak iki ayrı diziye ayıran bir algoritma yazın.
+const array16 = ["Beyaz", "Kırmızı", "Mavi", "Mor", "Sarı", "Siyah", "Yeşil"];
+console.log(
+  `çift indexli elemanlar ${array16.filter(
+    (ciftindex, index) => index % 2 == 0
+  )}\n tek indexli elemanlar ${array16.filter(
+    (tekindexli, index) => index % 2 !== 0
+  )}`
+);
+
+//! Bir dizide, sadece rakam olan stringʼleri toplayarak toplamı döndüren bir fonksiyon yazın.Örnek: ['1', '2', 'abc', '3'] → 6
+const array17 = ["a", "2", "b", "5", "c", "8", "d", "1", "e", "4"];
+const result17 = array17.reduce(
+  (toplam, num) => (!isNaN(num) ? toplam + Number(num) : toplam),
+  0
+);
+console.log(result17);
+
+//! Bir dizide, art arda tekrar eden elemanları tek bir elemana indirgeyen bir algoritma yazın. Örnek: [1, 1, 2, 3, 3, 3, 4] → [1, 2, 3, 4]
+const array18 = [2, 1, 3, 4, 5, 6, 9, 2, 7, 8, 5, 9, 1, 5, 7, 3, 9, 8];
+const result18 = array18.filter((num, index) => array18.indexOf(num) === index);
+
+console.log(result18);
+
+//! Bir dizideki tüm çift sayıların karesini alıp, bu karelerin toplamını hesaplayan bir fonksiyon yazın.
+const array19 = [2, 1, 3, 4, 5, 6, 9, 2, 7, 8, 5, 9, 1, 5, 7, 3, 9, 8];
+const result19 = array19
+  .filter((num) => num % 2 == 0)
+  .reduce((toplam, num) => (toplam = toplam + num * num), 0);
+
+console.log(result19);
+
+//! Bir dizideki her elemanı indeksine göre çevirerek bir string döndüren bir algoritma yazın. Örnek: [10, 20, 30] → "0:10, 1:20, 2:30"
+const array20 = ["Beyaz", "Kırmızı", "Mavi", "Mor", "Sarı", "Siyah", "Yeşil"];
+const result20 = array20.map((item, index) => `${index}:${item}`);
+console.log(result20);
