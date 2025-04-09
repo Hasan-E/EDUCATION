@@ -20,7 +20,7 @@ sepettekiler.forEach(({ name, price, piece, img }) => {
 
   document.querySelector("#product-rowlari").innerHTML += `
   
-      <div class="row ">
+      <div class="row">
               <div class="col-md-5">
                 <img
                   src=${img}
@@ -92,8 +92,11 @@ function hesaplaCardTotal() {
   document.querySelector(".productstoplam").textContent = toplamArray;
   document.querySelector(".vergi").textContent = toplamArray * 0.18;
   document.querySelector(".kargo").textContent = toplamArray > 0 && 15;
-  document.querySelector(".toplam").textContent =
-    toplamArray + toplamArray * 0.18 + (toplamArray > 0 && 15);
+  document.querySelector(".toplam").textContent = (
+    toplamArray +
+    toplamArray * 0.18 +
+    (toplamArray > 0 && 15)
+  ).toFixed(2);
 }
 
 //! 3-Silme işlemi
@@ -101,7 +104,7 @@ function removeButton() {
   document.querySelectorAll(".remove-product").forEach((btn) => {
     btn.onclick = () => {
       //hepsini sil
-      btn.closest(".row");
+      btn.closest(".row").remove();
       hesaplaCardTotal();
     };
   });
@@ -117,6 +120,30 @@ function arttirAzalt() {
     const minus = kutu.firstElementChild;
 
     //* arttırma
-    plus.onclick = () => {};
+    plus.onclick = () => {
+      adet.textContent = Number(adet.textContent) + 1;
+      plus.closest(".card-body").querySelector(".product-total").textContent = (
+        plus.closest(".card-body").querySelector(".indirim-price").textContent *
+        adet.textContent
+      ).toFixed(2);
+      hesaplaCardTotal();
+    };
+
+    //* azaltma
+    minus.onclick = () => {
+      adet.textContent -= 1;
+      if (adet.textContent < 1) {
+        alert("Ürünü silmek istediğine emin misiniz?");
+        minus.closest(".row").remove();
+        hesaplaCardTotal();
+      } else {
+        minus
+          .closest(".card-body")
+          .querySelector(".product-total").textContent =
+          minus.closest(".card-body").querySelector(".indirim-price")
+            .textContent * adet.textContent;
+        hesaplaCardTotal();
+      }
+    };
   });
 }
