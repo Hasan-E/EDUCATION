@@ -75,3 +75,48 @@ sepettekiler.forEach(({ name, price, piece, img }) => {
   
   `;
 });
+
+//! 2-toplam değerleri tablosunun doldurulması
+
+hesaplaCardTotal();
+removeButton();
+arttirAzalt();
+
+function hesaplaCardTotal() {
+  const fiyatlar = Array.from(document.querySelectorAll(".product-total"));
+
+  const toplamArray = fiyatlar.reduce(
+    (toplam, ürünSpan) => toplam + Number(ürünSpan.textContent),
+    0
+  );
+  document.querySelector(".productstoplam").textContent = toplamArray;
+  document.querySelector(".vergi").textContent = toplamArray * 0.18;
+  document.querySelector(".kargo").textContent = toplamArray > 0 && 15;
+  document.querySelector(".toplam").textContent =
+    toplamArray + toplamArray * 0.18 + (toplamArray > 0 && 15);
+}
+
+//! 3-Silme işlemi
+function removeButton() {
+  document.querySelectorAll(".remove-product").forEach((btn) => {
+    btn.onclick = () => {
+      //hepsini sil
+      btn.closest(".row");
+      hesaplaCardTotal();
+    };
+  });
+}
+
+//! 4-Ürün adet azaltma arttırma
+
+function arttirAzalt() {
+  document.querySelectorAll(".adet-controller").forEach((kutu) => {
+    const plus = kutu.lastElementChild;
+    // const adet = plus.previousElementSibling;
+    const adet = kutu.children[1];
+    const minus = kutu.firstElementChild;
+
+    //* arttırma
+    plus.onclick = () => {};
+  });
+}
