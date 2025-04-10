@@ -10,10 +10,24 @@
     <title>SSN VALIDATOR</title>
   </head>
   <body>
-    <main class="container">
+    <main class="container py-5">
       <h2 class="title">SSN VALIDATOR</h2>
-      <input type="text" class="SSN-input" />
-      <input type="button" class="SSN-btn" value="Validate" />
+      <div id="inputs-div">
+        <input
+          class="border rounded-2 m-2"
+          type="text"
+          id="SSN-input"
+          placeholder="xxx-xx-xxxx"
+          maxlength="11"
+        />
+        <button
+          type="button"
+          id="SSN-btn"
+          class="btn btn-outline-dark rounded-pill fs-6"
+        >
+          Validate
+        </button>
+      </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
