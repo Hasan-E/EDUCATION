@@ -89,15 +89,18 @@ addBtn.addEventListener("click", function (e) {
 
 //*** CLEAR BUTTON ***/
 clearBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  for (let i = expenceTable.rows.length - 1; i > 0; i--) {
-    expenceTable.deleteRow(i);
+  const clearResult = confirm("Are you sure delete information");
+  if (clearResult) {
+    e.preventDefault();
+    for (let i = expenceTable.rows.length - 1; i > 0; i--) {
+      expenceTable.deleteRow(i);
+    }
+    totalExpenceAmount = 0;
+    totalIncomeAmount = 0;
+    balanceAmount = 0;
+    totalIncome.textContent = totalIncomeAmount;
+    totalIExpence.textContent = totalExpenceAmount;
+    balance.textContent = balanceAmount;
+    balance.removeAttribute("class");
   }
-  totalExpenceAmount = 0;
-  totalIncomeAmount = 0;
-  balanceAmount = 0;
-  totalIncome.textContent = totalIncomeAmount;
-  totalIExpence.textContent = totalExpenceAmount;
-  balance.textContent = balanceAmount;
-  balance.removeAttribute("class");
 });
