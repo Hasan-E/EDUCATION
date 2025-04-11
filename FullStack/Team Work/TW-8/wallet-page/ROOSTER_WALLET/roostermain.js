@@ -51,7 +51,12 @@ saveBtn.addEventListener("click", function (e) {
   processCell.appendChild(deleteIcon);
   deleteIcon.addEventListener("click", function () {
     totalExpenceAmount -= expence;
+    balanceAmount = totalIncomeAmount - totalExpenceAmount;
     totalIExpence.textContent = totalExpenceAmount.toFixed(2);
+    balance.textContent = balanceAmount.toFixed(2);
+    balanceAmount < 0
+      ? (balance.className = "bg-danger")
+      : (balance.className = "bg-success");
     expenceTable.deleteRow(newRow.rowIndex);
   });
   balanceAmount = totalIncomeAmount - totalExpenceAmount;
