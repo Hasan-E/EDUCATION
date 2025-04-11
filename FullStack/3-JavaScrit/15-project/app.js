@@ -20,8 +20,8 @@ const giderinizTable = document.getElementById("gideriniz");
 const kalanTable = document.getElementById("kalan");
 
 //?VARIABLES
-let harcamaListesi = [];
-let gelirler = 0;
+let harcamaListesi = JSON.parse(localStorage.getItem("expenses")) || [];
+let gelirler = Number(localStorage.getItem("income")) || 0;
 
 //!ilk formu doldurma (sarı olan)
 
@@ -36,10 +36,13 @@ harcamaFormu.addEventListener("submit", (e) => {
   };
 
   harcamaListesi.push(yeniHarcama);
-  console.log(harcamaListesi);
+
+  // LOCAL STORAGE A KAYDET
+
+  localStorage.setItem("expenses", JSON.stringify(harcamaListesi));
 
   harcamayiDomaYaz(yeniHarcama);
-
+  hesaplaGuncelle();
   harcamaFormu.reset(); //form içindeki inputları submit sonrası resetleme
 });
 
@@ -62,6 +65,42 @@ const harcamayiDomaYaz = ({ id, tarih, miktar, türü }) => {
   //*silme olayı doma basıldıktan sonra olmalı
 
   document.querySelectorAll(".fa-trash-can").forEach((sil) => {
-    sil.onclick = () => {};
+    sil.onclick = () => {
+      sil.parentElement.parentElement.remove(); //EKRANDAN SİLDİK
+
+      //diziden silme
+      harcamaListesi = harcamaListesi.filter((harcama) => harcama.id != sil.id);
+      hesaplaGuncelle();
+      localStorage.setItem("expenses", JSON.stringify(harcamaListesi));
+    };
   });
 };
+
+//!GELİR EKLE FORMU
+
+ekleFormu.addEventListener("submit", (e) => {
+  e.preventDefault();
+  gelirler += parseFloat(gelirInput.value);
+  gelirinizTable.textContent = gelirler;
+  localStorage.setItem("income", gelirler);
+  hesaplaGuncelle();
+  gelirInput.value = "";
+});
+
+//! Giderleri ve hesaplamaları güncelle
+
+const hesaplaGuncelle = () => {
+  const giderler = harcamaListesi.reduce(
+    (toplam, harcama) => toplam + parseFloat(harcama.miktar),
+    0
+  );
+  giderinizTable.textContent = giderler;
+  kalanTable.textContent = gelirler - giderler;
+};
+
+harcamaListesi.forEach((harcama) => {
+  harcamayiDomaYaz(harcama);
+});
+
+gelirinizTable.textContent = gelirler;
+hesaplaGuncelle();
