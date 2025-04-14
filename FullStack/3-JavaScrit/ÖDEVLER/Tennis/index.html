@@ -19,22 +19,32 @@
     <title>TABLE TENNIS</title>
   </head>
   <body>
-    <header class="text-center">
-      <img src="./img/CLARUSWAY_LOGO.png" alt="" />
-    </header>
-    <main>
-      <img src="./img/teble-tennis.gif" alt="" />
-      <h2>SCORES</h2>
-      <h2><span id="p1Span"></span>to<span id="p2Span"></span></h2>
-      <div class="winScore">
-        <label for="">Score to Win</label>
-        <input type="number" step="1" />
-      </div>
-    </main>
-    <footer>
-      <button type="submit">+1 for Player 1</button>
-      <button type="submit">RESET</button>
-      <button type="submit">+1 for Player 2</button>
-    </footer>
+    <div class="container">
+      <header class="text-center">
+        <img class="w-25" src="./img/CLARUSWAY_LOGO.png" alt="" />
+      </header>
+      <main class="m-5 text-center">
+        <img class="w-50" src="./img/teble-tennis.gif" alt="" />
+        <h4>SCORES</h4>
+        <h2><span id="p1Score">0 </span>to<span id="p2Score"> 0</span></h2>
+        <div class="winScore">
+          <label class="fw-semibold fs-4">Score to Win</label>
+          <input class="w-25 fs-4" value="5" type="number" step="1" />
+        </div>
+      </main>
+      <footer class="row">
+        <div class="col-3"></div>
+        <button id="player1" class="col-2 btn btn-primary" type="submit">
+          +1 for Player 1
+        </button>
+        <button id="reset" class="col-2 btn btn-success" type="submit">
+          RESET
+        </button>
+        <button id="player2" class="col-2 btn btn-danger p-2" type="submit">
+          +1 for Player 2
+        </button>
+      </footer>
+    </div>
+    <script src="./app.js"></script>
   </body>
 </html>
