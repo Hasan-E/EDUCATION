@@ -1,6 +1,6 @@
-//! BUTTON
+//!   BUTTON
 const btn = document.getElementById("btn");
-//!OUTPUTS
+//!   OUTPUTS
 const preName = document.querySelector("#pre h5");
 const mainName = document.querySelector("#main h5");
 const nextName = document.querySelector("#next h5");
@@ -13,7 +13,7 @@ const nextCountry = document.querySelector("#next p");
 const preEmail = document.querySelector("#pre a");
 const mainEmail = document.querySelector("#main a");
 const nextEmail = document.querySelector("#next a");
-//!BUTONA İŞLEV EKLEME
+//!   BUTTON FUNCTION
 const getirData = () => {
   fetch("https://randomuser.me/api/")
     .then((res) => {
@@ -25,7 +25,6 @@ const getirData = () => {
     .then((data) => printScreen(data))
     .catch((err) => console.error("hata:", err));
 };
-
 const printScreen = (data) => {
   const person = data.results[0];
 

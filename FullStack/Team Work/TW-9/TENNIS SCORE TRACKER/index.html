@@ -3,48 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <title>TABLE TENNIS</title>
+    <title>TENNIS SCORE</title>
   </head>
-  <body>
+  <body class="bg-secondary">
     <div class="container">
-      <header class="text-center">
+      <header class="text-center mt-4">
         <img class="w-25" src="./img/CLARUSWAY_LOGO.png" alt="" />
       </header>
       <main class="m-5 text-center">
         <img class="w-50" src="./img/teble-tennis.gif" alt="" />
         <h4>SCORES</h4>
-        <h2><span id="p1Score">0 </span>to<span id="p2Score"> 0</span></h2>
-        <div class="winScore">
+        <h2><span id="p1Score">0</span> to <span id="p2Score">0</span></h2>
+        <div class="win-score">
           <label class="fw-semibold fs-4">Score to Win</label>
-          <input class="w-25 fs-4" value="5" type="number" step="1" />
+          <input type="number" value="5" step="1" class="w-25 fs-4" />
         </div>
       </main>
-      <footer class="row">
+      <footer class="row gap-2">
         <div class="col-3"></div>
-        <button id="player1" class="col-2 btn btn-primary" type="submit">
+        <button id="player1" type="submit" class="col-2 btn btn-primary">
           +1 for Player 1
         </button>
-        <button id="reset" class="col-2 btn btn-success" type="submit">
+        <button id="reset" type="submit" class="col-2 btn btn-success">
           RESET
         </button>
-        <button id="player2" class="col-2 btn btn-danger p-2" type="submit">
+        <button id="player2" type="submit" class="col-2 btn btn-danger">
           +1 for Player 2
         </button>
       </footer>
     </div>
+
     <script src="./app.js"></script>
   </body>
 </html>

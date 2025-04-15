@@ -10,8 +10,8 @@ const p2Score = document.getElementById("p2Score");
 //!   VARIABLES
 let score1 = 0;
 let score2 = 0;
-//! BUTTONS FUNCTIONS
-//******* P1 BUTTON *******/
+//!   BUTTONS FUNCTIONS
+//************* P1 BUTTON *************/
 p1Btn.onclick = () => {
   const winScore = parseFloat(scoreToWin.value);
   if (score1 < winScore && score2 < winScore) {
@@ -19,30 +19,28 @@ p1Btn.onclick = () => {
     p1Score.textContent = `${score1}   `;
   }
   if (score1 == winScore) {
-    p1Score.textContent = `${score1}   `;
     p1Score.classList = "text-success";
     p2Score.classList = "text-danger";
   }
 };
-//******* P2 BUTTON *******/
+//************ P2 BUTTON  ***************/
 p2Btn.onclick = () => {
   const winScore = parseFloat(scoreToWin.value);
-  if (score1 < winScore && score2 < winScore) {
+  if (score2 < winScore && score1 < winScore) {
     ++score2;
     p2Score.textContent = `   ${score2}`;
   }
   if (score2 == winScore) {
-    p2Score.textContent = `   ${score2}`;
     p2Score.classList = "text-success";
     p1Score.classList = "text-danger";
   }
 };
-//******* RESET BUTTON *******/
+//***********  REST BUTTON *************/
 reset.onclick = () => {
   score1 = 0;
   score2 = 0;
   p1Score.textContent = `${score1}   `;
-  p2Score.textContent = `   ${score2}`;
+  p2Score.textContent = `${score2}   `;
   p1Score.classList = "";
   p2Score.classList = "";
   scoreToWin.value = "5";
