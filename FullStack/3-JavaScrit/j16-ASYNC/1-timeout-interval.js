@@ -18,15 +18,15 @@
 //*Asenkron (setTimeout) 1 seferlik
 //******************************** */
 
-// setTimeout(() => {
-//   console.log("Aleykümselam");
-// }, 2000);
+setTimeout(() => {
+  console.log("Aleykümselam");
+}, 2000);
 
-// console.log("selamünaleyküm");
+console.log("selamünaleyküm");
 
-// setTimeout(() => {
-//   console.log("naber nasılsın");
-// }, 1000);
+setTimeout(() => {
+  console.log("naber nasılsın");
+}, 1000);
 
 //!-Selamun Aleyküm- Naber-Aleyküm Selam  çalışır, 3. nün süresi 1.den azsa, 2-3-1 sırasında çalışır
 //!settimeout müsait zamanda ortaya çıkar, onun sırası geçtiğinde alttaki işlemler bitince çalışır
