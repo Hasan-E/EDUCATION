@@ -13,7 +13,7 @@ const nextCountry = document.querySelector("#next p");
 const preEmail = document.querySelector("#pre a");
 const mainEmail = document.querySelector("#main a");
 const nextEmail = document.querySelector("#next a");
-//!
+//!BUTONA İŞLEV EKLEME
 const getirData = () => {
   fetch("https://randomuser.me/api/")
     .then((res) => {
