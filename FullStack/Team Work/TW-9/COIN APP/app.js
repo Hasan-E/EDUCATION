@@ -63,7 +63,8 @@ const printScreen = () => {
     "col-md-6",
     "col-12",
     "position-relative",
-    "g-4"
+    "g-4",
+    "opacity-75"
   );
 
   //====   KAPATMA İKONU
