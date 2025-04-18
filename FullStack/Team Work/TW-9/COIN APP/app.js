@@ -40,6 +40,7 @@ const printScreen = () => {
       icon: "warning",
       title: `${searchInput[0].name} is already EXIST!😉`,
     });
+    return;
   }
   //!   INPUT BOS UYARISI
   if (input.value === "") {
