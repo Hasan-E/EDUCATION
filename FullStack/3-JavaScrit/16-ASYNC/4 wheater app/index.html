@@ -15,7 +15,7 @@
     />
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
     <link rel="stylesheet" href="./style.css" />
-    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
   <body>
@@ -63,7 +63,7 @@
           <ul
             class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 language"
           >
-            <li role="button" tabindex="0">
+            <li id="en" role="button" tabindex="0">
               <img
                 src="https://flagcdn.com/24x18/gb.png"
                 alt="English"
@@ -72,7 +72,7 @@
               />
             </li>
             <li>&nbsp;|&nbsp;</li>
-            <li role="button" tabindex="0">
+            <li id="tr" role="button" tabindex="0">
               <img
                 src="https://flagcdn.com/24x18/tr.png"
                 alt="Türkçe"
@@ -98,7 +98,7 @@
             style="top: 2rem"
             id="userLocation"
           ></div>
-          <!-- <div id="clock"></div> -->
+          <div id="clock"></div>
         </div>
         <div class="col-md-9">
           <div
@@ -115,6 +115,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="./app.js"></script>
-    <!-- <script src="./assets/clock.js"></script> -->
+    <script src="./assets/clock.js"></script>
   </body>
 </html>
