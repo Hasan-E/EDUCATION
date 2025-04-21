@@ -98,7 +98,7 @@ const printScreen = () => {
   );
   name.textContent = searchInput[0].name;
   // Coin Symbol
-  const symbol = document.createElement("span");
+  const symbol = document.createElement("sup");
   symbol.classList.add(
     "position-absolute",
     "top-0",

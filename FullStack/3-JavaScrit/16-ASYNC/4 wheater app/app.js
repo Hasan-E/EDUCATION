@@ -12,8 +12,6 @@ const locationDiv = document.getElementById("userLocation");
 let userLocation = false; //kullanıcı konum bilgisini sol tarafa göndermek için kullanıcaz
 
 //!   VARIABLES
-// const apiKey = "e5376d11bdfd1f397afb624e660d330d";
-// localStorage.setItem("apiKey", "e5376d11bdfd1f397afb624e660d330d");//Api keyi localStorage a kaydeder
 const apiKey = localStorage.getItem("apiKey"); //Api keyi localStorage dan alır
 let url;
 let units = "metric"; // fahrenheit için 'imperial' yazmalıyız
@@ -69,7 +67,7 @@ const getWeatherData = async () => {
     if (cities.indexOf(name) == -1) {
       cities.unshift(name);
       let card = `       <div class="col" id="${name}">
-        <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card opacity-75 mb-4 rounded-3 shadow-lg bg-secondary text-light">
             <ul class="list-unstyled mt-2 mb-4">
                 <li class="text-end me-2"><i class="bi bi-x-circle"></i></li>
                 <h4 class="my-0 fw-normal">${name} <span ><sup><img src="https://flagsapi.com/${
