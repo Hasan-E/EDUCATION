@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: blue;
+  text-align: center;
+}
+.body {
+  display: inline-block;
+  margin: 15px;
+}
+p {
+  color: #468284;
+  font-size: 1.2rem;
+}
+.image {
+  height: 400px;
+  width: 250px;
+}
