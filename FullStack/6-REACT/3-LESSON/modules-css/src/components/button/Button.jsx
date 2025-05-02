@@ -1,5 +1,5 @@
 // import "./Button.css";
-import ButtonSyle from "./Button.module.css";
+import ButtonStyle from "./Button.module.css";
 
 //* Eğer CSS'deki class adi kebap-case seklinde yazilmis ise
 //* module ile bu class'a erismek icin ornekte goruldugu gibi
@@ -11,15 +11,15 @@ import ButtonSyle from "./Button.module.css";
 const Button = () => {
   return (
     // <div className="wrapper">
-    <div className={ButtonSyle.wrapper}>
-      {/* <button className="btn btn-blue">Info</button> */}
-      <button className={`${ButtonSyle.btn} ${ButtonSyle["btn-blue"]}`}>
-        Info
+    <div className={ButtonStyle.wrapper}>
+      <button className={`${ButtonStyle["btn"]} ${ButtonStyle["btn-blue"]}`}>
+        info
       </button>
-      {/* <button className="btn btn-red">Back</button> */}
-      <button className={`${ButtonSyle.btn} ${ButtonSyle["btn-red"]}`}>
+      {/* <button className="btn btn-blue">info</button> */}
+      <button className={`${ButtonStyle.btn} ${ButtonStyle["btn-red"]}`}>
         Back
       </button>
+      {/* <button className="btn btn-red">Back</button> */}
     </div>
   );
 };

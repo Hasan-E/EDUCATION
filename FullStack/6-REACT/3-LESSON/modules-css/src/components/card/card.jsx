@@ -9,12 +9,12 @@ import CardStyle from "./Card.module.css";
 //* CCS module Webpack, Browsify gibi tool'lar ile kullanilabilir.
 
 const Card = ({ language, img }) => {
-  //   const  { language, img } = props
+  // const {language,img}=props
   return (
     <>
       {/* <div className="wrapper"> */}
       <div className={CardStyle.wrapper}>
-        <h2>{language} </h2>
+        <h2>{language}</h2>
       </div>
       <img className={CardStyle.images} src={img} alt="" />
       <Button />
