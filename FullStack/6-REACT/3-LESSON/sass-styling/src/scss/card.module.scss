@@ -1,0 +1,42 @@
+@use "variables";
+.container {
+  min-height: 80vh;
+  .card {
+    width: 300px;
+    box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1.5rem;
+
+    img {
+      width: 100px;
+      border-radius: 50%;
+      margin: 1.5rem;
+    }
+    h1 {
+      color: red;
+    }
+    h3 {
+      color: green;
+    }
+    .buttons {
+      button {
+        border: none;
+        border-radius: 1rem;
+        margin-right: 0.5rem;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.7;
+        }
+      }
+      .small {
+        padding: 0.6rem;
+        background-color: variables.$olive;
+      }
+      .large {
+        padding: 0.6rem 1.5rem;
+        background-color: variables.$neon;
+      }
+    }
+  }
+}
