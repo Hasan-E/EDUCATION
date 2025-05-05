@@ -1,0 +1,8 @@
+@mixin flexx($satir, $hizala, $mesafe) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $hizala;
+  align-items: center;
+  gap: $mesafe;
+  flex-direction: $satir;
+}
