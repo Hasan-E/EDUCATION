@@ -1,4 +1,4 @@
-const users = [
+export const users = [
   {
     id: 1,
     name: "Alex Johnson",
@@ -27,6 +27,6 @@ const users = [
     id: 5,
     name: "ROOSTER",
     role: "Fullstack Developer",
-    imageUrl: "../assets/r5.jpg",
+    imageUrl: "r5.jpg",
   },
 ];

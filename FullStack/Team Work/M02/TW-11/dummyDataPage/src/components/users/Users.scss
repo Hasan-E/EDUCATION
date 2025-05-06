@@ -1,0 +1,28 @@
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  .card {
+    width: 235px;
+    background-color: rgba(255, 0, 0, 0.507);
+    border: 2px solid wheat;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+    .texts {
+      color: darken(wheat, 0.9);
+      .name {
+        font-size: 1.5rem;
+        font-weight: 900;
+      }
+      .role {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
