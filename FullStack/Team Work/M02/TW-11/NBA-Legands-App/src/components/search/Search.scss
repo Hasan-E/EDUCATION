@@ -1,0 +1,20 @@
+.inputDiv {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  input {
+    padding: 0.2rem;
+    border-radius: 5px;
+    border: none;
+    width: 35vw;
+    max-width: 25rem;
+    height: 35px;
+    font-weight: 600;
+    font-size: large;
+    color: #1D4289;
+    &:focus {
+      border: none;
+      outline: 4px solid #1D4289;
+    }
+  }
+}

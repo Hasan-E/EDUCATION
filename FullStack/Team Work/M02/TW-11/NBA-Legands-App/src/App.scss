@@ -1,0 +1,16 @@
+@use "./scss/reset";
+
+body {
+  background-color: #f4d466;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // background-image: url(./assets/bg1.jpg);
+    // background-size: cover;
+    // background-position: center;
+    // background-repeat: no-repeat;
+  }
+}
