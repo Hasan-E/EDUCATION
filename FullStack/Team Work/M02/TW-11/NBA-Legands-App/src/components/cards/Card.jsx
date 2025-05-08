@@ -6,13 +6,13 @@ const Card = ({ player }) => {
   return (
     <div>
       <div className="card" onClick={() => setVisible(!visible)}>
-        {visible && <img src={img} alt="" />}
-        {!visible && (
+        {visible ? (
+          <img src={img} alt="" />
+        ) : (
           <div className="info">
-            <p>🏀 {statistics[0]}</p>
-            <p>🏀 {statistics[1]}</p>
-            <p>🏀 {statistics[2]}</p>
-            <p>🏀 {statistics[3]}</p>
+            {statistics.map((statistics, index) => (
+              <p key={index}>🏀 {statistics}</p>
+            ))}
           </div>
         )}
         <p className="name">{name}</p>
