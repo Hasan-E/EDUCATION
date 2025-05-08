@@ -11,7 +11,7 @@ export const data = [
   },
   {
     name: "Larry Bird",
-    img: "https://images.footballfanatics.com/boston-celtics/larry-bird-boston-celtics-unsigned-driving-to-the-basket-photograph_pi4025000_ff_4025713-3a32778de9bb567994e1_full.jpg?_hv=2&w=900",
+    img: "https://pcsblobstrg.blob.core.windows.net/storagemedia/1/mastercatalog/attributeimages/nbabird14-_1.jpg",
     statistics: [
       "21,791 points",
       "8,974 rebaunds",

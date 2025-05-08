@@ -7,13 +7,17 @@ import { data } from "./helpers/data";
 // console.log(data);
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [search, setSearch] = useState("");
+
+  const filteredData = data.filter((player) =>
+    player.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="container">
       <Header />
-      <Search />
-      <CardContainer data={data} />
+      <Search search={search} setSearch={setSearch} />
+      <CardContainer data={filteredData} />
     </div>
   );
 }
