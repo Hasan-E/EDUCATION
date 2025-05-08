@@ -4,7 +4,7 @@ const Search = ({ search, setSearch }) => {
   return (
     <div className="inputDiv">
       <input
-        type="text"
+        type="search"
         placeholder="Search Player..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
