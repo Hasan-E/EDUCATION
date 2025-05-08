@@ -9,9 +9,12 @@ import { data } from "./helpers/data";
 function App() {
   const [search, setSearch] = useState("");
 
-  const filteredData = data.filter((player) =>
-    player.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredData =
+    search.trim() === ""
+      ? data
+      : data.filter((player) =>
+          player.name.toLowerCase().includes(search.toLowerCase())
+        );
 
   return (
     <div className="container">
