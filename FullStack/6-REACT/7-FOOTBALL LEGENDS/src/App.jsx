@@ -1,12 +1,16 @@
-import './App.css'
+// import Container from "react-bootstrap/Container"
+import { Container,Image } from "react-bootstrap";
+import "./App.css";
+import Header from "./components/header/Header";
 
 function App() {
-
   return (
     <>
-      <h1> COHORT 19</h1>
+      <Container className="text-center mt-5">
+        <Header />
+      </Container>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
