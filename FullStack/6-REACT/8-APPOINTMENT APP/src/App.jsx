@@ -1,12 +1,14 @@
-import './App.css'
+import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
-
   return (
     <>
-      <h1> COHORT 19</h1>
+      <div className="container">
+        <Home />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
