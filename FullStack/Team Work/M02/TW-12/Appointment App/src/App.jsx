@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import Header from "./components/header/Header";
-import CardContainer from "./components/cards/CardContainer";
-import AppolistContainer from "./components/appoList/AppolistContainer";
+import Header from "./components/Header";
+import CardContainer from "./components/CardContainer";
+import AppolistContainer from "./components/AppolistContainer";
 import { appointmentData, doctorData } from "./helper/data";
 
 function App() {
+  const [patients,setPatients]=useState(appointmentData)
+  
   return (
     <div className="page">
       <header>
@@ -13,10 +15,10 @@ function App() {
       </header>
       <main>
         <section className="doctors">
-          <CardContainer data={doctorData} />
+          <CardContainer patients={patients} setPatients={setPatients} data={doctorData} />
         </section>
         <section className="appointment">
-          <AppolistContainer data={appointmentData} />
+          <AppolistContainer patients={patients} setPatients={setPatients} />
         </section>
       </main>
     </div>

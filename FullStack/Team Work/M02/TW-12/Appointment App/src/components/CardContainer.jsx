@@ -2,8 +2,29 @@
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 
-const CardContainer = ({ data }) => {
+const CardContainer = ({ data, setPatients, patients }) => {
   const [visible, setVisible] = useState(false);
+  const [name, setName] = useState("");
+  const [day, setDay] = useState("");
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const handleDrClick = (doctor) => {
+    setVisible(!visible);
+    setSelectedDoctor(doctor);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setPatients([
+      ...patients,
+      {
+        id: patients.length + 1,
+        patient: name,
+        day: new Date(day),
+        consulted: false,
+        doctor: selectedDoctor.name,
+      },
+    ]);
+    setVisible(!visible);
+  };
 
   return (
     <div className="container my-4">
@@ -15,7 +36,7 @@ const CardContainer = ({ data }) => {
             className=" col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center"
           >
             <div
-              onClick={() => setVisible(!visible)}
+              onClick={() => handleDrClick(doctor)}
               className="card h-100 shadow-none"
             >
               <div className="img-container">
@@ -31,18 +52,28 @@ const CardContainer = ({ data }) => {
       </div>
       {visible && (
         <div className="form-background">
-          <Form className="form">
+          <Form onSubmit={handleSubmit} className="form">
             <a className="x" onClick={() => setVisible(!visible)}>
               <i className="bi bi-x"></i>
             </a>
             <Form.Group>
               <Form.Label>Patient Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter your name" />
+              <Form.Control
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                placeholder="Enter your name"
+                required
+                autoFocus
+              />
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Day&Time</Form.Label>
-              <Form.Control type="datetime-local" />
+              <Form.Control
+                onChange={(e) => setDay(e.target.value)}
+                type="datetime-local"
+                required
+              />
             </Form.Group>
 
             <Form.Group className="buttons">

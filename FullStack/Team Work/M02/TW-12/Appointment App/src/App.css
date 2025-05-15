@@ -156,6 +156,7 @@ header {
     text-align: center;
     font-size: 1.5rem;
     margin: auto;
+    position: relative;
     .date {
       margin: 0;
       font-weight: 600;
@@ -167,13 +168,27 @@ header {
       font-weight: 600;
     }
   }
-}
-.right {
-  position: relative;
-  .appo-x {
-    position: absolute;
-    right: 0;
-    top: 30%;
-    color: rgba(128, 128, 128, 0);
+  .right {
+    position: relative;
+    .appo-x {
+      position: absolute;
+      right: 0;
+      top: 30%;
+      color: rgba(128, 128, 128, 0);
+    }
   }
+}
+
+.consulted{
+  background-color: blueviolet;
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  position: absolute;
+  top: 3px;
+  left: 15%;
+  border-radius: 15px;
+  color: white;
+  padding: 0.5rem;  
+  
 }
