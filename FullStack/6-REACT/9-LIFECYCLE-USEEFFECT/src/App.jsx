@@ -14,7 +14,7 @@ function App() {
       </button>
       {/* {show && <LifeCycleMethods />} */}
       {/* {show && <Clock />} */}
-      <People/>
+      <People />
     </div>
   );
 }
