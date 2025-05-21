@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
-const EditInfo = () => {
+const EditInfo = ({ edit, setEdit, putInfo }) => {
   return (
-     <div
+    <div
       className="modal fade"
       id="editModal"
       tabIndex="-1"
@@ -32,7 +32,8 @@ const EditInfo = () => {
                 className="form-control"
                 id="title"
                 placeholder="Enter your title"
-               
+                value={edit.title}
+                onChange={(e) => setEdit({ ...edit, title: e.target.value })}
               />
             </div>
             <div className="mb-3">
@@ -44,7 +45,10 @@ const EditInfo = () => {
                 className="form-control"
                 id="desc"
                 placeholder="Enter your Description"
-               
+                value={edit.description}
+                onChange={(e) =>
+                  setEdit({ ...edit, description: e.target.value })
+                }
               />
             </div>
           </div>
@@ -53,7 +57,7 @@ const EditInfo = () => {
               type="button"
               className="btn btn-secondary"
               data-bs-dismiss="modal"
-             
+              onClick={() => putInfo(edit)}
             >
               Save
             </button>
@@ -61,7 +65,7 @@ const EditInfo = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EditInfo
+export default EditInfo;

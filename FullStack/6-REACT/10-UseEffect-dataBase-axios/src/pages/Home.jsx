@@ -26,10 +26,20 @@ const Home = () => {
     await axios.post(url, newData);
     getInfo();
   };
+
+  /!* --------------- PUT (UPDATE) --------------- */;
+  const putInfo = async (edit) => {
+    await axios.put(`${url}${edit.id}/`, edit);
+    getInfo();
+  };
   return (
     <div>
       <AddInfo postInfo={postInfo} />
-      <InfoList tutorials={tutorials} deleteInfo={deleteInfo} />
+      <InfoList
+        tutorials={tutorials}
+        deleteInfo={deleteInfo}
+        putInfo={putInfo}
+      />
     </div>
   );
 };

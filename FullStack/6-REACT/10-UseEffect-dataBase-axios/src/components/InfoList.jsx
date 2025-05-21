@@ -3,7 +3,7 @@ import { FaEdit } from "react-icons/fa";
 import EditInfo from "./EditInfo";
 import { useState } from "react";
 
-const InfoList = ({ tutorials, deleteInfo }) => {
+const InfoList = ({ tutorials, deleteInfo,putInfo }) => {
     const [edit,setEdit] = useState("")
   return (
     <div className="container mt-4">
@@ -47,7 +47,7 @@ const InfoList = ({ tutorials, deleteInfo }) => {
           })}
         </tbody>
       </table>
-      <EditInfo edit={edit} setEdit={setEdit}/>
+      <EditInfo edit={edit} setEdit={setEdit} putInfo={putInfo} />
     </div>
   );
 };
