@@ -1,9 +1,10 @@
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
+import EditInfo from "./EditInfo";
+import { useState } from "react";
 
-
-
-const InfoList = ({ tutorials }) => {
+const InfoList = ({ tutorials, deleteInfo }) => {
+    const [edit,setEdit] = useState("")
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -18,7 +19,7 @@ const InfoList = ({ tutorials }) => {
           </tr>
         </thead>
         <tbody>
-          {tutorials.map(({id,title,description}) => {
+          {tutorials.map(({ id, title, description }) => {
             return (
               <tr key={id}>
                 <th>{id}</th>
@@ -26,6 +27,7 @@ const InfoList = ({ tutorials }) => {
                 <td>{description}</td>
                 <td className="text-center ">
                   <AiFillDelete
+                    onClick={() => deleteInfo(id)}
                     type="button"
                     size={22}
                     className="text-danger cursor-pointer"
@@ -37,6 +39,7 @@ const InfoList = ({ tutorials }) => {
                     size={20}
                     type="button"
                     className="me-2 text-warning cursor-pointer"
+                    onClick={()=>setEdit({id:id,title:title,description:description})}
                   />
                 </td>
               </tr>
@@ -44,6 +47,7 @@ const InfoList = ({ tutorials }) => {
           })}
         </tbody>
       </table>
+      <EditInfo edit={edit} setEdit={setEdit}/>
     </div>
   );
 };
