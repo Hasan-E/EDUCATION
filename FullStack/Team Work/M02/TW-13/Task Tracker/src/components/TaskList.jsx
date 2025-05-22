@@ -11,6 +11,7 @@ import {
   FaRegCheckCircle,
 } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
+import EditTask from "./EditTask";
 /* ============================================ */
 /*            MAIN TASKLIST FUNCTION            */
 /* ============================================ */
@@ -22,6 +23,7 @@ const TaskList = ({ data, setData }) => {
   const [stepInput, setStepInput] = useState("");
   const [editStepId, setEditStepId] = useState(null);
   const [editStepInput, setEditStepInput] = useState("");
+  const [showEditTask, setShowEditTask] = useState(false);
   /* ============================================ */
   /*                   FUNCTIONS                  */
   /* ============================================ */
@@ -152,7 +154,13 @@ const TaskList = ({ data, setData }) => {
                 />
               </div>
               <div className="edit">
-                <FaRegEdit className="btnEdit" />
+                <FaRegEdit
+                  onClick={() => {
+                    setClickId(task.id);
+                    setShowEditTask(true);
+                  }}
+                  className="btnEdit"
+                />
               </div>
               <div onClick={() => clickStep(task.id)}>
                 {clickId === task.id ? (
@@ -163,7 +171,7 @@ const TaskList = ({ data, setData }) => {
               </div>
             </div>
           </div>
-          {clickId === task.id && task.steps.length > 0 ? (
+          {clickId === task.id && !showEditTask && task.steps.length > 0 ? (
             /* ============================================ */
             /*                     STEPS                    */
             /* ============================================ */
@@ -234,7 +242,7 @@ const TaskList = ({ data, setData }) => {
           ) : /* ============================================ */
           /*               CREATE STEP FORM               */
           /* ============================================ */
-          clickId === task.id ? (
+          clickId === task.id && !showEditTask ? (
             <div className="steps mt-2">
               <Form onSubmit={handleAddStep}>
                 <Form.Group className="d-flex flex-nowrap">
@@ -254,6 +262,17 @@ const TaskList = ({ data, setData }) => {
           ) : null}
         </div>
       ))}
+      {showEditTask && (
+        <div className="overlay">
+          <EditTask
+            data={data}
+            setData={setData}
+            clickId={clickId}
+            setShowEditTask={setShowEditTask}
+            setClickId={setClickId}
+          />
+        </div>
+      )}
     </div>
   );
 };
