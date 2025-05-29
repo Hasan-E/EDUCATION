@@ -13,7 +13,7 @@ const KullaniciProvider = ({ children }) => {
   const changeWidth = (newId, myWidth) => {
     setUsers(
       users.map((eleman) =>
-        eleman.id === newId ? { ...eleman, with: myWidth } : eleman
+        eleman.id === newId ? { ...eleman, width: myWidth } : eleman
       )
     );
   };

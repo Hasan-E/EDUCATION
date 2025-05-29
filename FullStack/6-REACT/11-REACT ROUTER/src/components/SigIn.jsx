@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function SignIn() {
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState();
   const handleSubmit = () => {
     localStorage.setItem("userName", userName);
     navigate("/games");

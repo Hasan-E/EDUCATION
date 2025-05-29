@@ -2,9 +2,9 @@ import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 
 const PrivateRouter = () => {
-  const username = localStorage.getItem("username");
+  const userName = localStorage.getItem("userName");
 
-  return username === "ROOSTER" ? <Outlet /> : <Navigate to="/signin" />;
+  return userName === "ROOSTER" ? <Outlet /> : <Navigate to="/signin" />;
 };
 
 export default PrivateRouter;
