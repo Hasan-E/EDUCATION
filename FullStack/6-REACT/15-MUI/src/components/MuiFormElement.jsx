@@ -14,11 +14,39 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
+const currencies = [
+  {
+    value: 'USD',
+    label: '$',
+  },
+  {
+    value: 'EUR',
+    label: '€',
+  },
+  {
+    value: 'BTC',
+    label: '฿',
+  },
+  {
+    value: 'JPY',
+    label: '¥',
+  },
+];
+
 const MuiFormElement = () => {
   const [name, setName] = useState();
+  const [error, setError] = useState(false);
+  const [email, setEmail] = useState("");
+  const validationEmail =()=>{
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(name);
+   if(email.trim() === "" || validationEmail(email)){
+    setError(true)
+   }else{
+    setError(false)
+   }
   };
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -76,6 +104,42 @@ const MuiFormElement = () => {
             label="Password"
           />
         </FormControl>
+
+        {/* Error */}
+        <TextField
+          error={error}
+          id="outlined-error"
+          label="Email"
+          sx={{ my: 5 }}
+          helperText={
+            error
+              ? "Please enter a valid email address"
+              : "Please enter an email address"
+          }
+          fullWidth
+        />
+
+         {/* Select */}
+        <TextField
+          id="outlined-select-currency-native"
+          select
+          label="Native select"
+          defaultValue="EUR"
+          slotProps={{
+            select: {
+              native: true,
+            },
+          }}
+          helperText="Please select your currency"
+          fullWidth
+        >
+          {currencies.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </TextField>
+
         {/* submit button */}
         <Button
           variant="contained"
