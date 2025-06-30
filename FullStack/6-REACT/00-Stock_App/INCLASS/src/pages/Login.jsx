@@ -12,8 +12,11 @@ import AuthImage from "../components/AuthImage";
 import { Formik } from "formik";
 import LoginForm from "../components/LoginForm";
 import * as Yup from "yup";
+import useAuthCall from "../hook/useAuthCall";
 
 const Login = () => {
+
+  const {login}=useAuthCall()
  
 
   const SignupSchema = Yup.object().shape({
@@ -56,7 +59,8 @@ const Login = () => {
             initialValues={{ username: "", password: "" }}
             validationSchema={SignupSchema}
             onSubmit={(values, actions) => {
-             console.log(values)
+              console.log(values)
+              login(values)
               actions.resetForm();
               actions.setSubmitting(false);
             }}
