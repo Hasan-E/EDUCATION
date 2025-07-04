@@ -1,11 +1,21 @@
 import React from "react";
+import Charts from "./../components/Charts";
+import { useEffect } from "react";
+import useStockCall from "../hook/useStockCall";
+import KpiCards from "../components/KPICards";
 
 const Home = () => {
+  const { getData } = useStockCall();
+
+  useEffect(() => {
+    getData("sales");
+    getData("purchases");
+  }, []);
+
   return (
     <div>
-      <h1 className="text-4xl font-bold text-slate-800">
-        Home
-      </h1>
+      <KpiCards />
+      <Charts />
     </div>
   );
 };
