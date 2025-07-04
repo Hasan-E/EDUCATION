@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const stockSlice=createSlice({
-    name:"stock",
-    initialState:{
+const stockSlice = createSlice({
+  name: "stock",
+  initialState: {
     loading: false,
     error: false,
-    firms:[],
-    brands:[],
-    purchases:[],
-    products:[],
-    sales:[]
-
-    },
-    reducers:{
-     fetchStart:( state) => {
+    firms: [],
+    brands: [],
+    purchases: [],
+    products: [],
+    sales: [],
+    categories: [],
+  },
+  reducers: {
+    fetchStart: (state) => {
       state.loading = true;
       state.error = false;
     },
@@ -21,14 +21,41 @@ const stockSlice=createSlice({
       state.loading = false;
       state.error = true;
     },
-    stockSuccess:(state,{payload})=>{
-      state[payload.url]=payload.data.data
+    stockSuccess: (state, { payload }) => {
+      state[payload.url] = payload.data.data;
       state.loading = false;
       state.error = false;
-    }
-    }
-})
+    },
 
-export const{fetchStart,fetchFail,stockSuccess} = stockSlice.actions;
+    //! PROMISE ALL UYGULAMALARI-----------
+    ProCatBrandSuccess: (state, { payload }) => {
+      state.products = payload[0];
+      state.categories = payload[1];
+      state.brands = payload[2];
+      state.loading = false;
+    },
+    SalesBrandProSuccess: (state, { payload }) => {
+      state.sales = payload[0];
+      state.brands = payload[1];
+      state.products = payload[2];
+      state.loading = false;
+    },
+  },
+  PurBrandProSuccess: (state, { payload }) => {
+    state.purchases = payload[0];
+    state.brands = payload[1];
+    state.products = payload[2];
+    state.loading = false;
+  },
+});
+
+export const {
+  fetchStart,
+  fetchFail,
+  stockSuccess,
+  ProCatBrandSuccess,
+  SalesBrandProSuccess,
+  PurBrandProSuccess,
+} = stockSlice.actions;
 
 export default stockSlice.reducer;

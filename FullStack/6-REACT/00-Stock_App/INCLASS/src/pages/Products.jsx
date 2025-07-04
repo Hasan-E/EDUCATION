@@ -7,7 +7,7 @@
 
 // const Products = () => {
 //   const { getData } = useStockCall();
-  
+
 //   const [open, setOpen] = useState(false);
 //   const handleOpen = () => setOpen(true);
 //   const handleClose = () => setOpen(false);
@@ -34,7 +34,6 @@
 
 //       <ProductsTable />
 
-
 //       {open && (
 //             <ProductModal
 //               open={open}
@@ -47,7 +46,6 @@
 // };
 
 // export default Products;
-
 
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
@@ -62,7 +60,7 @@ import ProductsTable from "../components/Tables/ProductsTable";
 import ProductModal from "../components/Modals/ProductModal";
 
 const Products = () => {
-  const { getData } = useStockCall();
+  const { getData, getProCatBrand } = useStockCall();
   const { loading, error } = useSelector((state) => state.stock);
 
   const [open, setOpen] = useState(false);
@@ -76,11 +74,10 @@ const Products = () => {
   });
 
   useEffect(() => {
-    getData("products");
-    getData("brands");
-    getData("categories");
-
-
+    // getData("products");
+    // getData("brands");
+    // getData("categories");
+    getProCatBrand();
   }, []);
 
   return (
@@ -116,7 +113,7 @@ const Products = () => {
             New Product
           </Button>
 
-          <ProductsTable/>
+          <ProductsTable />
 
           {open && (
             <ProductModal

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { fetchFail, fetchStart, stockSuccess } from "../features/StockSlice";
+import { fetchFail, fetchStart, stockSuccess,ProCatBrandSuccess,SalesBrandProSuccess} from "../features/StockSlice";
 import useAxios from "./useAxios";
 
 const useStockCall = () => {
@@ -60,7 +60,79 @@ const useStockCall = () => {
     }
   };
 
-  return { getData, createStockData,updateStockData ,deleteStockData};
+//! PROMISE ALL YAPISI :
+// JavaScript'in Promise yapısını kullanan bir metottur ve aynı anda birden fazla asenkron işlemi yönetmek için kullanılır.
+
+  const getProCatBrand=async()=>{
+    dispatch(fetchStart())
+    try {
+      
+      // const [a,b]=[1,2]  =>  a=1, b=2
+        const [products,categories,brands]=await Promise.all(
+          [
+            axiosWithToken("products"),
+            axiosWithToken("categories"),
+            axiosWithToken("brands")
+          ]
+        )        
+        dispatch(ProCatBrandSuccess([
+          products?.data?.data,
+          categories?.data?.data,
+          brands?.data?.data]))
+
+    } catch (error) {
+      dispatch(fetchFail())
+    }
+
+  }
+  const getSalesBrandPro=async()=>{
+    dispatch(fetchStart())
+    try {
+      
+      // const [a,b]=[1,2]  =>  a=1, b=2
+        const [sales,brands,products]=await Promise.all(
+          [
+            axiosWithToken("sales"),
+            axiosWithToken("brands"),
+            axiosWithToken("products")
+          ]
+        )        
+        dispatch(SalesBrandProSuccess([
+          sales?.data?.data,
+          brands?.data?.data,
+          products?.data?.data
+]))
+
+    } catch (error) {
+      dispatch(fetchFail())
+    }
+
+  }
+  const getPurBrandPro=async()=>{
+    dispatch(fetchStart())
+    try {
+      
+      // const [a,b]=[1,2]  =>  a=1, b=2
+        const [purchases,brands,products]=await Promise.all(
+          [
+            axiosWithToken("purchases"),
+            axiosWithToken("brands"),
+            axiosWithToken("products")
+          ]
+        )        
+        dispatch(PurBrandProSuccess([
+          purchases?.data?.data,
+          brands?.data?.data,
+          products?.data?.data
+]))
+
+    } catch (error) {
+      dispatch(fetchFail())
+    }
+
+  }
+
+  return { getData, createStockData,updateStockData ,deleteStockData,getProCatBrand,getSalesBrandPro,getPurBrandPro};
 };
 
 export default useStockCall;
