@@ -13,7 +13,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import {btnStyle} from "../../styles/globalStyles"
 import useStockCall from "../../hook/useStockCall";
 
-export default function FirmsCard({ _id, name, phone, image, address ,handleOpen,setInitialState}) {
+export default function BrandsCard({ _id, name, phone, image, address ,handleOpen,setInitialState}) {
   
   const {deleteStockData}=useStockCall()
   
@@ -46,7 +46,7 @@ export default function FirmsCard({ _id, name, phone, image, address ,handleOpen
 
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
-            <DeleteOutlineIcon  sx={btnStyle} onClick={()=>deleteStockData("firms", _id)} />
+            <DeleteOutlineIcon  sx={btnStyle} onClick={()=>deleteStockData("brands", _id)} />
           </IconButton>
           <IconButton aria-label="share">
             <EditIcon sx={btnStyle} onClick={()=>{setInitialState({_id,name,address,phone,image}); handleOpen()}} />
