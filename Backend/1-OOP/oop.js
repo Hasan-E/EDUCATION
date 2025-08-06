@@ -323,11 +323,12 @@ const myCat = new Cat('Sezar');
 console.log(myCat.makeSound());
 
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 //? Access Modifiers:
 // - PUBLIC: (Parent: Yes, Child: Yes, Instance: Yes)
 // - PROTECTED: (Parent: Yes, Child: Yes, Instance: No) (JS does not support.)
 // - PRIVATE: (Parent: Yes, Child: No, Instance: No)
+
 
 class Vehicle {
 
@@ -350,37 +351,37 @@ class Vehicle {
     }
 }
 
+class Car extends Vehicle { // Inheritance
+
+    isRunning = false
+
+    constructor(brand, model, year, vehicleType = 'Car') {
+        super(vehicleType)
+        this.brand = brand
+        this.model = model
+        this.year = year
+        // console.log('privateProperty', this.#privateProperty) // NO ACCESS
+        console.log('protectedProperty', this._protectedProperty)
+    }
+
+    runEngine() {
+        this.isRunning = true
+        console.log('Engine started')
+        return this.isRunning
+    }
+
+    getDetails() {
+        console.log('Car.getDetails started.')
+        // return this
+        return super.getDetails() // Ezdiğimiz methodu çalıştırma yöntemi.
+    }
+}
 
 
+const Ford = new Car('Ford', 'Mustang', 1967);
+console.log(Ford);
+console.log(Ford._protectedProperty);
 
+/* ------------------------------------------------------- */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// console.clear()
+// Happy Coding CH19...
