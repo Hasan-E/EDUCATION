@@ -185,7 +185,7 @@ class Car {
     }
 
     accelerate() {
-        this.#speed += 50 
+        this.#speed += 50
         console.log(`${this.brand} is going at ${this.#speed} km/h`);
     };
 }
@@ -215,10 +215,168 @@ class Payment {
 const person1 = new Payment();
 person1.proccessPayment(200);
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 //? INHERITANCE
 // Allows a child class to inherit properties and methods from a parent class.
 // SUPER: Parent Class - THIS: Child Class
+
+// Parent class: Vehicle
+
+class Vecihle {
+    constructor(type, brand, model, year) {
+        this.type = type
+        this.brand = brand
+        this.model = model
+        this.year = year
+    }
+
+    startEngine() {
+        this.isRunnig = true
+        console.log(`${this.brand} ${this.model}'s engine started!`);
+    }
+
+    stopEngine() {
+        this.isRunnig = false
+        console.log(`${this.brand} ${this.model}'s engine stopped!`);
+    }
+}
+
+// Child class: Car (inherits from Vehicle)
+class Car extends Vecihle {
+
+    constructor(brand, model, year, fuelType) {
+        super('Car', brand, model, year)
+        this.fuelType = fuelType
+    }
+
+    honk() {
+        console.log(`${this.brand} ${this.model} honks: Beep Beep!`);
+    }
+}
+
+
+const myCar = new Car('Toyota', 'Corolla', 2025, 'Petrol')
+// console.log(myCar);
+// myCar.startEngine();
+// myCar.honk();
+// myCar.stopEngine();
+
+
+// GrandChild class: ElecricCar (inherits from Car)
+class ElectiricCar extends Car {
+    constructor(brand, model, year, batteryCapacity) {
+        super(brand, model, year, 'Electiric')
+        this.batteryCapacity = batteryCapacity
+    }
+    chargeBattery() {
+        console.log(`${this.brand} ${this.model} is charging. Battery: ${this.batteryCapacity} kWh`);
+    }
+}
+
+const myTesla = new ElectiricCar('Tesla', 'Model S', 2024, 100)
+// console.log(myTesla);
+
+myTesla.startEngine();
+myTesla.chargeBattery();
+myTesla.honk();
+myTesla.stopEngine();
+
+/* ------------------------------------------------------- *
+//? POLYMORPHISIM:
+//  A child class to have different behaviors for the same method as the parent class.
+// - Method Overriding: Child class redefines a method from the parent class.
+// - Method Overloading: JavaScript does not support it natively, but TypeScript does.
+
+
+// Parent class: Animal
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    makeSound() {
+        console.log("Some generic animal sound...");
+    }
+}
+
+// Child class: Dog (inherits from Animal)
+class Dog extends Animal {
+    makeSound() { // Overriding the parent method
+        console.log(`${this.name} barks: Woof! Woof!`);
+    }
+}
+
+
+// Child class: Cat (inherits from Animal)
+class Cat extends Animal {
+    makeSound() { // Overriding the parent method
+        console.log(`${this.name} meows: Meow! Meow!`);
+    }
+}
+
+
+const genereciAnimal = new Animal('Generic Animal')
+console.log(genereciAnimal.makeSound());
+const myDog = new Dog('Buddy');
+console.log(myDog.makeSound());
+const myCat = new Cat('Sezar');
+console.log(myCat.makeSound());
+
+
+/* ------------------------------------------------------- */
+//? Access Modifiers:
+// - PUBLIC: (Parent: Yes, Child: Yes, Instance: Yes)
+// - PROTECTED: (Parent: Yes, Child: Yes, Instance: No) (JS does not support.)
+// - PRIVATE: (Parent: Yes, Child: No, Instance: No)
+
+class Vehicle {
+
+    vehicleIsActive = false // PUBLIC PROPERTY
+
+    _protectedProperty = 'protected-value' // PROTECTED PROPERTY
+    _protectedMethod() { return this } // PROTECTED METHOD
+
+    #privateProperty = 'private-value' // PRIVATE PROPERTY
+    #privateMethod() { return this } // PRIVATE METHOD
+
+    constructor(vehicleType) {
+        this.vehicleType = vehicleType
+        console.log('privateProperty', this.#privateProperty) // Allow access from only self-class.
+    }
+
+    getDetails() {
+        console.log('Vehicle.getDetails started.')
+        return this.vehicleType
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
