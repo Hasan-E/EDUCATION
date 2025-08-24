@@ -1,0 +1,7 @@
+### CTRL + ALT + R
+GET http://localhost:8000/blogs/123/ali/search
+    ?title=x
+    &page=2
+
+### 
+DELETE http://localhost:8000/status-codes

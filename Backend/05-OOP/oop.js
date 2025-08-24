@@ -323,7 +323,7 @@ const myCat = new Cat('Sezar');
 console.log(myCat.makeSound());
 
 
-/* ------------------------------------------------------- *
+/* ------------------------------------------------------- */
 //? Access Modifiers:
 // - PUBLIC: (Parent: Yes, Child: Yes, Instance: Yes)
 // - PROTECTED: (Parent: Yes, Child: Yes, Instance: No) (JS does not support.)
