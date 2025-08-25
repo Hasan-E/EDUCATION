@@ -12,7 +12,7 @@ https://mongoosejs.com/
 
 ### ERD:
 
-![ERD](./erdBlogAPI.png)
+![ERD](./erdBlogApi.png)
 
 ### Folder/File Structure:
 
