@@ -27,6 +27,7 @@ app.use(router);
 // const router = require("./routes");
 // app.use(router);
 
+// Routes
 app.use(require("./routes"));
 
 /* ============================================ */
