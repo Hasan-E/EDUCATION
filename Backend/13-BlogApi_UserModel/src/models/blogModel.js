@@ -5,6 +5,7 @@
 
 const mongoose = require('mongoose');
 
+/* ------------------------------------------------------- */
 //* BlogCategory Schema
 
 // Create a schema
@@ -24,33 +25,44 @@ const blogCategorySchema = new mongoose.Schema({
 
 const BlogCategory = mongoose.model('BlogCategory', blogCategorySchema);
 
-module.exports = { BlogCategory };
-
-
-
+/* ------------------------------------------------------- */
 //* BlogPost Schema
 
-const blogPostSchama = new mongoose.Schema({
+const blogPostSchema = new mongoose.Schema({
 
     // _id
+
+    categoryId: { // default relation: ManyToOne 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'BlogCategory', // model name for blog category
+        required: true,
+        // unique: true // convert to OneToOne relation
+    },
 
     title: {
         type: String,
         required: true,
         trim: true
-    }
+    },
 
-    
-},{
+    content: {
+        type: String,
+        required: true,
+        trim: true
+    },
+
+    // createdAt
+    // updatedAt
+
+}, {
     collection: 'blogPosts',
-    timestamps: true,
-})
+    timestamps: true
+});
 
+const BlogPost = mongoose.model('BlogPost', blogPostSchema);
 
-
-
-
-
+/* ------------------------------------------------------- */
+module.exports = { BlogCategory, BlogPost };
 
 
 /* ------------------------------------------------------- *

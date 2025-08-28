@@ -1,0 +1,27 @@
+# @name listCategory
+get http://localhost:8000/blogs/posts
+
+
+###
+
+# @name createCategory
+post http://localhost:8000/blogs/
+Content-Type: application/json
+
+{
+    "name": "Category - 4"
+}
+###
+
+# @name updateCategory
+put http://localhost:8000/blogs/68acbe6e041c60a929f43600
+Content-Type: application/json
+
+{
+    "name": "Category - 2 updated v3"
+}
+
+###
+
+# @name deleteCategory
+delete http://localhost:8000/blogs/68acbe60041c60a929f435fe
