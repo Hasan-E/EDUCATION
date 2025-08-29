@@ -72,74 +72,102 @@ db.coll.insertMany([
 /* SELECT */
 // db.coll.findOne( { filters }, { fields } )
 // db.coll.find( { filters }, { fields } )
-db.coll.find()
-db.coll.find({ firstName: 'Test' })
-db.coll.find({/* all */ }, { firstName: true, lastName: true }) // Select Fields
-db.coll.find({/* all */ }, { _id: 0, firstName: 1, lastName: 1 }) // Select Fields
-db.coll.findOne()
-db.coll.findOne({ firstName: 'Test' })
-db.coll.distinct('firstName') // get only firstName in array.
+db.coll.find();
+db.coll.find({ firstName: "Test" });
+db.coll.find(
+  {
+    /* all */
+  },
+  { firstName: true, lastName: true }
+); // Select Fields
+db.coll.find(
+  {
+    /* all */
+  },
+  { _id: 0, firstName: 1, lastName: 1 }
+); // Select Fields
+db.coll.findOne();
+db.coll.findOne({ firstName: "Test" });
+db.coll.distinct("firstName"); // get only firstName in array.
 
 // Comparison:
-db.coll.find({ 'age': { $exists: true } }) // if exists
-db.coll.find({ 'age': { $eq: 15 } }) // == : equal
-db.coll.find({ 'age': { $ne: 15 } }) // <> : not equal
-db.coll.find({ 'age': { $gt: 15 } }) // > : greather than
-db.coll.find({ 'age': { $gte: 15 } }) // >= : greather than equal
-db.coll.find({ 'age': { $lt: 15 } }) // <= : less than equal
-db.coll.find({ 'age': { $lte: 15 } }) // <= : less than equal
-db.coll.find({ 'age': { $in: [10, 11, 12] } }) // in list
-db.coll.find({ 'age': { $nin: [10, 11, 12] } }) // not in list
+db.coll.find({ age: { $exists: true } }); // if exists
+db.coll.find({ age: { $eq: 15 } }); // == : equal
+db.coll.find({ age: { $ne: 15 } }); // <> : not equal
+db.coll.find({ age: { $gt: 15 } }); // > : greather than
+db.coll.find({ age: { $gte: 15 } }); // >= : greather than equal
+db.coll.find({ age: { $lt: 15 } }); // <= : less than equal
+db.coll.find({ age: { $lte: 15 } }); // <= : less than equal
+db.coll.find({ age: { $in: [10, 11, 12] } }); // in list
+db.coll.find({ age: { $nin: [10, 11, 12] } }); // not in list
 // Regex:
 // mongodb.com/docs/manual/reference/operator/query/regex/
-db.coll.find({ firstName: { $regex: 'Test' } }) // Contains 'Test'
-db.coll.find({ firstName: /Test/ }) // Contains 'Test'
-db.coll.find({ firstName: /test/i }) // Case-InSensitive
-db.coll.find({ firstName: /^Test/ }) // StartsWith 'Test'
-db.coll.find({ firstName: /Test$/ }) // EndsWith 'Test'
+db.coll.find({ firstName: { $regex: "Test" } }); // Contains 'Test'
+db.coll.find({ firstName: /Test/ }); // Contains 'Test'
+db.coll.find({ firstName: /test/i }); // Case-InSensitive
+db.coll.find({ firstName: /^Test/ }); // StartsWith 'Test'
+db.coll.find({ firstName: /Test$/ }); // EndsWith 'Test'
 // Logical:
-db.coll.find({ 'age': { $not: { $eq: 15 } } }) // NOT {EQUAL}
-db.coll.find({ 'firstName': 'Test6', 'age': 16 }) // default: AND
-db.coll.find({ $and: [{ 'firstName': 'Test6' }, { 'age': 16 }] }) // AND
-db.coll.find({ $or: [{ 'firstName': 'Test6' }, { 'age': 15 }] }) // OR
-db.coll.find({ $nor: [{ 'firstName': 'Test6' }, { 'age': 15 }] }) // NOT OR
+db.coll.find({ age: { $not: { $eq: 15 } } }); // NOT {EQUAL}
+db.coll.find({ firstName: "Test6", age: 16 }); // default: AND
+db.coll.find({ $and: [{ firstName: "Test6" }, { age: 16 }] }); // AND
+db.coll.find({ $or: [{ firstName: "Test6" }, { age: 15 }] }); // OR
+db.coll.find({ $nor: [{ firstName: "Test6" }, { age: 15 }] }); // NOT OR
 // Limit:
-db.coll.find().limit(5) // LIMIT 5
-db.coll.find().skip(5).limit(5) // LIMIT 5, 5
+db.coll.find().limit(5); // LIMIT 5
+db.coll.find().skip(5).limit(5); // LIMIT 5, 5
 // Sort (1:ASC, -1:DESC):
-db.coll.find().sort({ age: -1 }).limit(5)
-db.coll.find().sort({ age: 1 }).limit(5)
+db.coll.find().sort({ age: -1 }).limit(5);
+db.coll.find().sort({ age: 1 }).limit(5);
 // Sort (asc: A-Z, desc: Z-A):
-db.coll.find().sort({ age: 'asc' }).limit(5)
-db.coll.find().sort({ age: 'desc' }).limit(5)
+db.coll.find().sort({ age: "asc" }).limit(5);
+db.coll.find().sort({ age: "desc" }).limit(5);
 // Count:
-db.coll.countDocuments() // ShortHand find().count()
-db.coll.countDocuments({ firstName: 'Test' })
-db.coll.estimatedDocumentCount() // for bigData
+db.coll.countDocuments(); // ShortHand find().count()
+db.coll.countDocuments({ firstName: "Test" });
+db.coll.estimatedDocumentCount(); // for bigData
 // db.coll.find().count() // deprecated.
 // db.coll.count() method is depracated.
-
-
 
 // UPDATE:
 // db.coll.updateOne( { filters }, { $set: { new_values } } )
 // db.coll.updateMany( { filters }, { $set: { new_values } } )
-db.coll.updateOne({ age: 19 }, { $set: { age: 199 } }) // Add/Update field
-db.coll.updateOne({ age: 19 }, { $set: { new_fields: 'new_value' } }) // Add/Update field
-db.coll.updateOne({ age: 19 }, { $set: { new_fields: 'new_value2' } }) // Add/Update field
-db.coll.updateMany({ age: 19 }, { $set: { new_fields: 'new_value3' } }) // Add/Update field
-db.coll.updateMany({/* all */ }, { $unset: { new_fields: 0 } }) // Drop field
-db.coll.updateMany({/* all */ }, { $currentDate: { updated_at: true } }) // set currentDate to field
-db.coll.updateMany({/* all */ }, { $inc: { age: 2 } }) // increment (age+2) field
-db.coll.updateMany({/* all */ }, { $rename: { updated_at: 'updated' } }) // rename field
+db.coll.updateOne({ age: 19 }, { $set: { age: 199 } }); // Add/Update field
+db.coll.updateOne({ age: 19 }, { $set: { new_fields: "new_value" } }); // Add/Update field
+db.coll.updateOne({ age: 19 }, { $set: { new_fields: "new_value2" } }); // Add/Update field
+db.coll.updateMany({ age: 19 }, { $set: { new_fields: "new_value3" } }); // Add/Update field
+db.coll.updateMany(
+  {
+    /* all */
+  },
+  { $unset: { new_fields: 0 } }
+); // Drop field
+db.coll.updateMany(
+  {
+    /* all */
+  },
+  { $currentDate: { updated_at: true } }
+); // set currentDate to field
+db.coll.updateMany(
+  {
+    /* all */
+  },
+  { $inc: { age: 2 } }
+); // increment (age+2) field
+db.coll.updateMany(
+  {
+    /* all */
+  },
+  { $rename: { updated_at: "updated" } }
+); // rename field
 // db.coll.update() method is depracated.
-
 
 // DELETE:
 // db.coll.deleteOne( { filters } )
 // db.coll.deleteMany( { filters } )
-db.coll.deleteOne({ age: 19 })
-db.coll.deleteMany({ age: 19 })
-db.coll.deleteMany({/* all */ }) // Delete all documents.
+db.coll.deleteOne({ age: 19 });
+db.coll.deleteMany({ age: 19 });
+db.coll.deleteMany({
+  /* all */
+}); // Delete all documents.
 // db.coll.remove() method is depracated.
-
