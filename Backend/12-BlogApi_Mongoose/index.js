@@ -15,12 +15,15 @@ const HOST = process.env.HOST;
 app.use(express.json());
 
 // DB Connection
-const dbConnection = require("./src/dbConnection");
-dbConnection();
+// const dbConnection = require("./src/dbConnection");
+// dbConnection();
+require('./src/dbConnection')();
 
 /* ============================================ */
 /* ----------------- //Routes ----------------- */
 app.all("/", (req, res) => res.send("Welcome to Blog Api"));
+
+app.use(require('./src/routes/blogRouter'))
 
 /* ============================================ */
 /* -------------- // Errorhandler ------------- */

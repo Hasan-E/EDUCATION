@@ -1,2 +1,12 @@
-### GET isteği
+# @name listCategory
 GET http://localhost:8000/
+
+###
+# @name createCategory
+
+POST http://localhost:8000/blogs/
+Content-Type: application/json
+
+{
+    "name":"Category - 1"
+}
