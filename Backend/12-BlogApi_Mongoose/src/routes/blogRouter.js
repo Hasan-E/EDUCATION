@@ -7,7 +7,7 @@ const { BlogCategory } = require("../models/blogModel");
 /* ============================================ */
 
 const router = require("express").Router();
-const blogCategory = require("../controllers/blogController");
+const {blogCategory,blogPost} = require("../controllers/blogController");
 
 /* ============================================ */
 
@@ -20,6 +20,11 @@ router
   .put(blogCategory.update)
   .patch(blogCategory.update)
   .delete(blogCategory.delete);
+
+//todo:  BlogPost route
+
+
+
 
 /* ============================================ */
 
