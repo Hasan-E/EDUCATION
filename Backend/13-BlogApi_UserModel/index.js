@@ -23,7 +23,8 @@ require('./src/dbConnection')();
 /* ----------------- //Routes ----------------- */
 app.all("/", (req, res) => res.send("Welcome to Blog Api"));
 
-app.use(require('./src/routes/blogRouter'))
+// Blog route
+app.use('/blogs',require('./src/routes/blogRouter'))
 
 /* ============================================ */
 /* -------------- // Errorhandler ------------- */

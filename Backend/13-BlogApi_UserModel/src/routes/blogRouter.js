@@ -12,17 +12,27 @@ const {blogCategory,blogPost} = require("../controllers/blogController");
 /* ============================================ */
 
 // URL : /blogs ->
-router.route("/blogs").get(blogCategory.list).post(blogCategory.create);
+
+/* ----------- Blog Category Routes ----------- */
+router.route("/categories").get(blogCategory.list).post(blogCategory.create);
 
 router
-  .route("/blogs/:id")
-  .get(blogCategory.read)
-  .put(blogCategory.update)
-  .patch(blogCategory.update)
-  .delete(blogCategory.delete);
+  .route("/categories/:id")
+  .get(blogPost.read)
+  .put(blogPost.update)
+  .patch(blogPost.update)
+  .delete(blogPost.delete);
 
-//todo:  BlogPost route
+/* -------------- BlogPost route -------------- */
 
+router.route("/posts").get(blogPost.list).post(blogPost.create);
+
+router
+  .route("/posts/:id")
+  .get(blogPost.read)
+  .put(blogPost.update)
+  .patch(blogPost.update)
+  .delete(blogPost.delete);
 
 
 

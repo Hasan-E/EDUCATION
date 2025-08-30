@@ -3,15 +3,13 @@
 /*    EXPRESSJS - Error Handler    */
 /* ============================================ */
 
-module.exports = (err,req,res,next)=> {
+module.exports = (err, req, res, next) => {
+  const statusCode = res.errorStatusCode ?? 500;
 
-const statusCode = res.errorStatusCode ?? 500
-
-    res.status(statusCode).send({
-        error:true,
-        message:err.message,
-        cause:err.cause,
-        stack:err.stack
-    })
-
-}
+  res.status(statusCode).send({
+    error: true,
+    message: err.message,
+    cause: err.cause,
+    stack: err.stack,
+  });
+};

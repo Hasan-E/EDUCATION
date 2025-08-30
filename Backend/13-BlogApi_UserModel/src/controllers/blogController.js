@@ -3,7 +3,7 @@
 /*    EXPRESSJS - BLOG PROJECT WITH MONGOOSE    */
 /* ============================================ */
 
-const { BlogCategory } = require("../models/blogModel");
+const { BlogCategory, BlogPost } = require("../models/blogModel");
 
 module.exports.blogCategory = {
   list: async (req, res) => {
@@ -71,20 +71,75 @@ module.exports.blogCategory = {
   delete: async (req, res) => {
     const result = await BlogCategory.deleteOne({ _id: req.params.id });
 
-    if(result.deletedCount){
-      res.sendStatus(204)
-    }else{
-      res.errorStatusCode = 404
+    if (result.deletedCount) {
+      res.sendStatus(204);
+    } else {
+      res.errorStatusCode = 404;
       throw new Error("Data is not found and or already deleted");
     }
-
   },
 };
 
-
-
 //todo: BlogPost controller
 
-module.exports.blogPost ={
-  
-}
+module.exports.blogPost = {
+  list: async (req, res) => {
+    const result = await BlogPost.find();
+
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
+
+  // CRUD Operations
+
+  create: async (req, res) => {
+    const result = await BlogPost.create(req.body);
+
+    res.status(201).send({
+      error: false,
+      result,
+    });
+  },
+
+  read: async (req, res) => {
+
+    const result = await BlogPost.findById(req.params.id);
+
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
+
+  update: async (req, res) => {
+
+    const result = await BlogPost.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    if (!result) {
+      res.errorStatusCode = 404;
+      throw new Error("Data is not found and not updated");
+    }
+
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
+
+  delete: async (req, res) => {
+    const result = await BlogPost.deleteOne({ _id: req.params.id });
+
+    if (result.deletedCount) {
+      res.sendStatus(204);
+    } else {
+      res.errorStatusCode = 404;
+      throw new Error("Data is not found and or already deleted");
+    }
+  },
+};
