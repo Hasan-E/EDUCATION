@@ -1,12 +1,28 @@
 # @name listCategory
-GET http://localhost:8000/
+GET http://localhost:8000/blogs/
 
 ###
 # @name createCategory
-
 POST http://localhost:8000/blogs/
 Content-Type: application/json
 
 {
-    "name":"Category - 1"
+    "name":"Category - 4"
 }
+
+###
+# @name findOneCategory
+
+GET http://localhost:8000/blogs/68b1cafc36b47693aa02fb3f
+
+###
+# @name updateCategory
+PUT http://localhost:8000/blogs/68b1cafc36b47693aa02fb3f
+Content-Type: application/json
+
+{
+    "name":"Category - 1 uptaded v4"
+}
+###
+# @name deleteCategory
+DELETE http://localhost:8000/blogs/68b1cafc36b47693aa02fb3f
