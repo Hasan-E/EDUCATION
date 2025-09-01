@@ -1,0 +1,72 @@
+# @name listCategory
+get http://localhost:8000/blogs/posts
+
+
+###
+
+# @name createCategory
+post http://localhost:8000/blogs/
+Content-Type: application/json
+
+{
+    "name": "Category - 4"
+}
+
+###
+
+# @name createPosts
+post http://localhost:8000/blogs/posts
+Content-Type: application/json
+
+{
+    "title": "Post - 4",
+    "content": "Content for post - 4",
+    "categoryId": "68acbe72041c60a929f43602"
+}
+
+###
+
+# @name updateCategory
+put http://localhost:8000/blogs/68acbe6e041c60a929f43600
+Content-Type: application/json
+
+{
+    "name": "Category - 2 updated v3"
+}
+
+###
+
+# @name deleteCategory
+delete http://localhost:8000/blogs/68acbe60041c60a929f435fe
+
+###
+
+# @name listUsers
+get http://localhost:8000/users
+
+
+###
+
+# @name CreateUsers
+post http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "email": "test3@test.com",
+    "password": "test12345",
+    "userName": "test - 3"
+}
+
+###
+
+# @name login
+post http://localhost:8000/users/login
+Content-Type: application/json
+
+{
+    "email": "test3@test.com",
+    "password": "test12345",
+    "rememberMe": true
+}
+
+###
