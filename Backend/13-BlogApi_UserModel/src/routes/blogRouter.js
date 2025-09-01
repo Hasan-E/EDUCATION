@@ -1,7 +1,5 @@
 "use strict";
 
-const { BlogCategory } = require("../models/blogModel");
-
 /* ============================================ */
 /*    EXPRESSJS - BLOG PROJECT WITH MONGOOSE    */
 /* ============================================ */

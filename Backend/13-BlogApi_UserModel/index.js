@@ -17,14 +17,15 @@ app.use(express.json());
 // DB Connection
 // const dbConnection = require("./src/dbConnection");
 // dbConnection();
-require('./src/dbConnection')();
+require("./src/dbConnection")();
 
 /* ============================================ */
 /* ----------------- //Routes ----------------- */
 app.all("/", (req, res) => res.send("Welcome to Blog Api"));
 
 // Blog route
-app.use('/blogs',require('./src/routes/blogRouter'))
+app.use("/blogs", require("./src/routes/blogRouter"));
+app.use("/users", require("./src/routes/userRouter"));
 
 /* ============================================ */
 /* -------------- // Errorhandler ------------- */
