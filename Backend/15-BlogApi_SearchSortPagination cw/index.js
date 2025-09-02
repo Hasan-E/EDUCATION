@@ -51,3 +51,6 @@ app.use(require('./src/middlewares/errorHandler'));
 
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log(`Running at: http://${HOST}:${PORT}`));
+
+//!seeding data (Run only once)
+// require('./src/seed')();

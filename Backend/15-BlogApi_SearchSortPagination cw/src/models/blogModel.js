@@ -3,73 +3,79 @@
      EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 /* ------------------------------------------------------- */
 //* BlogCategory Schema
 
 // Create a schema
-const blogCategorySchema = new mongoose.Schema({
-
+const blogCategorySchema = new mongoose.Schema(
+  {
     // _id
 
     name: {
-        type: String,
-        trim: true,
-        required: [true, 'Name field is required']
-    }
+      type: String,
+      trim: true,
+      required: [true, "Name field is required"],
+    },
+  },
+  {
+    collection: "blogCategories",
+  }
+);
 
-}, {
-    collection: 'blogCategories'
-});
-
-const BlogCategory = mongoose.model('BlogCategory', blogCategorySchema);
+const BlogCategory = mongoose.model("BlogCategory", blogCategorySchema);
 
 /* ------------------------------------------------------- */
 //* BlogPost Schema
 
-const blogPostSchema = new mongoose.Schema({
-
+const blogPostSchema = new mongoose.Schema(
+  {
     // _id
 
-    categoryId: { // default relation: ManyToOne 
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'BlogCategory', // model name for blog category
-        required: true,
-        // unique: true // convert to OneToOne relation
+    categoryId: {
+      // default relation: ManyToOne
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "BlogCategory", // model name for blog category
+      required: true,
+      // unique: true // convert to OneToOne relation
     },
 
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
 
     title: {
-        type: String,
-        required: true,
-        trim: true
+      type: String,
+      required: true,
+      trim: true,
     },
 
     content: {
-        type: String,
-        required: true,
-        trim: true
+      type: String,
+      required: true,
+      trim: true,
+    },
+    published: {
+      type: Boolean,
+      default: false,
     },
 
     // createdAt
     // updatedAt
+  },
+  {
+    collection: "blogPosts",
+    timestamps: true,
+  }
+);
 
-}, {
-    collection: 'blogPosts',
-    timestamps: true
-});
-
-const BlogPost = mongoose.model('BlogPost', blogPostSchema);
+const BlogPost = mongoose.model("BlogPost", blogPostSchema);
 
 /* ------------------------------------------------------- */
 module.exports = { BlogCategory, BlogPost };
-
 
 /* ------------------------------------------------------- *
 

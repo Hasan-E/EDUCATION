@@ -1,5 +1,11 @@
 # @name listCategory
 get http://localhost:8000/blogs/posts
+    ?filter[published]=true
+    &search[content]= 71 content
+    # &sort[createdAt]=desc
+    # &page=2
+    # &limit=10
+    # &search[title]=test
 
 
 ###

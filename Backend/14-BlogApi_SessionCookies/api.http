@@ -1,0 +1,94 @@
+############   LİST   ###########
+# @name listCategory
+GET http://localhost:8000/blogs/categories
+
+###
+# @name listPosts
+GET http://localhost:8000/blogs/posts
+
+###
+# @name listUsers
+GET http://localhost:8000/users
+
+
+
+
+############   CREATE   ###########
+# @name createCategory
+POST http://localhost:8000/blogs/categories
+Content-Type: application/json
+
+{
+    "name":"Category - 4"
+}
+
+###
+# @name createPOSTS
+POST http://localhost:8000/blogs/posts
+Content-Type: application/json
+
+{
+    "title": "post - 2",
+    "content": "Content for post-2",
+    "categoryId": "68b2d459e2478ded8d72fff2"
+}
+
+###
+# @name createUsers
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "email": "test6@test.com",
+    "password": "test6",
+    "userName": "test - 6"
+}
+
+
+
+
+############   FİNDONE   ###########
+# @name findOneCategory
+
+GET http://localhost:8000/blogs/categories/68b1cafc36b47693aa02fb3f
+
+###
+# @name findOnePOSTS
+
+GET http://localhost:8000/blogs/posts/68b1cafc36b47693aa02fb3f
+
+###
+# @name findOneUsers
+
+GET http://localhost:8000/users/68b596a1e063deeddf7abb1c
+
+
+
+
+############   UPDATE   ###########
+# @name updateCategory
+PUT http://localhost:8000/blogs/categories/68b1cafc36b47693aa02fb3f
+Content-Type: application/json
+
+{
+    "name":"Category - 1 uptaded v4"
+}
+
+###
+# @name updatePOSTS
+PUT http://localhost:8000/blogs/posts/68b1cafc36b47693aa02fb3f
+Content-Type: application/json
+
+{
+    "name":"Category - 1 uptaded v4"
+}
+
+
+
+############   DELETE   ###########
+# @name deleteCategory
+DELETE http://localhost:8000/blogs/categories/68b1cafc36b47693aa02fb3f
+
+###
+# @name deletePOSTS
+DELETE http://localhost:8000/blogs/posts/68b1cafc36b47693aa02fb3f
