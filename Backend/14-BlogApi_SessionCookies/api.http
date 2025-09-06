@@ -39,9 +39,9 @@ POST http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "email": "test6@test.com",
-    "password": "test6",
-    "userName": "test - 6"
+    "email": "test1@test.com",
+    "password": "test12345",
+    "userName": "test - 1"
 }
 
 
@@ -95,10 +95,10 @@ DELETE http://localhost:8000/blogs/posts/68b1cafc36b47693aa02fb3f
 
 ############   LOGIN LOGOUT REGİSTER   ###########
 # @name login
-POST http://localhost:8000/user/login
+POST http://localhost:8000/users/login
 Content-Type: application/json
 
 {
-    "email":"test16@test.com",
-    "password": "test"
+    "email":"test1@test.com",
+    "password": "test12345"
 }

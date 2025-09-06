@@ -4,6 +4,7 @@
 /* ============================================ */
 
 const User = require("../models/userModel");
+const passwordEncrypte = require("../utils/passwordEncrypte");
 
 module.exports = {
   list: async (req, res) => {
@@ -66,9 +67,30 @@ module.exports = {
     // ilk adım , kişinin gönderdiği bilgileri yakala
     const { email, password } = req.body;
 
-    res.status(200).send({
-      error: false,
-      message: "ok",
-    });
+    // Email ve password Kontrolü
+    if (email && password) {
+      // email i doğrula
+      // const user = await User.findOne({email:email})
+      const user = await User.findOne({ email });
+
+      if (user) {
+        // pasword doğrulama
+        if (passwordEncrypte(password) === user.password) {
+          res.status(200).send({
+            error: false,
+            message: "ok",
+          });
+        } else {
+          res.errorStatusCode = 401;
+          throw new Error("Wrong email or password");
+        }
+      } else {
+        res.errorStatusCode = 401;
+        throw new Error("Wrong email or password");
+      }
+    } else {
+      res.errorStatusCode = 401;
+      throw new Error("Email and Password are required");
+    }
   },
 };

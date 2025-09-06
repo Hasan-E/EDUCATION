@@ -5,7 +5,9 @@
 
 const mongoose = require("mongoose");
 const crypto = require("node:crypto");
-/* ============================================ */
+const passwordEncrypte = require("../utils/passwordEncrypte");
+
+/* ============================================ *
 
 // Password Encryption
 // https://nodejs.org/docs/latest/api/crypto.html#cryptobkdf2syncpassword-salt-iterations-keylen-digest
@@ -21,6 +23,7 @@ const passwordEncrypte = function (password) {
     .toString("hex");
 };
 
+/* ============================================ */
 const userSchema = new mongoose.Schema(
   {
     email: {
@@ -60,7 +63,7 @@ const userSchema = new mongoose.Schema(
       //   set: (pass) => {
       //     return passwordEncrypte(pass)
       //   }
-      set: passwordEncrypte,
+      set: passwordEncrypte
     },
 
     userName: {
