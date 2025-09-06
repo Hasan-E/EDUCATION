@@ -92,3 +92,13 @@ DELETE http://localhost:8000/blogs/categories/68b1cafc36b47693aa02fb3f
 ###
 # @name deletePOSTS
 DELETE http://localhost:8000/blogs/posts/68b1cafc36b47693aa02fb3f
+
+############   LOGIN LOGOUT REGİSTER   ###########
+# @name login
+POST http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "email":"test16@test.com",
+    "password": "test"
+}

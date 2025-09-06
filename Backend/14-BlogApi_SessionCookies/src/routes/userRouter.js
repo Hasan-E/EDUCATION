@@ -21,6 +21,8 @@ router
   .patch(user.update)
   .delete(user.delete);
 
+router.post("/login", user.login);
+
 /* ============================================ */
 
 module.exports = router;

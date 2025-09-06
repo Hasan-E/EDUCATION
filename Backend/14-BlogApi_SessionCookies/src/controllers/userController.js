@@ -61,4 +61,14 @@ module.exports = {
       throw new Error("Data is not found or something wrong.");
     }
   },
+
+  login: async (req, res) => {
+    // ilk adım , kişinin gönderdiği bilgileri yakala
+    const { email, password } = req.body;
+
+    res.status(200).send({
+      error: false,
+      message: "ok",
+    });
+  },
 };
