@@ -20,6 +20,7 @@ const session = require("cookie-session");
 app.use(
   session({
     secret: process.env.PASS_SALT,
+    maxAge: 100 * 60 * 60 * 24 * 3 // 3 days in miliseconds // now this is a cookie
   })
 );
 

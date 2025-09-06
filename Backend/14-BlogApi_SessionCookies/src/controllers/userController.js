@@ -76,9 +76,25 @@ module.exports = {
       if (user) {
         // pasword doğrulama
         if (passwordEncrypte(password) === user.password) {
+          //session
+          // req.session._id = user._id;
+          // req.session.email = user.email;
+
+          req.session = {
+            email: user.email,
+            _id: user._id,
+          };
+
+          // cookie
+          if (req.body?.rememberMe) {
+            req.session.rememberMe = true;
+            req.sessionOptions.maxAge = 100 * 60 * 60 * 24 * 3;
+          }
+
           res.status(200).send({
             error: false,
-            message: "login success",
+            message: "Login is success",
+            user,
           });
         } else {
           res.errorStatusCode = 401;
@@ -93,4 +109,14 @@ module.exports = {
       throw new Error("Email and Password are required");
     }
   },
+
+  logout: async (req,res) => {
+
+    req.session = null; // session objesini temizler
+
+    res.status(200).send({
+      error:false,
+      message:"logout is success"
+    })
+  }
 };

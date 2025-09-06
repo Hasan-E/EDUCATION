@@ -23,6 +23,8 @@ router
 
 router.post("/login", user.login);
 
+router.all('/logout', user.logout);
+
 /* ============================================ */
 
 module.exports = router;

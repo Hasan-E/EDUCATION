@@ -104,5 +104,9 @@ Content-Type: application/json
 
 {
     "email":"test1@test.com",
-    "password": "test12345"
+    "password": "test12345",
+    "rememberMe": true
 }
+###
+# @name logout
+POST http://localhost:8000/users/logout
