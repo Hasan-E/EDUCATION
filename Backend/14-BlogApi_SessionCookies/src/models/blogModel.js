@@ -23,7 +23,6 @@ const blogCategorySchema = new mongoose.Schema(
 
 const BlogCategory = mongoose.model("BlogCategory", blogCategorySchema);
 
-
 /* ============================================ */
 /* ----------- todo: BlogPost Schema ---------- */
 
@@ -31,12 +30,20 @@ const blogPostSchema = new mongoose.Schema(
   {
     // _id
 
-    categoryId: { // default relation : manyToOne
+    categoryId: {
+      // default relation : manyToOne
       type: mongoose.Schema.Types.ObjectId,
       ref: "BlogCategory", // model name for blog Category
       required: true,
-      // unique:true // convert to OneToOne relation 
+      // unique:true // convert to OneToOne relation
     },
+
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
     title: {
       type: String,
       required: true,
@@ -57,11 +64,11 @@ const blogPostSchema = new mongoose.Schema(
   }
 );
 
-const BlogPost = mongoose.model('BlogPost', blogPostSchema);
+const BlogPost = mongoose.model("BlogPost", blogPostSchema);
 
 /* ============================================ */
 
-module.exports = { BlogCategory,BlogPost};
+module.exports = { BlogCategory, BlogPost };
 
 /* ============================================ */
 //* Sample

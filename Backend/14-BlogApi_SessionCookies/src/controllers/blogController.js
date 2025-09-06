@@ -5,6 +5,7 @@
 
 const { BlogCategory, BlogPost } = require("../models/blogModel");
 
+//! --------- BLOG CATEDORY CONTROLLER --------- */
 module.exports.blogCategory = {
   list: async (req, res) => {
     const result = await BlogCategory.find();
@@ -80,6 +81,8 @@ module.exports.blogCategory = {
   },
 };
 
+//! --------- BLOG POST CONTROLLER --------- */
+
 //todo: BlogPost controller
 
 module.exports.blogPost = {
@@ -95,6 +98,22 @@ module.exports.blogPost = {
   // CRUD Operations
 
   create: async (req, res) => {
+    // const userId = req.session._id;
+
+    //* before userControl middleware
+    // if (!userId) {
+    //   throw new Error("You must login to create a post");
+    // }
+
+    // req.body.userId = req.session._id;
+
+    //* after userControl middleware
+    if(!req.user) {
+      throw new Error('You must login to create a post')
+    }
+
+    req.body.userId = req.user?._id;
+
     const result = await BlogPost.create(req.body);
 
     res.status(201).send({
@@ -104,7 +123,6 @@ module.exports.blogPost = {
   },
 
   read: async (req, res) => {
-
     const result = await BlogPost.findById(req.params.id);
 
     res.status(200).send({
@@ -114,12 +132,9 @@ module.exports.blogPost = {
   },
 
   update: async (req, res) => {
-
-    const result = await BlogPost.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const result = await BlogPost.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
 
     if (!result) {
       res.errorStatusCode = 404;

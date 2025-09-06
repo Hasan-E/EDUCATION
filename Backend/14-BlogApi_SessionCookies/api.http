@@ -32,8 +32,8 @@ POST http://localhost:8000/blogs/posts
 Content-Type: application/json
 
 {
-    "title": "post - 2",
-    "content": "Content for post-2",
+    "title": "post - 5",
+    "content": "Content for post-5",
     "categoryId": "68b2d459e2478ded8d72fff2"
 }
 
