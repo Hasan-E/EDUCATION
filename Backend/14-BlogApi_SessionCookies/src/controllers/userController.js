@@ -78,7 +78,7 @@ module.exports = {
         if (passwordEncrypte(password) === user.password) {
           res.status(200).send({
             error: false,
-            message: "ok",
+            message: "login success",
           });
         } else {
           res.errorStatusCode = 401;

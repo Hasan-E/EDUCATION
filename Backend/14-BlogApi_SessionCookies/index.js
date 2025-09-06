@@ -14,6 +14,15 @@ const HOST = process.env.HOST;
 // Accept and Parse data
 app.use(express.json());
 
+// SessionCookie
+// $npm install cookie-session
+const session = require("cookie-session");
+app.use(
+  session({
+    secret: process.env.PASS_SALT,
+  })
+);
+
 // DB Connection
 // const dbConnection = require("./src/dbConnection");
 // dbConnection();
@@ -21,7 +30,12 @@ require("./src/dbConnection")();
 
 /* ============================================ */
 /* ----------------- //Routes ----------------- */
-app.all("/", (req, res) => res.send("Welcome to Blog Api"));
+app.all("/", (req, res) => {
+  res.send({
+    message: "Welcome to Blog Api",
+    session: req.session,
+  });
+});
 
 // Blog route
 app.use("/blogs", require("./src/routes/blogRouter"));
