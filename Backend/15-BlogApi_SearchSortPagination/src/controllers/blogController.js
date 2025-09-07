@@ -8,10 +8,12 @@ const { BlogCategory, BlogPost } = require("../models/blogModel");
 //! --------- BLOG CATEDORY CONTROLLER --------- */
 module.exports.blogCategory = {
   list: async (req, res) => {
-    const result = await BlogCategory.find();
+    // const result = await BlogCategory.find();
+    const result = await res.getModelList(BlogCategory);
 
     res.status(200).send({
       error: false,
+      details: await res.getModelListDetails(BlogCategory),
       result,
     });
   },
@@ -87,7 +89,7 @@ module.exports.blogCategory = {
 
 module.exports.blogPost = {
   list: async (req, res) => {
-    //? -- FILTERING SEARCHING SORTING PAGINATION -- */
+    /* -- FILTERING SEARCHING SORTING PAGINATION -- *
 
     // Filter: kesin eşitlik arar
     // Search: kısmi eşitlik arar
@@ -132,23 +134,35 @@ module.exports.blogPost = {
     //200 / limit & skip => 2. sf =>  (page - 1 )*limit=skip
 
     // limit = 10  skip= 10  -> 2.sayfayı ifade eder
-    //* PAGINATION
+    //* PAGINATIONS
+
+    //PAGE
     //URL?page=2
     let page = parseInt(req.query?.page);
     page = page > 0 ? page : 1;
 
+    //LIMIT
+    //URL?limit=20
     let limit = parseInt(req.query?.limit);
     limit = limit > 0 ? limit : 20;
 
+    //SKIP
+    //URL?skip=10
     let skip = parseInt(req.query?.skip);
-    limit = skip > 0 ? skip : (page - 1) * limit;
+    skip = skip > 0 ? skip : (page - 1) * limit;
 
-    const result = await BlogPost.find({ ...search, ...filter }).sort(sort);
-
+    const result = await BlogPost.find({ ...search, ...filter })
+      .sort(sort)
+      .skip(skip)
+      .limit(limit).populate('categoryId');
+/* ============================================ */
     // const result = await BlogPost.find();
+
+    const result = await res.getModelList(BlogPost, ["categoryId", "userId"]);
 
     res.status(200).send({
       error: false,
+      details: await res.getModelListDetails(BlogPost),
       result,
     });
   },

@@ -16,6 +16,9 @@ const HOST = process.env.HOST;
 // Accept and Parse data
 app.use(express.json());
 
+//FilterSearchSortPagination middleware
+app.use(require("./src/Middlewares/filterSearchSortPagination"));
+
 // SessionCookie
 // $npm install cookie-session
 const session = require("cookie-session");

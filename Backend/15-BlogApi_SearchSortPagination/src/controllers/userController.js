@@ -8,7 +8,9 @@ const passwordEncrypte = require("../utils/passwordEncrypte");
 
 module.exports = {
   list: async (req, res) => {
-    const result = await User.find();
+    // const result = await User.find();
+    const result = await res.getModelList(User)
+    
 
     res.status(200).send({
       error: false,
