@@ -1,0 +1,7 @@
+#######  LIST  #######
+# @name GlobalGET
+GET http://localhost:8000
+
+###
+# @name DepartmentList
+GET http://localhost:8000/departments

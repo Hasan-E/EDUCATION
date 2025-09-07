@@ -1,14 +1,14 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     EXPRESS - Personnel API
 ------------------------------------------------------- */
 /*
-    $ npm i express dotenv mongoose express-async-errors
+    $ npm i express dotenv mongoose 
     $ npm i cookie-session
 */
-
-const express = require('express')
-const app = express()
+//! ------------ IMPORT AND CONFIGS ------------ */
+const express = require("express");
+const app = express();
 
 // Nested Query
 app.set("query parser", "extended");
@@ -16,23 +16,46 @@ app.set("query parser", "extended");
 require("dotenv").config();
 const PORT = process.env?.PORT || 8000;
 
+// DB Connection
+const { dbConnection } = require("./src/configs/dbConnection");
+dbConnection();
+
 /* ------------------------------------------------------- */
+//! ---------------- MIDDLEWARES --------------- */
 // Accept JSON:
-app.use(express.json())
+app.use(express.json());
 
+// Cookei-Sessions
+app.use(
+  require("cookie-session")({
+    secret: process.env.SECRET_KEY,
+  })
+);
+
+// Query Handler
+app.use(require("./src/middlewares/queryHandler"));
 
 /* ------------------------------------------------------- */
+//! ------------------ ROUTES ------------------ */
 
+// Home Path
+app.all("/", (req, res) => {
+  res.status(200).send({
+    error: false,
+    message: "Welcome to Personal API Services",
+    session: req.session,
+  });
+});
 
-
-
+//Departments
+app.use("/departments", require("./src/routes/department.router"));
 
 /* ------------------------------------------------------- */
-// ErrorHandler:
-app.use(require('./src/middlewares/errorHandler'))
+//! --------------- ERROR HANDLER -------------- */
+app.use(require("./src/middlewares/errorHandler"));
 
-// RUN SERVER:
-app.listen(PORT, () => console.log('Running: http://127.0.0.1:' + PORT))
+//! ---------------- RUN SERVER ---------------- */
+app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
 
 /* ------------------------------------------------------- */
 // Syncronization (must be in commentLine):
