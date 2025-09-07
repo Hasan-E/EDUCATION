@@ -87,7 +87,65 @@ module.exports.blogCategory = {
 
 module.exports.blogPost = {
   list: async (req, res) => {
-    const result = await BlogPost.find();
+    //? -- FILTERING SEARCHING SORTING PAGINATION -- */
+
+    // Filter: kesin eşitlik arar
+    // Search: kısmi eşitlik arar
+
+    // nested query
+    // filter[published]=false
+    // sort[createdAt]=desc
+    // search[title]=test
+    // console.log(req.query);
+
+    //* FILTERING
+    //URL?filter[fieldName1]=Value1&filter[fieldName2]=value2
+    const filter = req.query?.filter || {};
+
+    //* SEARCHING
+    //URL?search[fieldName1]=Value1&search[fieldName2]=value2
+    // mongodb search
+    // { <field>: { $regex: /pattern/, $options: '<options>' } }
+    // { "<field>": { "$regex": "pattern", "$options": "<options>" } }
+    // { "content": { "$regex": " 1 content", "$options": $options: 'i' } }
+    // { <field>: { $regex: /pattern/<options> } }
+
+    const search = req.query?.search || {};
+
+    // console.log(search.content);
+    // search.content = '2 content'
+    // search['content'] = '3 content'
+    // console.log(search['content']);
+
+    for (let key in search) {
+      search[key] = { $regex: search[key], $options: "i" };
+    }
+
+    //* SORTING
+    //URL?sort[fieldName1]=Value1&sort[fieldName2]=value2
+
+    const sort = req.query?.sort || {};
+
+    // pg1 = 20 data -> skip=0 , limit=20
+    // pg2 = 20 data -> skip=20 , limit=20
+    // pg3 = 20 data -> skip=40 , limit=20
+    //200 / limit & skip => 2. sf =>  (page - 1 )*limit=skip
+
+    // limit = 10  skip= 10  -> 2.sayfayı ifade eder
+    //* PAGINATION
+    //URL?page=2
+    let page = parseInt(req.query?.page);
+    page = page > 0 ? page : 1;
+
+    let limit = parseInt(req.query?.limit);
+    limit = limit > 0 ? limit : 20;
+
+    let skip = parseInt(req.query?.skip);
+    limit = skip > 0 ? skip : (page - 1) * limit;
+
+    const result = await BlogPost.find({ ...search, ...filter }).sort(sort);
+
+    // const result = await BlogPost.find();
 
     res.status(200).send({
       error: false,
@@ -108,8 +166,8 @@ module.exports.blogPost = {
     // req.body.userId = req.session._id;
 
     //* after userControl middleware
-    if(!req.user) {
-      throw new Error('You must login to create a post')
+    if (!req.user) {
+      throw new Error("You must login to create a post");
     }
 
     req.body.userId = req.user?._id;

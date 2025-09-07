@@ -110,3 +110,14 @@ Content-Type: application/json
 ###
 # @name logout
 POST http://localhost:8000/users/logout
+
+########## FILTERING SEARCHING SORTING PAGINATION #########
+# @name searching
+GET http://localhost:8000/blogs/posts
+    ?filter[published]=true
+    &page=2
+    &limit=10
+    # &sort[createdAt]=desc
+    # &search[content]= 71 Content
+    # &sort[title]=desc
+    # &search[title]=test

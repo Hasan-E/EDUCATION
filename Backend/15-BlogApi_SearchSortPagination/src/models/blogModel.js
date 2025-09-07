@@ -5,7 +5,7 @@
 
 const mongoose = require("mongoose");
 
-/* ------------ BlogCategory Schema ----------- */
+//! ------------ BlogCategory Schema ----------- */
 /* -------------- Create a schema ------------- */
 const blogCategorySchema = new mongoose.Schema(
   {
@@ -24,7 +24,7 @@ const blogCategorySchema = new mongoose.Schema(
 const BlogCategory = mongoose.model("BlogCategory", blogCategorySchema);
 
 /* ============================================ */
-/* ----------- todo: BlogPost Schema ---------- */
+//! ----------- todo: BlogPost Schema ---------- */
 
 const blogPostSchema = new mongoose.Schema(
   {
@@ -54,6 +54,11 @@ const blogPostSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+    },
+
+    published: {
+      type: Boolean,
+      default: false,
     },
     // createdAt
     // updatedAt
