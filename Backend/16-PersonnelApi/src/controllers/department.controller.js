@@ -17,7 +17,7 @@ module.exports = {
   },
 
   create: async (req, res) => {
-    const result = await res.Department.create(req.body);
+    const result = await Department.create(req.body);
 
     res.status(201).send({
       error: false,
@@ -26,7 +26,7 @@ module.exports = {
   },
 
   read: async (req, res) => {
-    const result = await res.Department.findOne({ _id: req.params.id });
+    const result = await Department.findOne({ _id: req.params.id });
 
     res.status(200).send({
       error: false,
@@ -35,14 +35,10 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    const result = await res.Department.updateOne(
-      { _id: req.params.id },
-      req.body,
-      {
-        runValidators: true, // run validation method
-        new: true, // returns updated data
-      }
-    );
+    const result = await Department.findOneAndUpdate(req.params.id, req.body, {
+      runValidators: true, // run validation method
+      new: true, // returns updated data
+    });
 
     res.status(202).send({
       error: false,
@@ -51,7 +47,7 @@ module.exports = {
   },
 
   dlt: async (req, res) => {
-    const result = await res.Department.deleteOne({ _id: req.params.id });
+    const result = await Department.deleteOne({ _id: req.params.id });
 
     res.status(result.deletedCount ? 204 : 404).send({
       error: true,

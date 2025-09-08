@@ -1,7 +1,25 @@
-#######  LIST  #######
+#######  GLOBAL  #######
 # @name GlobalGET
 GET http://localhost:8000
 
-###
+#######  LIST  #######
 # @name DepartmentList
 GET http://localhost:8000/departments
+
+#######  CREATE  #######
+# @name DepartmentCreate
+POST http://localhost:8000/departments
+Content-Type: application/json
+
+{
+    "name": "FS19"
+}
+
+#######  UPDATE  #######
+# @name DepartmentUpdate
+PUT http://localhost:8000/departments/68be0dc941da88a3af164298
+Content-Type: application/json
+
+{
+    "name": "FS-19"
+}
