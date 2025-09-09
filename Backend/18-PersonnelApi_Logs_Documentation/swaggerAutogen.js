@@ -54,7 +54,7 @@ const document = {
   schemes: ["http", "https"],
   host: `${HOST}:${PORT}`,
   baseUrl: "/",
-  securtiyDefinitions: {
+  securityDefinitions: {
     Token: {
       type: "apiKey",
       in: "header",
@@ -64,6 +64,11 @@ const document = {
     },
   },
   security: [{ Token: [] }],
+
+  definitions: {
+    Department: require("./src/models/department.model").schema.obj,
+    Personnel: require("./src/models/personnel.model").schema.obj,
+  },
 };
 
 // To run swaggerAutogen: node swaggerAutgen.js

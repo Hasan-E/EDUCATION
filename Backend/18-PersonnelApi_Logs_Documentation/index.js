@@ -31,6 +31,9 @@ app.use(
   })
 );
 
+// Cors
+const cors = require("cors");
+app.use(cors());
 // Query Handler:
 app.use(require("./src/middlewares/queryHandler"));
 
@@ -83,6 +86,34 @@ app.use(
 );
 
 /* Logger */
+
+// Documentation
+// yarn add swagger-autogen  --dev
+// yarn add swagger-ui-express --dev
+
+// Json
+app.use("/documents/json", (req, res) => {
+  res.sendFile("swagger.json", { root: "." });
+});
+// Swagger
+const swaggerUi = require("swagger-ui-express");
+const swaggerJson = require("./swagger.json");
+
+app.use(
+  "/documents/swagger",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerJson, {
+    swaggerOptions: { persistAuthorization: true },
+  })
+);
+
+// Redoc
+const redoc = require("redoc-express");
+app.use(
+  "/documents/redoc",
+  redoc({ specUrl: "/documents/json", title: "Redoc UI" })
+);
+
 /* ------------------------------------------------------- */
 // Routes
 
@@ -91,6 +122,13 @@ app.all("/", (req, res) => {
   res.status(200).send({
     error: false,
     message: "Welcome to Personnel API Service",
+    api: {
+      documents: {
+        swagger: "http://localhost:8000/documents/swagger",
+        redoc: "http://localhost:8000/documents/redoc",
+        json: "http://localhost:8000/documents/json",
+      },
+    },
     session: req.session,
   });
 });
