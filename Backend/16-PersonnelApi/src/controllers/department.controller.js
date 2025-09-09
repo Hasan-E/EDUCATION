@@ -35,7 +35,7 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    const result = await Department.findOneAndUpdate(req.params.id, req.body, {
+    const result = await Department.findByIdAndUpdate(req.params.id, req.body, {
       runValidators: true, // run validation method
       new: true, // returns updated data
     });

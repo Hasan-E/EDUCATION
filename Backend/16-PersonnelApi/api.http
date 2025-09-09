@@ -6,6 +6,10 @@ GET http://localhost:8000
 # @name DepartmentList
 GET http://localhost:8000/departments
 
+#######  READ  #######
+# @name DepartmentRead
+GET http://localhost:8000/departments/68be0dc941da88a3af164298
+
 #######  CREATE  #######
 # @name DepartmentCreate
 POST http://localhost:8000/departments
@@ -23,3 +27,7 @@ Content-Type: application/json
 {
     "name": "FS-19"
 }
+
+#######  DELETE  #######
+# @name DepartmentDelete
+GET http://localhost:8000/departments/68be0dc941da88a3af164298
