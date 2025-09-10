@@ -47,7 +47,7 @@ const personnelSchema = new Schema(
       type: String,
       trim: true,
       required: true,
-      unique: true,
+      // unique: true,
       match: [/^\d{12}$/, "Phone number is not valid."],
     },
 

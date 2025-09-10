@@ -8,8 +8,14 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "name": "FS-19"
+    "userName":"test-1",
+    "password":"test-1"
 }
+
+###
+# @name Loguot
+POST http://localhost:8000/auth/logout
+Content-Type: application/json
 
 #######  LIST  #######
 # @name DepartmentList

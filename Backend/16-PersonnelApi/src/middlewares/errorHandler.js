@@ -5,7 +5,7 @@
 // app.use(errorHandler):
 
 module.exports = (err, req, res, next) => {
-  return res.status(error?.statusCode).send({
+  return res.status(err?.statusCode).send({
     error: true,
     message: err.message,
     cause: err.cause,
