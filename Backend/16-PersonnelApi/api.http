@@ -23,6 +23,10 @@ GET http://localhost:8000/personnels/
 # @name DepartmentRead
 GET http://localhost:8000/departments/68be0dc941da88a3af164298
 
+###
+# @name PersonnelRead
+GET http://localhost:8000/personnels/68c1eb886ba4f112404660f5
+
 #######  CREATE  #######
 # @name DepartmentCreate
 POST http://localhost:8000/departments
