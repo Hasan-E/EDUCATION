@@ -4,7 +4,11 @@ GET http://localhost:8000
 
 #######  LIST  #######
 # @name DepartmentList
-GET http://localhost:8000/departments
+GET http://localhost:8000/departments/
+
+###
+# @name PersonnelList
+GET http://localhost:8000/personnels/
 
 #######  READ  #######
 # @name DepartmentRead
@@ -16,7 +20,25 @@ POST http://localhost:8000/departments
 Content-Type: application/json
 
 {
-    "name": "FS19"
+    "name": "FS-19"
+}
+
+###
+# @name PersonnelCreate
+GET http://localhost:8000/personnels/
+Content-Type: application/json
+
+{
+    "departmentId": "68c05d59e15655549e617ff5",
+    "userName": "test-1",
+    "password": "test-1",
+    "firstName": "test-1-f",
+    "lastName": "test-1-l",
+    "phone": "905551234567",
+    "email": "test-1@test.com",
+    "title": "test-1-title",
+    "salary": 2000,
+    "description": "test-1-desc"
 }
 
 #######  UPDATE  #######
