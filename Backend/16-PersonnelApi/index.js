@@ -53,6 +53,9 @@ app.use("/departments", require("./src/routes/department.router"));
 //Personnels
 app.use("/personnels", require("./src/routes/personnel.router"));
 
+//auth
+app.use("/auth", require("./src/routes/auth.router"));
+
 /* ------------------------------------------------------- */
 //! --------------- ERROR HANDLER -------------- */
 app.use(require("./src/middlewares/errorHandler"));

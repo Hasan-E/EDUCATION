@@ -2,6 +2,15 @@
 # @name GlobalGET
 GET http://localhost:8000
 
+###
+# @name Login
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "name": "FS-19"
+}
+
 #######  LIST  #######
 # @name DepartmentList
 GET http://localhost:8000/departments/
