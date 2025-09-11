@@ -5,6 +5,8 @@
 
 const Personnel = require("../models/personnel.model");
 const CustomError = require("../helpers/customError");
+const Token = require("../models/token.model");
+const passwordEncrypt = require("../helpers/passwordEncrypt");
 
 module.exports = {
   login: async (req, res) => {
@@ -27,15 +29,15 @@ module.exports = {
     if (!user.isActive)
       throw new CustomError("The user status is not active", 401);
 
-    // Session
-    req.session = { id: user.id, email: user.email };
-
-    //Cookie
-    if (req.body.rememberMe)
-      req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3; // 3 days
+    // Token
+    const token = await Token.create({
+      userId: user._id,
+      token: passwordEncrypt(user._id + Date.now()),
+    });
 
     res.status(200).send({
       error: false,
+      token,
       user,
     });
   },

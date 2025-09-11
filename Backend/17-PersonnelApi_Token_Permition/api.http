@@ -8,12 +8,12 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "userName":"test-1",
-    "password":"test-1"
+    "userName":"testF0",
+    "password":"1234"
 }
 
 ###
-# @name Loguot
+# @name Logout
 POST http://localhost:8000/auth/logout
 Content-Type: application/json
 
@@ -24,6 +24,10 @@ GET http://localhost:8000/departments/
 ###
 # @name PersonnelList
 GET http://localhost:8000/personnels/
+
+###
+# @name TokenList
+GET http://localhost:8000/tokens
 
 #######  READ  #######
 # @name DepartmentRead

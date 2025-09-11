@@ -51,7 +51,7 @@ app.all("/", (req, res) => {
 app.use("/auth", require("./src/routes/auth.router"));
 
 //tokens
-app.use("/auth", require("./src/routes/token.router"));
+app.use("/tokens", require("./src/routes/token.router"));
 
 //Departments
 app.use("/departments", require("./src/routes/department.router"));
