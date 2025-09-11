@@ -47,14 +47,17 @@ app.all("/", (req, res) => {
   });
 });
 
+//auth
+app.use("/auth", require("./src/routes/auth.router"));
+
+//tokens
+app.use("/auth", require("./src/routes/token.router"));
+
 //Departments
 app.use("/departments", require("./src/routes/department.router"));
 
 //Personnels
 app.use("/personnels", require("./src/routes/personnel.router"));
-
-//auth
-app.use("/auth", require("./src/routes/auth.router"));
 
 /* ------------------------------------------------------- */
 //! --------------- ERROR HANDLER -------------- */
