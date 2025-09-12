@@ -30,14 +30,25 @@ module.exports = {
       throw new CustomError("The user status is not active", 401);
 
     // Token
-    const token = await Token.create({
-      userId: user._id,
-      token: passwordEncrypt(user._id + Date.now()),
-    });
+
+    //Token var mı yok mu ?
+    let token = await Token.findOne({ userId: user._id })
+      .select("token")
+      .lean();
+
+    // Token yoksa oluştur
+    if (!token) {
+      token = await Token.create({
+        userId: user._id,
+        token: passwordEncrypt(user._id + Date.now()),
+      })
+        .select("token")
+        .lean();
+    }
 
     res.status(200).send({
       error: false,
-      token,
+      ...token,
       user,
     });
   },

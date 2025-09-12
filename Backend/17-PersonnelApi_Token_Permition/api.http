@@ -75,4 +75,8 @@ Content-Type: application/json
 
 #######  DELETE  #######
 # @name DepartmentDelete
-GET http://localhost:8000/departments/68be0dc941da88a3af164298
+DELETE  http://localhost:8000/departments/68be0dc941da88a3af164298
+
+###
+# @name DepartmentDelete
+DELETE  http://localhost:8000/tokens/68c32b24040e8ab8930d4fd1
