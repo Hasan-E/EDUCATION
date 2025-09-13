@@ -1,4 +1,7 @@
+########################
 #######  GLOBAL  #######
+########################
+
 # @name GlobalGET
 GET http://localhost:8000
 
@@ -8,7 +11,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "userName":"testF0",
+    "userName":"testF2",
     "password":"1234"
 }
 
@@ -17,28 +20,38 @@ Content-Type: application/json
 POST http://localhost:8000/auth/logout
 Content-Type: application/json
 
+######################
 #######  LIST  #######
-# @name DepartmentList
+######################
+
+# @name List_Department
 GET http://localhost:8000/departments/
+Authorization: Token fd07fd8a612b8c8be154feb7debc945016337a81f7eaa50ecaa200253cc8db36
 
 ###
-# @name PersonnelList
+# @name List_Personnel
 GET http://localhost:8000/personnels/
 
 ###
-# @name TokenList
+# @name List_Token
 GET http://localhost:8000/tokens
 
+######################
 #######  READ  #######
-# @name DepartmentRead
+######################
+
+# @name Read_Department
 GET http://localhost:8000/departments/68be0dc941da88a3af164298
 
 ###
-# @name PersonnelRead
+# @name Read_Personnel
 GET http://localhost:8000/personnels/68c1eb886ba4f112404660f5
 
+########################
 #######  CREATE  #######
-# @name DepartmentCreate
+########################
+
+# @name Create_Department
 POST http://localhost:8000/departments
 Content-Type: application/json
 
@@ -47,25 +60,28 @@ Content-Type: application/json
 }
 
 ###
-# @name PersonnelCreate
-GET http://localhost:8000/personnels/
+# @name Create_Personnel
+POST http://localhost:8000/personnels/
 Content-Type: application/json
 
 {
-    "departmentId": "68c05d59e15655549e617ff5",
-    "userName": "test-1",
-    "password": "test-1",
-    "firstName": "test-1-f",
-    "lastName": "test-1-l",
+    "departmentId": "68c20eecbb6d6097c01d877c",
+    "userName": "test-4",
+    "password": "test-4",
+    "firstName": "test-4-f",
+    "lastName": "test-4-l",
     "phone": "905551234567",
-    "email": "test-1@test.com",
-    "title": "test-1-title",
+    "email": "test-4@test.com",
+    "title": "test-4-title",
     "salary": 2000,
-    "description": "test-1-desc"
+    "description": "test-4-desc"
 }
 
+########################
 #######  UPDATE  #######
-# @name DepartmentUpdate
+########################
+
+# @name Update_Department
 PUT http://localhost:8000/departments/68be0dc941da88a3af164298
 Content-Type: application/json
 
@@ -73,10 +89,13 @@ Content-Type: application/json
     "name": "FS-19"
 }
 
+########################
 #######  DELETE  #######
-# @name DepartmentDelete
+########################
+
+# @name Delete_Department
 DELETE  http://localhost:8000/departments/68be0dc941da88a3af164298
 
 ###
-# @name DepartmentDelete
+# @name Delete_Department
 DELETE  http://localhost:8000/tokens/68c32b24040e8ab8930d4fd1

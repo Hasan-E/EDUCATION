@@ -35,6 +35,8 @@ app.use(
 // Query Handler
 app.use(require("./src/middlewares/queryHandler"));
 
+// Authentication
+app.use(require('./src/middlewares/authentication'))
 /* ------------------------------------------------------- */
 //! ------------------ ROUTES ------------------ */
 

@@ -32,29 +32,28 @@ module.exports = {
     // Token
 
     //Token var mı yok mu ?
-    let token = await Token.findOne({ userId: user._id })
-      .select("token")
-      .lean();
+    let token = await Token.findOne({ userId: user._id });
 
     // Token yoksa oluştur
     if (!token) {
       token = await Token.create({
         userId: user._id,
         token: passwordEncrypt(user._id + Date.now()),
-      })
-        .select("token")
-        .lean();
+      });
     }
 
     res.status(200).send({
       error: false,
-      ...token,
+      token: token.token,
       user,
     });
   },
 
   logout: async (req, res) => {
-    req.session = null;
+
+    // const data = await Token.deleteOne({})
+
+    
 
     res.status(200).send({
       error: false,

@@ -1,9 +1,11 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
-    EXPRESS - Personnel API
+EXPRESS - Personnel API
 ------------------------------------------------------- */
 
-const Personnel = require('../models/personnel.model')
+const Personnel = require("../models/personnel.model");
+const Token = require("../models/token.model");
+const passwordEncrypt = require("../helpers/passwordEncrypt");
 
 module.exports = {
   list: async (req, res) => {
@@ -16,12 +18,19 @@ module.exports = {
     });
   },
 
-  create: async (req, res) => {
-    const result = await Personnel.create(req.body);
+  create: async (req, res) => { // Register
+    const user = await Personnel.create(req.body);
+
+    // Token
+    const token = await Token.create({
+      userId: user._id,
+      token: passwordEncrypt(user._id + Date.now()),
+    });
 
     res.status(201).send({
       error: false,
-      result,
+      token: token.token,
+      user,
     });
   },
 
