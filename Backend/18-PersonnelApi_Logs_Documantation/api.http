@@ -1,0 +1,125 @@
+########################
+#######  GLOBAL  #######
+########################
+
+# @name GlobalGET
+GET http://localhost:8000
+
+###
+# @name Login
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "userName":"testF5",
+    "password":"1234"
+}
+
+###
+# @name Logout
+POST http://localhost:8000/auth/logout
+Content-Type: application/json
+
+######################
+#######  LIST  #######
+######################
+
+# @name List_Department
+GET http://localhost:8000/departments/68c20eecbb6d6097c01d877c/personnels
+Content-Type: application/json
+Authorization: Token d404a9230b51012dce3663b6459f028be813d28785998bc8d5abde32e6e2c4e9
+
+###
+# @name List_Personnel
+# notActive  3c05f45d52d2cb56e4464c9b08a24ecaa2375eaa40ceb257c65d2aa58b68d05b
+# Admin      fd4c45fe73b60f276ea4ad61f81a39638574b1bc7f3d8dc0a9f28673059dab87
+# Lead       cdcf00583f77398be10e326fc099e4a6cc1cfaf42f03a3680d2065eb16ffda79
+# Normal     d404a9230b51012dce3663b6459f028be813d28785998bc8d5abde32e6e2c4e9
+GET http://localhost:8000/personnels/
+Content-Type: application/json
+Authorization: Token 3c05f45d52d2cb56e4464c9b08a24ecaa2375eaa40ceb257c65d2aa58b68d05b
+
+
+###
+# @name List_Token
+GET http://localhost:8000/tokens
+
+######################
+#######  READ  #######
+######################
+
+# @name Read_Department
+GET http://localhost:8000/departments/68be0dc941da88a3af164298
+
+###
+# @name Read_Personnel
+GET http://localhost:8000/personnels/68c1eb886ba4f112404660f5
+
+########################
+#######  CREATE  #######
+########################
+
+# @name Create_Department
+POST http://localhost:8000/departments
+Content-Type: application/json
+Authorization: Token fd4c45fe73b60f276ea4ad61f81a39638574b1bc7f3d8dc0a9f28673059dab87
+
+{
+    "name": "FS-19"
+}
+
+###
+# @name Create_Personnel
+POST http://localhost:8000/personnels/
+Content-Type: application/json
+
+{
+    "departmentId": "68c20eecbb6d6097c01d877c",
+    "userName": "admin",
+    "password": "admin",
+    "firstName": "admin",
+    "lastName": "admin",
+    "phone": "905551234560",
+    "email": "admin@test.com",
+    "title": "Admin",
+    "salary": 3500,
+    "description": "This is admin",
+    "isAdmin":true
+}
+
+########################
+#######  UPDATE  #######
+########################
+
+# @name Update_Department
+PUT http://localhost:8000/departments/68be0dc941da88a3af164298
+Content-Type: application/json
+
+{
+    "name": "FS-19"
+}
+
+###
+# @name Update_Personnel
+PUT http://localhost:8000/personnels/68c20eecbb6d6097c01d8785
+Content-Type: application/json
+Authorization: Token fd4c45fe73b60f276ea4ad61f81a39638574b1bc7f3d8dc0a9f28673059dab87
+
+{
+    "isActive": false
+}
+
+########################
+#######  DELETE  #######
+########################
+
+# @name Delete_Department
+DELETE  http://localhost:8000/departments/68be0dc941da88a3af164298
+
+###
+# @name Delete_Personnel
+DELETE  http://localhost:8000/Personnels/:id
+
+###
+# @name Delete_Token
+DELETE  http://localhost:8000/tokens/68c32b24040e8ab8930d4fd1
