@@ -2,7 +2,7 @@
 /* -------------------------------------------------------
     EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
-//* QUERY HANDLER MIDDLEWARE;
+//! --------- QUERY HANDLER MIDDLEWARE; -------- */
 
 module.exports = async (req, res, next) => {
     
@@ -44,14 +44,14 @@ module.exports = async (req, res, next) => {
     skip = skip > 0 ? skip : (page - 1) * limit
 
     // GetModelList
-    res.getModelList = async (Model, populate = null) => {
-        return await Model.find({ ...filter, ...search }).sort(sort).skip(skip).limit(limit).populate(populate);
+    res.getModelList = async (Model,customFilter = {}, populate = null) => {
+        return await Model.find({ ...filter, ...search, ...customFilter }).sort(sort).skip(skip).limit(limit).populate(populate);
     };
 
     // Details
-    res.getModelListDetails = async function (Model) {
+    res.getModelListDetails = async function (Model,customFilter = {}) {
 
-        const data = await Model.find({ ...filter, ...search });
+        const data = await Model.find({ ...filter, ...search, customFilter });
 
         let details = {
             filter,

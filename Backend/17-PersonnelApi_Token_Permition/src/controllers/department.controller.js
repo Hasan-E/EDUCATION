@@ -4,6 +4,7 @@
 ------------------------------------------------------- */
 
 const Department = require("../models/department.model");
+const Personnel = require("../models/personnel.model");
 
 module.exports = {
   list: async (req, res) => {
@@ -52,6 +53,23 @@ module.exports = {
     res.status(result.deletedCount ? 204 : 404).send({
       error: true,
       message: "Data is not found or already deleted.",
+    });
+  },
+
+  personnels: async (req, res) => {
+    // const result = await Personnel.find({departmentId: req.params.id})
+
+    const CustomFilter = { departmentId: req.params.id };
+    const result = await res.getModelList(
+      Personnel,
+      CustomFilter,
+      "departmentId"
+    );
+
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Personnel, CustomFilter),
+      result,
     });
   },
 };

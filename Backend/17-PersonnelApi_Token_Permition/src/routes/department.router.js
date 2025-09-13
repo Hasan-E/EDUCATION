@@ -9,13 +9,27 @@ const {
   read,
   update,
   dlt,
+  personnels,
 } = require("../controllers/department.controller");
+const {
+  isLogin,
+  isAdmin,
+  isAdminOrLead,
+} = require("../middlewares/permissions");
 /* ------------------------------------------------------- */
 // URL: /departments
 
-router.route("/").get(list).post(create);
+// router.use(isLogin)
 
-router.route("/:id").get(read).put(update).delete(dlt);
+router.route("/").get(isLogin, list).post(isAdmin, create);
+
+router
+  .route("/:id")
+  .get(isLogin, read)
+  .put(isAdmin, update)
+  .delete(isAdmin, dlt);
+
+router.get("/:id/personnels", isAdminOrLead, personnels);
 
 /* ------------------------------------------------------- */
 module.exports = router;

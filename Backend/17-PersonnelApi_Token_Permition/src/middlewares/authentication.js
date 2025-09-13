@@ -3,7 +3,7 @@
 /* ============================================ */
 /*            EXPRESS - PERSONNEL API           */
 /* ============================================ */
-// Authentication middleware
+//! --------- Authentication middleware -------- */
 
 const Token = require("../models/token.model");
 

@@ -2,7 +2,7 @@
 /* -------------------------------------------------------
     EXPRESS - Personnel API
 ------------------------------------------------------- */
-// MongoDB Connection:
+//! ------------ MongoDB Connection: ----------- */
 
 const mongoose = require('mongoose')
 
