@@ -10,6 +10,20 @@ const passwordEncrypt = require("../helpers/passwordEncrypt");
 
 module.exports = {
   login: async (req, res) => {
+    /*
+        #swagger.tags = ['Authentication']
+        #swagger.summary = 'Login'
+        #swagger.description = 'Login with username/email and password'
+        #swagger.parameters['body'] = {
+            in: 'body',
+            required: true,
+            schema: {
+                userName:'admin',
+                password: '1234'
+            }
+        }
+    */
+
     const { userName, email, password } = req.body;
 
     if (!((userName || email) && password))
@@ -18,7 +32,7 @@ module.exports = {
         400
       );
 
-    // findOne set methodunu da çalıştırır
+    // findOne set methodunu calistirir
     const user = await Personnel.findOne({
       $or: [{ userName }, { email }],
       password,
@@ -26,15 +40,16 @@ module.exports = {
 
     if (!user) throw new CustomError("Wrong email/userName or password", 401);
 
+    // if(user.isActive === false)
     if (!user.isActive)
       throw new CustomError("The user status is not active", 401);
 
     // Token
 
-    //Token var mı yok mu ?
+    // Token var mi yok mu ?
     let token = await Token.findOne({ userId: user._id });
 
-    // Token yoksa oluştur
+    // Token yoksa olustur
     if (!token) {
       token = await Token.create({
         userId: user._id,
@@ -50,10 +65,12 @@ module.exports = {
   },
 
   logout: async (req, res) => {
-
+    /*
+         #swagger.tags = ['Authentication']
+         #swagger.summary = 'Logout'
+         #swagger.description = 'Delete token.'
+    */
     // const data = await Token.deleteOne({})
-
-    
 
     res.status(200).send({
       error: false,

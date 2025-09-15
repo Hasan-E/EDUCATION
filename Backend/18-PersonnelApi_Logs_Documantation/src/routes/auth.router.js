@@ -10,7 +10,7 @@ const router = require("express").Router();
 //URL: /auth
 
 router.post("/login", login);
-router.all("/logout", logout);
+router.get("/logout", logout);
 
 /* ============================================ */
 
