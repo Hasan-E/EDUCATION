@@ -14,4 +14,4 @@ const toppingSchema = new Schema(
   { collection: "toppings", timestamps: true }
 );
 
-module.exports = model("toppings", toppingSchema);
+module.exports = model("Topping", toppingSchema);

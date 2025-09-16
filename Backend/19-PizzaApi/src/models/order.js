@@ -58,3 +58,5 @@ const orderSchema = new Schema(
   },
   { collection: "orders", timestamps: true }
 );
+
+module.exports = model("Order", orderSchema);
