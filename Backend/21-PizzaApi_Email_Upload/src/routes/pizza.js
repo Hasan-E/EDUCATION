@@ -1,15 +1,35 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
-const router = require('express').Router()
-const { list, create, read, update, dlt } = require('../controllers/pizza');
+const router = require("express").Router();
+const { list, create, read, update, dlt } = require("../controllers/pizza");
+const upload = require('../middlewares/upload')
 /* ------------------------------------------------------- */
+/* ============================================ *
+// Multer Middleware (Upload)
+// yarn add multer
+
+const multer = require("multer");
+
+const upload = multer({
+//   dest: "./uploads",
+storage: multer.diskStorage({
+    destination: 'uploads',
+    filename: function (req,file,cb) {
+        // cb(null, file.originalname)
+        cb(null,Date.now()+'_'+file.originalname)
+    }
+})
+});
+
+/* ============================================ */
 // URL -> /pizzas
+router.route("/").get(list).post(upload.single("image"), create);
+// .post(upload.array('image'),create);
+// .post(upload.any('image'),create);
 
-router.route('/').get(list).post(create);
-
-router.route('/:id').get(read).put(update).delete(dlt);
+router.route("/:id").get(read).put(upload.single("image"),update).delete(dlt);
 
 /* ------------------------------------------------------- */
-module.exports = router
+module.exports = router;

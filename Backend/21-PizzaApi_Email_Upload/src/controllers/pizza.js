@@ -1,15 +1,14 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 
-const Pizza = require('../models/pizza');
-const CustomError = require('../helpers/customError');
+const Pizza = require("../models/pizza");
+const CustomError = require("../helpers/customError");
 
 module.exports = {
-
-    list: async (req, res) => {
-        /* 
+  list: async (req, res) => {
+    /* 
             #swagger.tags = ['Pizzas']
             #swagger.summary = 'List Pizzas'
             #swagger.desription = `
@@ -23,71 +22,86 @@ module.exports = {
             `
         */
 
-        const result = await res.getModelList(Pizza);
+    const result = await res.getModelList(Pizza);
 
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(Pizza),
-            result
-        });
-    },
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Pizza),
+      result,
+    });
+  },
 
-    create: async (req, res) => {
-        /* 
+  create: async (req, res) => {
+    /* 
             #swagger.tags = ['Pizzas']
             #swagger.summary = 'Create Pizza'
         */
 
-        //? if same id sent more than once in the toppingIds field.
+    //? if same id sent more than once in the toppingIds field.
 
-        const result = await Pizza.create(req.body);
+    // single ise req.file
+    // array ise req.files olacak
 
-        res.status(201).send({
-            error: false,
-            result
-        })
-    },
+    if (req.file) {
+      req.body.image = req.file.filename;
+    }
 
-    read: async (req, res) => {
-        /* 
+    const result = await Pizza.create(req.body);
+
+    res.status(201).send({
+      error: false,
+      result,
+    });
+  },
+
+  read: async (req, res) => {
+    /* 
             #swagger.tags = ['Pizzas']
             #swagger.summary = 'Get Single Pizza'
         */
 
-        const result = await Pizza.findById(req.params.id);
+    const result = await Pizza.findById(req.params.id);
 
-        res.status(200).send({
-            error: false,
-            result
-        })
-    },
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
 
-    update: async (req, res) => {
-        /* 
+  update: async (req, res) => {
+    /* 
             #swagger.tags = ['Pizzas']
             #swagger.summary = 'Update Pizza'
         */
 
-        const result = await Pizza.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    if (req.file) {
+      req.body.image = req.file.filename;
+    }
 
-        if (!result) throw new CustomError('Data is not found.', 404);
+    const result = await Pizza.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
 
-        res.status(200).send({
-            error: false,
-            result
-        })
-    },
+    if (!result) throw new CustomError("Data is not found.", 404);
 
-    dlt: async (req, res) => {
-        /* 
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
+
+  dlt: async (req, res) => {
+    /* 
             #swagger.tags = ['Pizzas']
             #swagger.summary = 'Delete Pizza'
         */
 
-        const result = await Pizza.deleteOne({ _id: req.params.id });
+    const result = await Pizza.deleteOne({ _id: req.params.id });
 
-        if (!result.deletedCount) throw new CustomError('Data is not found or already deleted.', 404);
+    if (!result.deletedCount)
+      throw new CustomError("Data is not found or already deleted.", 404);
 
-        res.sendStatus(204);
-    },
-}
+    res.sendStatus(204);
+  },
+};
