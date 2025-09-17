@@ -1,0 +1,102 @@
+
+################################
+##########  VARIABLES  #########
+################################
+@baseUrl = http://localhost:8000
+@simpleToken = Token {{Login.response.body.token}}
+@accesToken = Bearer {{Login.response.body.bearer.access}}
+@refreshToken = Bearer {{Login.response.body.bearer.refresh}}
+
+################################
+###########  GLOBAL  ###########
+################################
+# @name GlobalGET
+GET {{baseUrl}}
+###
+# @name Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "userName":"test1",
+    "password":"test1",
+    "email": "test1@gmail.com"
+}
+
+###
+# @name Logout
+POST {{baseUrl}}/auth/logout
+Content-Type: application/json
+
+###
+# @name RefreshToken
+POST {{baseUrl}}/auth/refresh
+Content-Type: application/json
+
+{
+"refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM5OTY0Y2YzYzA5M2IyNTMyZGEwYzQiLCJpYXQiOjE3NTgxMjI2NDgsImV4cCI6MTc1ODIwOTA0OH0.PBEK2QROh8V_e-vC1_NFHjqC-Cn4RnHxTP4PAp2SOgk"
+}
+
+################################
+############  LIST  ############
+################################
+
+# @name List_Users
+GET {{baseUrl}}/users
+Content-Type: application/json
+Authorization: {{simpleToken}}
+
+###
+# @name List_Pizzas
+GET {{baseUrl}}/pizzas
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+################################
+############  READ  ############
+################################
+
+# @name Read_User
+GET {{baseUrl}}/users/68c9964cf3c093b2532da0c4
+
+###
+
+################################
+###########  CREATE  ###########
+################################
+
+# @name Create_User
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "userName":"test1",
+    "password":"test1",
+    "email":"test1@gmail.com"
+}
+
+###
+
+################################
+###########  UPDATE  ###########
+################################
+
+
+# @name Update_User
+PUT {{baseUrl}}/users/68c9964cf3c093b2532da0c4
+Content-Type: application/json
+
+{
+    "name": "test1"
+}
+
+###
+
+################################
+###########  DELETE  ###########
+################################
+
+# @name Delete_Department
+DELETE  {{baseUrl}}/users/68c9964cf3c093b2532da0c4
+
+###

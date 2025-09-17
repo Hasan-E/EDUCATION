@@ -3,9 +3,8 @@
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 const CustomError = require('../helpers/customError');
+const passwordValidation = require('../helpers/passwordValidation');
 const User = require('../models/user');
-const Token = require('../models/token');
-const passwordEncrypt = require('../helpers/passwordEncrypt');
 const jwt = require('jsonwebtoken');
 
 module.exports = {
@@ -45,16 +44,41 @@ module.exports = {
 
         res.status(200).send({
             error: false,
-            bearer: { access, refresh },
-            token: tokenData.token,
-            user
+            bearer: { access, refresh }
+        });
+    },
+
+    register: async (req, res) => {
+        /*
+          #swagger.tags = ["Authentication"]
+          #swagger.summary = "Register User"
+          #swagger.parameters['body'] = {
+          in: 'body',
+          required: true,
+          schema: {
+              "username": "test",
+              "password": "1234",
+              "email": "test@site.com",
+              "isActive": true,
+              "isStaff": false,
+              "isAdmin": false,
+            }
+          }
+        */
+
+        passwordValidation(req?.body?.password);
+        const data = await User.create(req.body);
+
+        res.status(201).send({
+            error: false,
+            data,
         });
     },
 
     logout: async (req, res) => {
         /*
-           #swagger.tags = ["Tokens"]
-           #swagger.summary = "Create Token"
+           #swagger.tags = ["Authentication"]
+           #swagger.summary = "Logout"
         */
 
         res.status(200).send({
@@ -87,7 +111,7 @@ module.exports = {
 
         const user = await User.findById(refreshData._id);
 
-        if (!user) throw new CustomError('User is not found with given Id.');
+        if (!user) throw new CustomError('User is not found with given Id.', 404);
 
         if (!user.isActive) throw new CustomError('This account is not active.', 401);
 

@@ -3,7 +3,6 @@
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 
-const Token = require('../models/token');
 const jwt = require('jsonwebtoken');
 const CustomError = require('../helpers/customError');
 

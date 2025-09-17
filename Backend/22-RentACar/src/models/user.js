@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
-      set: (password) => passwordEncrypt(password),
+      set: passwordEncrypt,
       // selected:false
     },
 
@@ -40,9 +40,7 @@ const UserSchema = new mongoose.Schema(
       unique: [true, "There is this email. Email field must be unique"],
       validate: [
         (email) => {
-          const regexEmailCheck =
-            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-          return regexEmailCheck.test(email);
+          return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
         },
         "Email format is not valid",
       ],
