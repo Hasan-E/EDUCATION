@@ -393,6 +393,285 @@
       }
     }
   },
+  "definitions": {
+    "Order": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "ref": {
+              "type": "string",
+              "example": "User"
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "pizzaId": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "ref": {
+              "type": "string",
+              "example": "Pizza"
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "size": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "enum": {
+              "type": "array",
+              "example": [
+                "Small",
+                "Medium",
+                "Large",
+                "XLarge"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "default": {
+              "type": "string",
+              "example": "Medium"
+            }
+          }
+        },
+        "quantity": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "number",
+              "example": 1
+            }
+          }
+        },
+        "price": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "amount": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "function"
+            },
+            "transform": {
+              "type": "function"
+            }
+          }
+        }
+      }
+    },
+    "Pizza": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            },
+            "unique": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "image": {
+          "type": "function"
+        },
+        "price": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "toppingIds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "function"
+              },
+              "ref": {
+                "type": "string",
+                "example": "Topping"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Topping": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            },
+            "unique": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            },
+            "unique": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "password": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            },
+            "set": {
+              "type": "function"
+            }
+          }
+        },
+        "email": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "unique": {
+              "type": "boolean",
+              "example": true
+            },
+            "validate": {
+              "type": "array",
+              "example": [
+                null,
+                "Please fill a valid email adress."
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "isActive": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "isAdmin": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "boolean",
+              "example": false
+            }
+          }
+        }
+      }
+    }
+  },
   "security": [
     {
       "Token": []

@@ -42,9 +42,9 @@ const document = {
   security: [{ Token: [] }, { Bearer: [] }],
   definitions: {
     // Models:
-    Order: require("./src/models/order"),
-    Pizza: require("./src/models/pizza"),
-    Topping: require("./src/models/topping"),
+    Order: require("./src/models/order").schema.obj,
+    Pizza: require("./src/models/pizza").schema.obj,
+    Topping: require("./src/models/topping").schema.obj,
     User: require("./src/models/user").schema.obj,
   },
 };

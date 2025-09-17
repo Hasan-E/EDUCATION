@@ -1,0 +1,91 @@
+
+################################
+##########  VARIABLES  #########
+################################
+@baseUrl = http://localhost:8000
+@token = Token {{Login.response.body.token}}
+
+################################
+###########  GLOBAL  ###########
+################################
+# @name GlobalGET
+GET {{baseUrl}}
+###
+# @name Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "userName":"test1",
+    "password":"test1",
+    "email": "test1@gmail.com"
+}
+
+###
+# @name Logout
+POST {{baseUrl}}/auth/logout
+Content-Type: application/json
+
+################################
+############  LIST  ############
+################################
+
+# @name List_Users
+GET {{baseUrl}}/users
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# @name List_Pizzas
+GET {{baseUrl}}/pizzas
+Content-Type: application/json
+Authorization: {{token}}
+
+################################
+############  READ  ############
+################################
+
+# @name Read_User
+GET {{baseUrl}}/users/68c9964cf3c093b2532da0c4
+
+###
+
+################################
+###########  CREATE  ###########
+################################
+
+# @name Create_User
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "userName":"test1",
+    "password":"test1",
+    "email":"test1@gmail.com"
+}
+
+###
+
+################################
+###########  UPDATE  ###########
+################################
+
+
+# @name Update_User
+PUT {{baseUrl}}/users/68c9964cf3c093b2532da0c4
+Content-Type: application/json
+
+{
+    "name": "test1"
+}
+
+###
+
+################################
+###########  DELETE  ###########
+################################
+
+# @name Delete_Department
+DELETE  {{baseUrl}}/users/68c9964cf3c093b2532da0c4
+
+###

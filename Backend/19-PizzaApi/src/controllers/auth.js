@@ -6,10 +6,24 @@
 
 const CustomError = require("../helpers/customError");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
-const token = require("../models/token");
+const Token = require("../models/token");
+const User = require("../models/user");
 
 module.exports = {
   login: async (req, res) => {
+    /*
+    #swagger.tags = ["Authentication"]
+    #swagger.summary = "Login"
+    #swagger.description = 'Login with username (or email) and password for get simpleToken and JWT'
+    #swagger.parameters["body"] = {
+        in: "body",
+        required: true,
+        schema: {
+          "username": "test",
+          "password": "aA12345.?",
+          }
+        }
+      */
     const { username, email, password } = req.body;
 
     if (!((username || email) && password))
@@ -22,30 +36,49 @@ module.exports = {
     if (!user)
       throw new CustomError("Incorrect Username/Email or Password.", 401);
 
-    if(!user.isActive) throw new CustomError('This account is not active.',401)
+    if (!user.isActive)
+      throw new CustomError("This account is not active.", 401);
 
-        let tokenData = await token.findOne({ userId: user._id})
+    let tokenData = await Token.findOne({ userId: user._id });
 
     if (!tokenData) {
-        tokenData = await Token.create({
-            userId: user._id,
-            token: passwordEncrypt(Date.now() + user._id)
-        })
+      tokenData = await Token.create({
+        userId: user._id,
+        token: passwordEncrypt(Date.now() + user._id),
+      });
     }
 
-    res.status(200).sen({
-        error: false,
-        token: tokenData.token,
-        user
-    })
+    res.status(200).send({
+      error: false,
+      token: tokenData.token,
+      user,
+    });
   },
 
   logout: async (req, res) => {
+    /*
+       #swagger.tags = ["Tokens"]
+       #swagger.summary = "Create Token"
+    */
 
-    const currentUserId = req.user._id
-    //!
-    res.status(200).sen({
-        error: false,
-    })
+    const currentUserId = req.user._id;
+
+    // let message = 'User Logout success'
+
+    // if (currentUserId) {
+    //   const {deletedCount} = await Token.deleteOne({ userId: currentUserId });
+    //   if (deletedCount) message : 'User logout success and token deleted'
+    // }
+
+    let result = currentUserId
+      ? await Token.deleteOne({ userId: currentUserId })
+      : null;
+
+    res.status(200).send({
+      error: false,
+      message: result.deletedCount
+        ? "User logout success and token deleted."
+        : "User logout success.",
+    });
   },
 };
