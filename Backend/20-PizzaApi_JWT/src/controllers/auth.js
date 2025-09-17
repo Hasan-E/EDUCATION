@@ -8,6 +8,7 @@ const CustomError = require("../helpers/customError");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
 const Token = require("../models/token");
 const User = require("../models/user");
+const jwt = require('jsonwebtoken')
 
 module.exports = {
   login: async (req, res) => {
@@ -39,6 +40,7 @@ module.exports = {
     if (!user.isActive)
       throw new CustomError("This account is not active.", 401);
 
+    // Simple Token
     let tokenData = await Token.findOne({ userId: user._id });
 
     if (!tokenData) {
@@ -47,6 +49,12 @@ module.exports = {
         token: passwordEncrypt(Date.now() + user._id),
       });
     }
+    // Simple Token
+
+    // JWT
+    jwt.sign()
+
+
 
     res.status(200).send({
       error: false,
