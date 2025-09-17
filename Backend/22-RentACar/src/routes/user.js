@@ -4,7 +4,6 @@
 ------------------------------------------------------- */
 const router = require("express").Router();
 /* ------------------------------------------------------- */
-// routes/user:
 
 const { isStaffOrisAdmin, isLogin, isAdmin } = require("../middlewares/permissions");
 const user = require("../controllers/user");
