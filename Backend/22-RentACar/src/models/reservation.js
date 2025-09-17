@@ -19,11 +19,46 @@ const { mongoose } = require("../configs/dbConnection");
 
 // Reservation Model:
 const ReservationSchema = new mongoose.Schema(
-  {},
   {
-    collection: "reservations",
-    timestamps: true,
+    userId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    carId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Car",
+      required: true,
+    },
+
+    startDate: {
+      type: Date,
+      required: true,
+    },
+
+    endDate: {
+      type: Date,
+      required: true,
+    },
+
+    amount: {
+      type: Number,
+      required: true,
+    },
+    
+    creatorId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    updatorId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
+  { collection: "reservations", timestamps: true }
 );
 
 module.exports = mongoose.model("Reservation", ReservationSchema);
