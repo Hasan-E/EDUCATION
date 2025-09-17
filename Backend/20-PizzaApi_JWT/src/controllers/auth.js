@@ -8,7 +8,7 @@ const CustomError = require("../helpers/customError");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
 const Token = require("../models/token");
 const User = require("../models/user");
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   login: async (req, res) => {
@@ -52,12 +52,24 @@ module.exports = {
     // Simple Token
 
     // JWT
-    jwt.sign() 
-
-
+    const accessData = {
+      _id: user._id,
+      username: user.userName,
+      isActive: user.isActive,
+      isAdmin: user.isAdmin,
+    };
+    // jwt.sign(payload,accessKey,option)
+    const access = jwt.sign(accessData, process.env.ACCESS_KEY, {
+      expiresIn: "15m",
+    });
+    const refresh = jwt.sign({ _id: user._id }, process.env.REFRESH_KEY, {
+      expiresIn: "1d",
+    });
+    // JWT
 
     res.status(200).send({
       error: false,
+      bearer: { access, refresh },
       token: tokenData.token,
       user,
     });

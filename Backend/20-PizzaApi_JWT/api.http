@@ -3,7 +3,9 @@
 ##########  VARIABLES  #########
 ################################
 @baseUrl = http://localhost:8000
-@token = Token {{Login.response.body.token}}
+@simpleToken = Token {{Login.response.body.token}}
+@accesToken = Bearer {{Login.response.body.bearer.access}}
+@refreshToken = Bearer {{Login.response.body.bearer.refresh}}
 
 ################################
 ###########  GLOBAL  ###########
@@ -33,13 +35,13 @@ Content-Type: application/json
 # @name List_Users
 GET {{baseUrl}}/users
 Content-Type: application/json
-Authorization: {{token}}
+Authorization: {{simpleToken}}
 
 ###
 # @name List_Pizzas
 GET {{baseUrl}}/pizzas
 Content-Type: application/json
-Authorization: {{token}}
+Authorization: {{accesToken}}
 
 ################################
 ############  READ  ############
