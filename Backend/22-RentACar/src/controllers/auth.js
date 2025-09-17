@@ -1,15 +1,15 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
-const CustomError = require('../helpers/customError');
-const passwordValidation = require('../helpers/passwordValidation');
-const User = require('../models/user');
-const jwt = require('jsonwebtoken');
+const CustomError = require("../helpers/customError");
+const passwordValidation = require("../helpers/passwordValidation");
+const User = require("../models/user");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
-    login: async (req, res) => {
-        /*
+  login: async (req, res) => {
+    /*
             #swagger.tags = ["Authentication"]
             #swagger.summary = "Login"
             #swagger.description = 'Login with username (or email) and password for get simpleToken and JWT'
@@ -23,33 +23,49 @@ module.exports = {
             }
         */
 
-        const { username, email, password } = req.body;
+    const { username, email, password } = req.body;
 
-        if (!((username || email) && password)) throw new CustomError('Username/Email and Password are required.', 401);
+    if (!((username || email) && password))
+      throw new CustomError("Username/Email and Password are required.", 401);
 
-        const user = await User.findOne({ $or: [{ username }, { email }], password });
+    const user = await User.findOne({
+      $or: [{ username }, { email }],
+      password,
+    });
 
-        if (!user) throw new CustomError('Incorrect Username/Email or Password.', 401);
+    if (!user)
+      throw new CustomError("Incorrect Username/Email or Password.", 401);
 
-        if (!user.isActive) throw new CustomError('This account is not active.', 401);
+    if (!user.isActive)
+      throw new CustomError("This account is not active.", 401);
 
-        // JWT
-        const accessData = { _id: user._id, username: user.username, isActive: user.isActive, isAdmin: user.isAdmin };
+    // JWT
+    const accessData = {
+      _id: user._id,
+      username: user.username,
+      isActive: user.isActive,
+      isAdmin: user.isAdmin,
+      isStaff: user.isStaff,
+    };
 
-        // jwt.sign(payload, accessKey, options)
-        const access = jwt.sign(accessData, process.env.ACCESS_KEY, { expiresIn: '15m' });
+    // jwt.sign(payload, accessKey, options)
+    const access = jwt.sign(accessData, process.env.ACCESS_KEY, {
+      expiresIn: "15m",
+    });
 
-        const refresh = jwt.sign({ _id: user._id }, process.env.REFRESH_KEY, { expiresIn: '1d' });
-        // JWT
+    const refresh = jwt.sign({ _id: user._id }, process.env.REFRESH_KEY, {
+      expiresIn: "1d",
+    });
+    // JWT
 
-        res.status(200).send({
-            error: false,
-            bearer: { access, refresh }
-        });
-    },
+    res.status(200).send({
+      error: false,
+      bearer: { access, refresh },
+    });
+  },
 
-    register: async (req, res) => {
-        /*
+  register: async (req, res) => {
+    /*
           #swagger.tags = ["Authentication"]
           #swagger.summary = "Register User"
           #swagger.parameters['body'] = {
@@ -66,29 +82,29 @@ module.exports = {
           }
         */
 
-        passwordValidation(req?.body?.password);
-        const data = await User.create(req.body);
+    passwordValidation(req?.body?.password);
+    const data = await User.create(req.body);
 
-        res.status(201).send({
-            error: false,
-            data,
-        });
-    },
+    res.status(201).send({
+      error: false,
+      data,
+    });
+  },
 
-    logout: async (req, res) => {
-        /*
+  logout: async (req, res) => {
+    /*
            #swagger.tags = ["Authentication"]
            #swagger.summary = "Logout"
         */
 
-        res.status(200).send({
-            error: false,
-            message: 'User logout success You can delete token from your session.'
-        });
-    },
+    res.status(200).send({
+      error: false,
+      message: "User logout success You can delete token from your session.",
+    });
+  },
 
-    refresh: async (req, res) => {
-        /*
+  refresh: async (req, res) => {
+    /*
             #swagger.tags = ['Authentication']
             #swagger.summary = 'JWT: Refresh'
             #swagger.description = 'Refresh accessToken with refreshToken'
@@ -101,28 +117,36 @@ module.exports = {
             }
         */
 
-        const { refresh } = req.body;
+    const { refresh } = req.body;
 
-        if (!refresh) throw new CustomError('Refresh Token not Fount.', 401);
+    if (!refresh) throw new CustomError("Refresh Token not Fount.", 401);
 
-        const refreshData = jwt.verify(refresh, process.env.REFRESH_KEY);
+    const refreshData = jwt.verify(refresh, process.env.REFRESH_KEY);
 
-        if (!refreshData) throw new CustomError('JWT Refresh Token is wrong.');
+    if (!refreshData) throw new CustomError("JWT Refresh Token is wrong.");
 
-        const user = await User.findById(refreshData._id);
+    const user = await User.findById(refreshData._id);
 
-        if (!user) throw new CustomError('User is not found with given Id.', 404);
+    if (!user) throw new CustomError("User is not found with given Id.", 404);
 
-        if (!user.isActive) throw new CustomError('This account is not active.', 401);
+    if (!user.isActive)
+      throw new CustomError("This account is not active.", 401);
 
-        const accessData = { _id: user._id, username: user.username, isActive: user.isActive, isAdmin: user.isAdmin };
+    const accessData = {
+      _id: user._id,
+      username: user.username,
+      isActive: user.isActive,
+      isAdmin: user.isAdmin,
+      isStaff: user.isStaff,
+    };
 
-        const access = jwt.sign(accessData, process.env.ACCESS_KEY, { expiresIn: '15m' });
+    const access = jwt.sign(accessData, process.env.ACCESS_KEY, {
+      expiresIn: "15m",
+    });
 
-        res.status(200).send({
-            error: false,
-            access
-        })
-
-    }
-}
+    res.status(200).send({
+      error: false,
+      access,
+    });
+  },
+};

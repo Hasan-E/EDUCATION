@@ -20,11 +20,45 @@ module.exports = {
       `
     */
 
-    const data = await res.getModelList(Car);
+    //? Musait araclari listele egerki kullanici musteriyse
+
+    let customFilter = { isPublished: true };
+
+    if (req.user.isAdmin || req.user.isStaff) {
+      customFilter = {};
+    }
+
+    const data = await res.getModelList(Car,customFilter);
 
     res.status(200).send({
       error: false,
       details: await res.getModelListDetails(Car),
+      data,
+    });
+  },
+  
+  create: async (req, res) => {
+    /*
+            #swagger.tags = ["Cars"]
+            #swagger.summary = "Create a car"
+            #swagger.parameters['body'] = {
+            in: 'body',
+            required: true,
+            schema: {
+               $ref: "#/definations/Car"
+              }
+            }
+          */
+
+    //! CreatorId ve UpdatorId ekle
+    const currentUserId = req.user._id;
+    req.body.creatorId = currentUserId;
+    req.body.updatorId = currentUserId;
+
+    const data = await Car.create(req.body);
+
+    res.status(201).send({
+      error: false,
       data,
     });
   },
@@ -34,7 +68,6 @@ module.exports = {
       #swagger.tags = ["Cars"]
       #swagger.summary = "Get Single Car"
     */
-
 
     const data = await Car.findOne({ _id: id });
 
@@ -62,7 +95,10 @@ module.exports = {
       }
     */
 
-    const data = await Car.findByIdAndUpdatey(req.params.id, req.body, { runValidators: true, new: true });
+    const data = await Car.findByIdAndUpdatey(req.params.id, req.body, {
+      runValidators: true,
+      new: true,
+    });
 
     res.status(202).send({
       error: false,

@@ -3,7 +3,6 @@
 ##########  VARIABLES  #########
 ################################
 @baseUrl = http://localhost:8000
-@simpleToken = Token {{Login.response.body.token}}
 @accesToken = Bearer {{Login.response.body.bearer.access}}
 @refreshToken = Bearer {{Login.response.body.bearer.refresh}}
 
@@ -18,9 +17,8 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "userName":"",
-    "password":"",
-    "email": ""
+    "username":"normal",
+    "password":"aA*12345"
 }
 
 ###
@@ -44,10 +42,14 @@ Content-Type: application/json
 # @name List_Users
 GET {{baseUrl}}/users
 Content-Type: application/json
-Authorization: {{simpleToken}}
+Authorization: {{accesToken}}
 
 ###
 
+# @name List_Cars
+GET {{baseUrl}}/cars
+Content-Type: application/json
+Authorization: {{accesToken}}
 
 ################################
 ############  READ  ############

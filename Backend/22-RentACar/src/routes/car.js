@@ -12,7 +12,7 @@ const { list, read, update, del } = require("../controllers/car");
 
 router
     .route("/")
-    .get(isStaffOrisAdmin, list)
+    .get(isLogin, list)
 
 router
     .route("/:id")
