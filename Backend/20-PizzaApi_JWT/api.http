@@ -28,6 +28,15 @@ Content-Type: application/json
 POST {{baseUrl}}/auth/logout
 Content-Type: application/json
 
+###
+# @name RefreshToken
+POST {{baseUrl}}/auth/refresh
+Content-Type: application/json
+
+{
+"refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM5OTY0Y2YzYzA5M2IyNTMyZGEwYzQiLCJpYXQiOjE3NTgxMjI2NDgsImV4cCI6MTc1ODIwOTA0OH0.PBEK2QROh8V_e-vC1_NFHjqC-Cn4RnHxTP4PAp2SOgk"
+}
+
 ################################
 ############  LIST  ############
 ################################

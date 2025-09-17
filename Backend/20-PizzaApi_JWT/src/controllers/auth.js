@@ -98,7 +98,40 @@ module.exports = {
       error: false,
       message: result.deletedCount
         ? "User logout success and token deleted."
-        : "User logout success.",
+        : "User logout success. You can delete token from your session.",
+    });
+  },
+
+  refresh: async (req, res) => {
+    const { refresh } = req.body;
+
+    if (!refresh) throw new CustomError("Refresh Token not Found.", 401);
+
+    const refreshData = jwt.verify(refresh, process.env.REFRESH_KEY);
+
+    if (!refreshData) throw new CustomError("JWT Refresh token is wrong");
+
+    const user = await User.findById(refreshData._id);
+
+    if (!user) throw new CustomError("User is not found with given Id.");
+
+    if (!user.isActive)
+      throw new CustomError("This account is not active.", 401);
+
+    const accessData = {
+      _id: user._id,
+      username: user.userName,
+      isActive: user.isActive,
+      isAdmin: user.isAdmin,
+    };
+
+    const access = jwt.sign(accessData, process.env.ACCESS_KEY, {
+      expiresIn: "15m",
+    });
+
+    res.status(200).send({
+      error: false,
+      access,
     });
   },
 };
