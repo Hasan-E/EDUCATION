@@ -52,7 +52,7 @@ module.exports = {
     // Simple Token
 
     // JWT
-    jwt.sign()
+    jwt.sign() 
 
 
 
