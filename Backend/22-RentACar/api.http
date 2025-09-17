@@ -18,9 +18,9 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "userName":"test1",
-    "password":"test1",
-    "email": "test1@gmail.com"
+    "userName":"",
+    "password":"",
+    "email": ""
 }
 
 ###
@@ -34,7 +34,7 @@ POST {{baseUrl}}/auth/refresh
 Content-Type: application/json
 
 {
-"refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM5OTY0Y2YzYzA5M2IyNTMyZGEwYzQiLCJpYXQiOjE3NTgxMjI2NDgsImV4cCI6MTc1ODIwOTA0OH0.PBEK2QROh8V_e-vC1_NFHjqC-Cn4RnHxTP4PAp2SOgk"
+"refresh": ""
 }
 
 ################################
@@ -47,10 +47,7 @@ Content-Type: application/json
 Authorization: {{simpleToken}}
 
 ###
-# @name List_Pizzas
-GET {{baseUrl}}/pizzas
-Content-Type: application/json
-Authorization: {{accesToken}}
+
 
 ################################
 ############  READ  ############
@@ -70,9 +67,9 @@ POST http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "userName":"test1",
-    "password":"test1",
-    "email":"test1@gmail.com"
+    "userName":"",
+    "password":"",
+    "email":""
 }
 
 ###
@@ -83,11 +80,11 @@ Content-Type: application/json
 
 
 # @name Update_User
-PUT {{baseUrl}}/users/68c9964cf3c093b2532da0c4
+PUT {{baseUrl}}/users/
 Content-Type: application/json
 
 {
-    "name": "test1"
+    "name": ""
 }
 
 ###
@@ -96,7 +93,7 @@ Content-Type: application/json
 ###########  DELETE  ###########
 ################################
 
-# @name Delete_Department
-DELETE  {{baseUrl}}/users/68c9964cf3c093b2532da0c4
+# @name Delete_User
+DELETE  {{baseUrl}}/users/
 
 ###
