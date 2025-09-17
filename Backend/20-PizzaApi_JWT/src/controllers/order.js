@@ -1,15 +1,14 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 
-const Order = require('../models/order');
-const CustomError = require('../helpers/customError');
+const Order = require("../models/order");
+const CustomError = require("../helpers/customError");
 
 module.exports = {
-
-    list: async (req, res) => {
-        /* 
+  list: async (req, res) => {
+    /* 
             #swagger.tags = ['Orders']
             #swagger.summary = 'List Orders'
             #swagger.desription = `
@@ -23,69 +22,77 @@ module.exports = {
             `
         */
 
-        const result = await res.getModelList(Order);
+    const result = await res.getModelList(Order);
 
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(Order),
-            result
-        });
-    },
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Order),
+      result,
+    });
+  },
 
-    create: async (req, res) => {
-        /* 
+  create: async (req, res) => {
+    /* 
             #swagger.tags = ['Orders']
             #swagger.summary = 'Create Order'
         */
 
-        const result = await Order.create(req.body);
+    //! adding logged in user's id to req.body as userId field
 
-        res.status(201).send({
-            error: false,
-            result
-        })
-    },
+    //! find pizza price using pizzaId field
 
-    read: async (req, res) => {
-        /* 
+    const result = await Order.create(req.body);
+
+    res.status(201).send({
+      error: false,
+      result,
+    });
+  },
+
+  read: async (req, res) => {
+    /* 
             #swagger.tags = ['Orders']
             #swagger.summary = 'Get Single Order'
         */
 
-        const result = await Order.findById(req.params.id);
+    const result = await Order.findById(req.params.id);
 
-        res.status(200).send({
-            error: false,
-            result
-        })
-    },
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
 
-    update: async (req, res) => {
-        /* 
+  update: async (req, res) => {
+    /* 
             #swagger.tags = ['Orders']
             #swagger.summary = 'Update Order'
         */
 
-        const result = await Order.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const result = await Order.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
 
-        if (!result) throw new CustomError('Data is not found.', 404);
+    if (!result) throw new CustomError("Data is not found.", 404);
 
-        res.status(200).send({
-            error: false,
-            result
-        })
-    },
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
 
-    dlt: async (req, res) => {
-        /* 
+  dlt: async (req, res) => {
+    /* 
             #swagger.tags = ['Orders']
             #swagger.summary = 'Delete Order'
         */
 
-        const result = await Order.deleteOne({ _id: req.params.id });
+    const result = await Order.deleteOne({ _id: req.params.id });
 
-        if (!result.deletedCount) throw new CustomError('Data is not found or already deleted.', 404);
+    if (!result.deletedCount)
+      throw new CustomError("Data is not found or already deleted.", 404);
 
-        res.sendStatus(204);
-    },
-}
+    res.sendStatus(204);
+  },
+};

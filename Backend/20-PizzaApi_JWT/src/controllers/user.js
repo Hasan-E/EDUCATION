@@ -38,6 +38,7 @@ module.exports = {
             #swagger.summary = 'Create User'
         */
 
+            //! password validation ekle
         const result = await User.create(req.body);
 
         res.status(201).send({

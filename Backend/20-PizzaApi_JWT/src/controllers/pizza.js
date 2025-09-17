@@ -38,6 +38,8 @@ module.exports = {
             #swagger.summary = 'Create Pizza'
         */
 
+            //! if same id sent more than once in the toppingsIds field.
+
         const result = await Pizza.create(req.body);
 
         res.status(201).send({
