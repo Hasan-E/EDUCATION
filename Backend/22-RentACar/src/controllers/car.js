@@ -28,15 +28,15 @@ module.exports = {
       customFilter = {};
     }
 
-    const data = await res.getModelList(Car,customFilter);
+    const data = await res.getModelList(Car, customFilter);
 
     res.status(200).send({
       error: false,
-      details: await res.getModelListDetails(Car),
+      details: await res.getModelListDetails(Car,customFilter),
       data,
     });
   },
-  
+
   create: async (req, res) => {
     /*
             #swagger.tags = ["Cars"]
@@ -69,7 +69,7 @@ module.exports = {
       #swagger.summary = "Get Single Car"
     */
 
-    const data = await Car.findOne({ _id: id });
+    const data = await Car.findOne({ _id: req.params.id });
 
     res.status(200).send({
       error: false,
@@ -94,8 +94,14 @@ module.exports = {
         }
       }
     */
+    //? updatorId ekle
+    req.body.updatorId = req.user._id;
 
-    const data = await Car.findByIdAndUpdatey(req.params.id, req.body, {
+    // userId
+    // updatedField [pricePerDay,isPublished,]
+    // updatedValues [120,true]
+
+    const data = await Car.findByIdAndUpdate(req.params.id, req.body, {
       runValidators: true,
       new: true,
     });

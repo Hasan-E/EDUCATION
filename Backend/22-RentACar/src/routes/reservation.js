@@ -6,19 +6,21 @@ const router = require("express").Router();
 /* ------------------------------------------------------- */
 
 const { isStaffOrisAdmin, isLogin, isAdmin } = require("../middlewares/permissions");
-const { list, read, update, del } = require("../controllers/reservation");
+const { list, create, read, update, del} = require("../controllers/reservation");
+
 
 // URL: /reservations
 
 router
     .route("/")
-    .get(isStaffOrisAdmin, list)
+    .get(isLogin, list)
+    .post(isLogin, create)
 
 router
     .route("/:id")
     .get(isLogin, read)
-    .put(isLogin, update)
-    .patch(isLogin, update)
+    .put(isStaffOrisAdmin, update)
+    .patch(isStaffOrisAdmin, update)
     .delete(isAdmin, del);
 
 /* ------------------------------------------------------- */

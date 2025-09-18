@@ -19,12 +19,52 @@ module.exports = {
         </ul>
       `
     */
+    //? eğer user admin veya staff değilse sadece kendisine ait olan reservationları göster
 
-    const data = await res.getModelList(Reservation);
+    const isAdminOrStaff = req.user.isAdmin || req.user.isStaff;
+    let customFilter = { userId: req.user._id };
+    isAdminOrStaff && delete customFilter.userId;
+
+    const data = await res.getModelList(Reservation, customFilter);
 
     res.status(200).send({
       error: false,
-      details: await res.getModelListDetails(Reservation),
+      details: await res.getModelListDetails(Reservation, customFilter),
+      data,
+    });
+  },
+
+  create: async (req, res) => {
+    /*
+              #swagger.tags = ["Reservations"]
+              #swagger.summary = "Create a reservation"
+              #swagger.parameters['body'] = {
+              in: 'body',
+              required: true,
+              schema: {
+                 $ref: "#/definations/Reservation"
+                }
+              }
+            */
+
+    //! Eğer ki current user admin veya staff değilse, creatorId; müşterinin id'si olmalı
+
+    const currentUserId = req.user._id;
+    const isAdminOrStaff = req.user.isAdmin || req.user.isStaff;
+
+    if (!isAdminOrStaff) {
+      req.body.userId = currentUserId;
+    }
+    
+    req.body.creatorId = currentUserId;
+    req.body.updatorId = currentUserId;
+
+    //todo amount sectigi aracın günlük fiyatı ile kiraladığı gün sayısını çarparak hesapla
+
+    const data = await Reservation.create(req.body);
+
+    res.status(201).send({
+      error: false,
       data,
     });
   },
@@ -34,8 +74,9 @@ module.exports = {
       #swagger.tags = ["Reservations"]
       #swagger.summary = "Get Single Reservation"
     */
+    //todo Eğer ki current user admin veya staff değilse sadece kendisine ait olan rezervasyonu göster
 
-
+      
     const data = await Reservation.findOne({ _id: id });
 
     res.status(200).send({
@@ -61,8 +102,11 @@ module.exports = {
         }
       }
     */
-
-    const data = await Reservation.findByIdAndUpdatey(req.params.id, req.body, { runValidators: true, new: true });
+req.body.updatorId = currentUserId
+    const data = await Reservation.findByIdAndUpdate(req.params.id, req.body, {
+      runValidators: true,
+      new: true,
+    });
 
     res.status(202).send({
       error: false,

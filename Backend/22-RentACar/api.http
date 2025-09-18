@@ -4,7 +4,7 @@
 ################################
 @baseUrl = http://localhost:8000
 @accesToken = Bearer {{Login.response.body.bearer.access}}
-@refreshToken = Bearer {{Login.response.body.bearer.refresh}}
+@refreshToken = {{Login.response.body.bearer.refresh}}
 
 ################################
 ###########  GLOBAL  ###########
@@ -17,7 +17,7 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "username":"normal",
+    "username":"staff",
     "password":"aA*12345"
 }
 
@@ -32,7 +32,7 @@ POST {{baseUrl}}/auth/refresh
 Content-Type: application/json
 
 {
-"refresh": ""
+"refresh": "{{refreshToken}}"
 }
 
 ################################
@@ -45,9 +45,14 @@ Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
-
 # @name List_Cars
 GET {{baseUrl}}/cars
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name List_Reservations
+GET {{baseUrl}}/reservations
 Content-Type: application/json
 Authorization: {{accesToken}}
 
@@ -55,8 +60,10 @@ Authorization: {{accesToken}}
 ############  READ  ############
 ################################
 
-# @name Read_User
-GET {{baseUrl}}/users/68c9964cf3c093b2532da0c4
+# @name Read_Car
+GET {{baseUrl}}/cars/64c5ed12345a12345678901a
+Content-Type: application/json
+Authorization: {{accesToken}}
 
 ###
 
@@ -65,7 +72,7 @@ GET {{baseUrl}}/users/68c9964cf3c093b2532da0c4
 ################################
 
 # @name Create_User
-POST http://localhost:8000/users
+POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
@@ -75,6 +82,18 @@ Content-Type: application/json
 }
 
 ###
+# @name Create_Reservation
+POST {{baseUrl}}/reservations
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+{
+    "carId":"64c5ed12345a12345678901a",
+    "userId": "64c5ed12345a123456789013",
+    "startDate":"2025-09-21",
+    "endDate":"2025-09-24",
+    "amount": 360
+}
 
 ################################
 ###########  UPDATE  ###########
@@ -87,6 +106,15 @@ Content-Type: application/json
 
 {
     "name": ""
+}
+###
+# @name Update_Car
+PUT {{baseUrl}}/cars/64c5ed12345a12345678901a
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+{
+    "pricePerDay": 120
 }
 
 ###
