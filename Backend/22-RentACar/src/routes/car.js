@@ -14,7 +14,7 @@ const { list, create, read, update, del } = require("../controllers/car");
 
 // URL: /cars
 
-router.route("/").get(isLogin, list).post(isLogin, create);
+router.route("/").get(isLogin, list).post(isStaffOrisAdmin, create);
 
 router
   .route("/:id")

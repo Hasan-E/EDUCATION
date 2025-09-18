@@ -1,9 +1,10 @@
 "use strict";
 /* -------------------------------------------------------
-    | FULLSTACK TEAM | NODEJS / EXPRESS |
+| FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 
 const Reservation = require("../models/reservation");
+const Car = require("../models/car");
 
 module.exports = {
   list: async (req, res) => {
@@ -47,7 +48,7 @@ module.exports = {
               }
             */
 
-    //! Eğer ki current user admin veya staff değilse, creatorId; müşterinin id'si olmalı
+    //? Eğer ki current user admin veya staff değilse, creatorId; müşterinin id'si olmalı
 
     const currentUserId = req.user._id;
     const isAdminOrStaff = req.user.isAdmin || req.user.isStaff;
@@ -55,12 +56,23 @@ module.exports = {
     if (!isAdminOrStaff) {
       req.body.userId = currentUserId;
     }
-    
+
     req.body.creatorId = currentUserId;
     req.body.updatorId = currentUserId;
 
     //todo amount sectigi aracın günlük fiyatı ile kiraladığı gün sayısını çarparak hesapla
+    const { carId, startDate, endDate } = req.body;
+    const selectedCar = await Car.findById(carId);
+    const amount =
+      Math.round(
+        (new Date(endDate).getTime() - new Date(startDate).getTime()) /
+          (1000 * 60 * 60 * 24)
+      ) * selectedCar.pricePerDay;
 
+    // console.log(selectedCar);
+    // console.log(amount);
+
+    req.body.amount = amount;
     const data = await Reservation.create(req.body);
 
     res.status(201).send({
@@ -76,8 +88,14 @@ module.exports = {
     */
     //todo Eğer ki current user admin veya staff değilse sadece kendisine ait olan rezervasyonu göster
 
-      
-    const data = await Reservation.findOne({ _id: id });
+    const isAdminOrStaff = req.user.isAdmin || req.user.isStaff;
+    let customFilter = { userId: req.user._id };
+    isAdminOrStaff && delete customFilter.userId;
+
+    const data = await Reservation.findOne({
+      _id: req.params.id,
+      ...customFilter,
+    });
 
     res.status(200).send({
       error: false,
@@ -102,7 +120,7 @@ module.exports = {
         }
       }
     */
-req.body.updatorId = currentUserId
+    req.body.updatorId = currentUserId;
     const data = await Reservation.findByIdAndUpdate(req.params.id, req.body, {
       runValidators: true,
       new: true,

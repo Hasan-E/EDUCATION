@@ -28,11 +28,14 @@ module.exports = {
       customFilter = {};
     }
 
-    const data = await res.getModelList(Car, customFilter);
+    const data = await res
+      .getModelList(Car, customFilter)
+      .populate(creatorId)
+      .populate(updatorId);
 
     res.status(200).send({
       error: false,
-      details: await res.getModelListDetails(Car,customFilter),
+      details: await res.getModelListDetails(Car, customFilter),
       data,
     });
   },
@@ -50,7 +53,7 @@ module.exports = {
             }
           */
 
-    //! CreatorId ve UpdatorId ekle
+    //? CreatorId ve UpdatorId ekle
     const currentUserId = req.user._id;
     req.body.creatorId = currentUserId;
     req.body.updatorId = currentUserId;
@@ -69,7 +72,9 @@ module.exports = {
       #swagger.summary = "Get Single Car"
     */
 
-    const data = await Car.findOne({ _id: req.params.id });
+    const data = await Car.findOne({ _id: req.params.id })
+      .populate(creatorId)
+      .populate(updatorId);
 
     res.status(200).send({
       error: false,

@@ -17,7 +17,7 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "username":"staff",
+    "username":"normal",
     "password":"aA*12345"
 }
 
@@ -66,6 +66,10 @@ Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
+# @name Read_Reservation
+GET {{baseUrl}}/reservations/68cb027b712bd4acabae72a7
+Content-Type: application/json
+Authorization: {{accesToken}}
 
 ################################
 ###########  CREATE  ###########
@@ -91,8 +95,7 @@ Authorization: {{accesToken}}
     "carId":"64c5ed12345a12345678901a",
     "userId": "64c5ed12345a123456789013",
     "startDate":"2025-09-21",
-    "endDate":"2025-09-24",
-    "amount": 360
+    "endDate":"2025-09-25"
 }
 
 ################################
