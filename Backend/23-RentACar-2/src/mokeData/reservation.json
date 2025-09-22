@@ -1,0 +1,65 @@
+[
+  {
+    "userId": "64c5ed12345a123456789013",
+    "carId": "64c5ed12345a12345678901a",
+    "startDate": "2025-10-10",
+    "endDate": "2025-10-16",
+    "amount": 300,
+    "creatorId": "64c5ed12345a123456789013",
+    "updatorId": "64c5ed12345a123456789013"
+  },
+  {
+    "userId": "64c5ed12345a123456789013",
+    "carId": "64c5ed12345a12345678901a",
+    "startDate": "2025-10-17",
+    "endDate": "2025-10-18",
+    "amount": 50,
+    "creatorId": "64c5ed12345a123456789013",
+    "updatorId": "64c5ed12345a123456789012"
+  },
+  {
+    "userId": "64c5ed12345a123456789014",
+    "carId": "64c5ed12345a12345678901b",
+    "startDate": "2025-10-14",
+    "endDate": "2025-10-20",
+    "amount": 300,
+    "creatorId": "64c5ed12345a123456789014",
+    "updatorId": "64c5ed12345a123456789014"
+  },
+  {
+    "userId": "64c5ed12345a123456789013",
+    "carId": "64c5ed12345a12345678901c",
+    "startDate": "2025-10-21",
+    "endDate": "2025-10-29",
+    "amount": 400,
+    "creatorId": "64c5ed12345a123456789013",
+    "updatorId": "64c5ed12345a123456789013"
+  },
+  {
+    "userId": "64c5ed12345a123456789013",
+    "carId": "64c5ed12345a12345678901c",
+    "startDate": "2025-10-13",
+    "endDate": "2025-10-15",
+    "amount": 100,
+    "creatorId": "64c5ed12345a123456789013",
+    "updatorId": "64c5ed12345a123456789013"
+  },
+  {
+    "userId": "64c5ed12345a123456789013",
+    "carId": "64c5ed12345a12345678901c",
+    "startDate": "2025-10-11",
+    "endDate": "2025-10-12",
+    "amount": 50,
+    "creatorId": "64c5ed12345a123456789013",
+    "updatorId": "64c5ed12345a123456789013"
+  },
+  {
+    "userId": "64c5ed12345a123456789014",
+    "carId": "64c5ed12345a12345678901f",
+    "startDate": "2025-10-23",
+    "endDate": "2025-10-25",
+    "amount": 100,
+    "creatorId": "64c5ed12345a123456789012",
+    "updatorId": "64c5ed12345a123456789012"
+  }
+]
