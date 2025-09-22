@@ -1,0 +1,141 @@
+
+################################
+##########  VARIABLES  #########
+################################
+@baseUrl = http://localhost:8000
+@accesToken = Bearer {{Login.response.body.bearer.access}}
+@refreshToken = {{Login.response.body.bearer.refresh}}
+
+################################
+###########  GLOBAL  ###########
+################################
+# @name GlobalGET
+GET {{baseUrl}}
+###
+# @name Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "username":"normal",
+    "password":"aA*12345"
+}
+
+###
+# @name Logout
+POST {{baseUrl}}/auth/logout
+Content-Type: application/json
+
+###
+# @name RefreshToken
+POST {{baseUrl}}/auth/refresh
+Content-Type: application/json
+
+{
+"refresh": "{{refreshToken}}"
+}
+
+################################
+############  LIST  ############
+################################
+
+# @name List_Users
+GET {{baseUrl}}/users
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name List_Cars
+GET {{baseUrl}}/cars
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+{
+    "startDate": "2025-10-10",
+    "endDate": "2025-10-15"
+}
+
+###
+# @name List_Reservations
+GET {{baseUrl}}/reservations
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+################################
+############  READ  ############
+################################
+
+# @name Read_Car
+GET {{baseUrl}}/cars/64c5ed12345a12345678901a
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name Read_Reservation
+GET {{baseUrl}}/reservations/68cb027b712bd4acabae72a7
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+################################
+###########  CREATE  ###########
+################################
+
+# @name Create_User
+POST {{baseUrl}}/users
+Content-Type: application/json
+# Authorization: {{accesToken}}
+
+{
+    "username":"test3",
+    "password": "aA*12345",
+    "email":"test3@gmail.com",
+    "firstName":"test3",
+    "lastName":"test3"
+}
+
+###
+# @name Create_Sales
+POST {{baseUrl}}/sales
+Content-Type: application/json
+# Authorization: {{accesToken}}
+
+{
+    "username":"test1",
+    "password": "aA*12345",
+    "email":"test1@gmail.com",
+    "firstName":"test1",
+    "lastName":"test1"
+}
+
+################################
+###########  UPDATE  ###########
+################################
+
+
+# @name Update_User
+PUT {{baseUrl}}/users/
+Content-Type: application/json
+
+{
+    "name": ""
+}
+###
+# @name Update_Car
+PUT {{baseUrl}}/cars/64c5ed12345a12345678901a
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+{
+    "pricePerDay": 120
+}
+
+###
+
+################################
+###########  DELETE  ###########
+################################
+
+# @name Delete_User
+DELETE  {{baseUrl}}/users/
+
+###

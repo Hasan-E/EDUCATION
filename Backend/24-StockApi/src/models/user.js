@@ -5,6 +5,8 @@
 const {
   mongoose: { Schema, model },
 } = require("../configs/dbConnection");
+const passwordEncrypt = require("../helpers/passwordEncrypt");
+const CustomError = require("../helpers/customError");
 /* ------------------------------------------------------- */
 
 const userSchema = new Schema(
@@ -60,5 +62,31 @@ const userSchema = new Schema(
   },
   { timestamps: true }
 );
+
+userSchema.pre(["save", "findOneAndUpdate"], function (next) {
+  // console.log('pre-save worked');
+  // console.log(this);
+
+  const data = this._update ?? this;
+
+  const isPassValidated =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(data.password);
+  const isEmailValidated = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+    data.email
+  );
+
+  if (!isEmailValidated) next(new CustomError("Email is not validated", 400));
+  if (!isPassValidated) next(new CustomError("Password is not validated", 400));
+
+  if (this._update) {
+    // update
+    this._update.password = passwordEncrypt(data.password);
+  } else {
+    // create
+    this.password = passwordEncrypt(data.password);
+  }
+
+  next();
+});
 
 module.exports = model("User", userSchema);
