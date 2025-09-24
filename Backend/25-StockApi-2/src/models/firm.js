@@ -1,40 +1,37 @@
-"use strict";
+"use strict"
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
-const {
-  mongoose: { Schema, model },
-} = require("../configs/dbConnection");
+const { mongoose: { Schema, model } } = require('../configs/dbConnection');
 /* ------------------------------------------------------- */
 
-const firmSchema = new Schema(
-  {
+const firmSchema = new Schema({
+
     name: {
-      type: String,
-      trim: true,
-      required: true,
-      unique: true,
+        type: String,
+        trim: true,
+        unique: true,
+        required: true
     },
 
     phone: {
-      type: String,
-      trim: true,
-      unique: true,
-      required: true,
+        type: String,
+        trim: true,
+        unique: true,
+        required: true
     },
 
-    adress: {
-      type: String,
-      trim: true,
-      required: true,
+    address: {
+        type: String,
+        trim: true,
+        required: true
     },
 
     image: {
-      type: String,
-      trim: true,
-    },
-  },
-  { timestamps: true }
-);
+        type: String,
+        trim: true
+    }
+    
+}, { timestamps: true });
 
-module.exports = model("Firm", firmSchema);
+module.exports = model('Firm', firmSchema);

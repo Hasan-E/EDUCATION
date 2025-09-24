@@ -24,22 +24,23 @@ module.exports = {
                 }
             }
         */
+
     const { username, email, password } = req.body;
 
     if (!(username || email) && password)
-      throw new CustomError("Please enter username/email and password.", 400);
+      throw new CustomError("Please enter usurname/email and password.", 400);
 
-    const user = await User.findOne({
-      $or: [{ email }, { username }],
-      password,
-    });
+    const user = await User.findOne({ $or: [{ email }, { username }] }).lean();
 
     if (!user) throw new CustomError("Wrong email/username or password.", 401);
 
-    if (!user.isActive)
-      throw new CustomError("This account is not active.", 401);
+    if (user.password !== passwordEncrypt(password))
+      throw new CustomError("Wrong email/username or password.", 401);
 
-    // simple token
+    if (!user.isActive)
+      throw new CustomError("This account is not active", 401);
+
+    // Simple Token
     let tokenData = await Token.findOne({ userId: user._id });
     if (!tokenData) {
       tokenData = await Token.create({
@@ -48,8 +49,7 @@ module.exports = {
       });
     }
 
-    //Json Web Token
-
+    // Json Web Token
     const {
       _id,
       password: { userPass },
@@ -59,8 +59,7 @@ module.exports = {
     const access = jwt.sign(accessPayload, process.env.ACCESS_KEY, {
       expiresIn: "30m",
     });
-
-    const refresh = jwt.sign(accessPayload, process.env.REFRESH_KEY, {
+    const refresh = jwt.sign({ _id }, process.env.REFRESH_KEY, {
       expiresIn: "1d",
     });
 
@@ -73,6 +72,21 @@ module.exports = {
   },
 
   refresh: async (req, res) => {
+    /*
+            #swagger.tags = ['Authentication']
+            #swagger.summary = 'JWT: Refresh'
+            #swagger.description = 'Refresh access-token by refresh-token.'
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    bearer: {
+                        refresh: '___refreshToken___'
+                    }
+                }
+            }
+        */
+
     const { refresh } = req.body;
 
     if (!refresh) throw new CustomError("Refresh token is required.", 400);
@@ -85,10 +99,10 @@ module.exports = {
 
         const user = await User.findOne({ _id: userData._id });
 
-        if (!user) throw new CustomError("Token data is broken", 400);
+        if (!user) throw new CustomError("Token data is broken.", 400);
 
         if (!user.isActive)
-          throw new CustomError("This account is not active", 401);
+          throw new CustomError("This account is not active.", 401);
 
         const { _id, password, ...accessPayload } = user;
         const access = jwt.sign(accessPayload, process.env.ACCESS_KEY, {
@@ -104,6 +118,12 @@ module.exports = {
   },
 
   logout: async (req, res) => {
+    /*
+            #swagger.tags = ["Authentication"]
+            #swagger.summary = "Token: Logout"
+            #swagger.description = 'Delete token-key.'
+        */
+
     const currentUserId = req.user._id;
 
     let result = currentUserId

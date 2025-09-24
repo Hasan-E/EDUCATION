@@ -45,8 +45,8 @@ Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
-# @name List_Cars
-GET {{baseUrl}}/cars
+# @name List_Tokens
+GET {{baseUrl}}/tokens
 Content-Type: application/json
 Authorization: {{accesToken}}
 
@@ -56,8 +56,38 @@ Authorization: {{accesToken}}
 }
 
 ###
-# @name List_Reservations
-GET {{baseUrl}}/reservations
+# @name List_Brands
+GET {{baseUrl}}/brands
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name List_categories
+GET {{baseUrl}}/categories
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name List_firms
+GET {{baseUrl}}/firms
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name List_products
+GET {{baseUrl}}/products
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name List_purchases
+GET {{baseUrl}}/purchases
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name List_sales
+GET {{baseUrl}}/sales
 Content-Type: application/json
 Authorization: {{accesToken}}
 
@@ -65,8 +95,8 @@ Authorization: {{accesToken}}
 ############  READ  ############
 ################################
 
-# @name Read_Car
-GET {{baseUrl}}/cars/64c5ed12345a12345678901a
+# @name Read_Product
+GET {{baseUrl}}/products/65343222b67e9681f937f421
 Content-Type: application/json
 Authorization: {{accesToken}}
 

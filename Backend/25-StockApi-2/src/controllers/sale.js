@@ -1,15 +1,14 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 
-const Sale = require('../models/sale');
-const CustomError = require('../helpers/customError');
+const Sale = require("../models/sale");
+const CustomError = require("../helpers/customError");
 
 module.exports = {
-
-    list: async (req, res) => {
-        /*
+  list: async (req, res) => {
+    /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "List Sales"
             #swagger.description = `
@@ -23,17 +22,21 @@ module.exports = {
             `
         */
 
-        const result = await res.getModelList(Sale);
+    const result = await res.getModelList(Sale, {}, [
+      "userId",
+      "brandId",
+      "productId",
+    ]);
 
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(Sale),
-            result
-        });
-    },
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Sale),
+      result,
+    });
+  },
 
-    create: async (req, res) => {
-        /*
+  create: async (req, res) => {
+    /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "Create Sale"
             #swagger.parameters['body'] = {
@@ -43,30 +46,34 @@ module.exports = {
             }
         */
 
-        const result = await Sale.create(req.body);
+    const result = await Sale.create(req.body);
 
-        res.status(201).send({
-            error: false,
-            result
-        });
-    },
+    res.status(201).send({
+      error: false,
+      result,
+    });
+  },
 
-    read: async (req, res) => {
-        /*
+  read: async (req, res) => {
+    /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "Get Single Sale"
         */
 
-        const result = await Sale.findById(req.params.id);
+    const result = await Sale.findById(req.params.id).populate([
+      "userId",
+      "brandId",
+      "productId",
+    ]);
 
-        res.status(200).send({
-            error: false,
-            result
-        });
-    },
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
 
-    update: async (req, res) => {
-        /*
+  update: async (req, res) => {
+    /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "Update Sale"
             #swagger.parameters['body'] = {
@@ -76,29 +83,40 @@ module.exports = {
             }
         */
 
-        const result = await Sale.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, new: true });
+    const result = await Sale.findByIdAndUpdate(req.params.id, req.body, {
+      runValidators: true,
+      new: true,
+    });
 
-        if (!result) throw new CustomError("Update failed, data is not found or already updated", 404);
+    if (!result)
+      throw new CustomError(
+        "Update failed, data is not found or already updated",
+        404
+      );
 
-        res.status(202).send({
-            error: false,
-            result
-        });
-    },
+    res.status(202).send({
+      error: false,
+      result,
+    });
+  },
 
-    dlt: async (req, res) => {
-        /*
+  dlt: async (req, res) => {
+    /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "Delete Single Sale"
         */
 
-        const result = await Sale.findByIdAndDelete(req.params.id)
+    const result = await Sale.findByIdAndDelete(req.params.id);
 
-        if (!result) throw new CustomError("Delete failed, data is not found or already deleted", 404);
+    if (!result)
+      throw new CustomError(
+        "Delete failed, data is not found or already deleted",
+        404
+      );
 
-        res.status(200).send({
-            error: false,
-            result
-        });
-    },
-}
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
+};
