@@ -17,8 +17,8 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "username":"normal",
-    "password":"aA*12345"
+    "username":"admin",
+    "password":"aA?123456"
 }
 
 ###
@@ -39,13 +39,13 @@ Content-Type: application/json
 ############  LIST  ############
 ################################
 
-# @name List_Users
+# @name LIST_Users
 GET {{baseUrl}}/users
 Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
-# @name List_Tokens
+# @name LIST_Tokens
 GET {{baseUrl}}/tokens
 Content-Type: application/json
 Authorization: {{accesToken}}
@@ -56,37 +56,37 @@ Authorization: {{accesToken}}
 }
 
 ###
-# @name List_Brands
+# @name LIST_Brands
 GET {{baseUrl}}/brands
 Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
-# @name List_categories
+# @name LIST_categories
 GET {{baseUrl}}/categories
 Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
-# @name List_firms
+# @name LIST_firms
 GET {{baseUrl}}/firms
 Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
-# @name List_products
+# @name LIST_products
 GET {{baseUrl}}/products
 Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
-# @name List_purchases
+# @name LIST_purchases
 GET {{baseUrl}}/purchases
 Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
-# @name List_sales
+# @name LIST_sales
 GET {{baseUrl}}/sales
 Content-Type: application/json
 Authorization: {{accesToken}}
@@ -95,14 +95,50 @@ Authorization: {{accesToken}}
 ############  READ  ############
 ################################
 
-# @name Read_Product
+# @name READ_Users
+GET {{baseUrl}}/users/65343222b67e9681f937f001
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name READ_Token
+GET {{baseUrl}}/tokens/68d4341cc99a59c2c23cf4dd
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name READ_Brands
+GET {{baseUrl}}/brands/65343222b67e9681f937f104
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name READ_Categories
+GET {{baseUrl}}/categories/65343222b67e9681f937f201
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name READ_Firms
+GET {{baseUrl}}/firms/65343222b67e9681f937f302
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name READ_Products
 GET {{baseUrl}}/products/65343222b67e9681f937f421
 Content-Type: application/json
 Authorization: {{accesToken}}
 
 ###
-# @name Read_Reservation
-GET {{baseUrl}}/reservations/68cb027b712bd4acabae72a7
+# @name READ_Purchases
+GET {{baseUrl}}/purchases/65343222b67e9681f937f513
+Content-Type: application/json
+Authorization: {{accesToken}}
+
+###
+# @name READ_Sales
+GET {{baseUrl}}/sales/65343222b67e9681f937f614
 Content-Type: application/json
 Authorization: {{accesToken}}
 
@@ -165,7 +201,7 @@ Authorization: {{accesToken}}
 ###########  DELETE  ###########
 ################################
 
-# @name Delete_User
-DELETE  {{baseUrl}}/users/
+# @name DELETE
+DELETE  {{baseUrl}}/nerden/neyi
 
 ###

@@ -56,7 +56,7 @@ module.exports = {
       ...accessPayload
     } = user;
 
-    const access = jwt.sign(accessPayload, process.env.ACCESS_KEY, {
+    const access = jwt.sign({ _id, ...accessPayload }, process.env.ACCESS_KEY, {
       expiresIn: "30m",
     });
     const refresh = jwt.sign({ _id }, process.env.REFRESH_KEY, {
@@ -105,9 +105,11 @@ module.exports = {
           throw new CustomError("This account is not active.", 401);
 
         const { _id, password, ...accessPayload } = user;
-        const access = jwt.sign(accessPayload, process.env.ACCESS_KEY, {
-          expiresIn: "30m",
-        });
+        const access = jwt.sign(
+          { _id, ...accessPayload },
+          process.env.ACCESS_KEY,
+          { expiresIn: "30m" }
+        );
 
         res.status(200).send({
           error: false,

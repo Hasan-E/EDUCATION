@@ -4,6 +4,7 @@
 ------------------------------------------------------- */
 
 const Sale = require("../models/sale");
+const Product = require("../models/product");
 const CustomError = require("../helpers/customError");
 
 module.exports = {
@@ -46,7 +47,31 @@ module.exports = {
             }
         */
 
+    const { productId } = req.body;
+
+    const { brandId, quantity: Pquantity } = await Product.findById(productId)
+      .select("brandId quantity -_id")
+      .lean(); // {brandId}
+
+    if (!brandId)
+      throw new CustomError("The product you are looking is not found.", 404);
+
+    if (Pquantity < req.body.quantity)
+      throw new CustomError(
+        `There is no enough product-quantity for this sale. Current Quantity: ${Pquantity}`,
+        400
+      );
+
+    req.body.userId = req.user._id;
+    req.body.brandId = brandId;
     const result = await Sale.create(req.body);
+
+    if (result) {
+      // Update product quantity
+      await Product.findByIdAndUpdate(result.productId, {
+        $inc: { quantity: -result.quantity },
+      });
+    }
 
     res.status(201).send({
       error: false,

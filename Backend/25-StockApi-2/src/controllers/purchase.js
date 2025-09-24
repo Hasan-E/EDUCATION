@@ -59,7 +59,13 @@ module.exports = {
 
     req.body.userId = req.user._id;
     req.body.brandId = brandId;
+
     const result = await Purchase.create(req.body);
+
+    if (result)
+      await Product.findByIdAndUpdate(productId, {
+        $inc: { quantity: result.quantity },
+      });
 
     res.status(201).send({
       error: false,
@@ -97,6 +103,12 @@ module.exports = {
             }
         */
 
+    let currentPurchase;
+
+    if (req.body.quantity) {
+      currentPurchase = await Purchase.findById(req.params.id);
+    }
+
     const result = await Purchase.findByIdAndUpdate(req.params.id, req.body, {
       runValidators: true,
       new: true,
@@ -107,6 +119,16 @@ module.exports = {
         "Update failed, data is not found or already updated",
         404
       );
+
+    if (req.body.quantity) {
+      // calculate differnce
+      const difference = req.body.quantity - currentPurchase.quantity;
+
+      // update product with difference
+      await Product.findByIdAndUpdate(currentPurchase.productId, {
+        $inc: { quantity: difference }
+      });
+    }
 
     res.status(202).send({
       error: false,
@@ -127,6 +149,8 @@ module.exports = {
         "Delete failed, data is not found or already deleted",
         404
       );
+
+    //todo purchase silinirse product update etmeli
 
     res.status(200).send({
       error: false,
