@@ -27,6 +27,17 @@ dbConnection();
 // Accept JSON:
 app.use(express.json());
 
+// Cors:
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN?.split(",") || ["http://localhost:5173"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+const cors = require("cors");
+app.use(cors(corsOptions));
+
 // Check Authentication:
 app.use(require("./src/middlewares/authentication"));
 
